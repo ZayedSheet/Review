@@ -1,0 +1,84 @@
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+  
+nav {
+    height: 10vh;
+    background: #5b78c7;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    top: 0px;
+    z-index: 99;
+    position: sticky;
+}
+
+.nav-links{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 11 / span 6;
+    list-style: none;
+    background-color: lightcoral;
+}
+
+.nav-links a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    width: 100%;
+}
+
+
+.nav-links a:hover{
+    color: black;
+}
+
+@media screen and (max-width: 768px){
+
+    .line {
+        width: 30px;
+        height: 3px;
+        background: white;
+        margin: 5px;
+    }
+
+    nav {
+        position: sticky;
+        top: 0px;
+        z-index: 99;
+    }
+    
+    .hamburger {
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 2;
+    }
+
+    .nav-links {
+        position: fixed;
+        background: #5b78c7;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(0px at 90% -10%);
+        -webkit-clip-path: circle(0px at 90% -10%);
+        transition: all 1s ease-out;
+    }
+
+    .nav-links.open {
+        clip-path: circle(1500px at 90% -10%);
+        -webkit-clip-path: circle(1500px at 90% -10%); 
+    }
+}
+
+#landing-page {
+    height:100vw;
+    background-color: grey;
+}

@@ -3,13 +3,17 @@
      padding: 0;
      box-sizing: border-box;
  }
+
+ :root{
+     --button-colour: 63, 179, 255;
+ }
   
 nav {
     height: 10vh;
     background: #5b78c7;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    top: 0px;
+    top: 0;
     z-index: 99;
     position: sticky;
 }
@@ -48,7 +52,7 @@ nav {
 
     nav {
         position: sticky;
-        top: 0px;
+        top: 0;
         z-index: 99;
     }
     
@@ -79,6 +83,40 @@ nav {
 }
 
 #landing-page {
-    height:100vw;
-    background-color: grey;
+    position:relative;
+    background-size: cover;
+    background-image: url("Images/Background.png");
 }
+
+ btn#signUp{
+     background-color: rgba(var(--button-colour),0.5);
+     /*opacity: 0.5;*/
+     padding: 20px 50px;
+     position: relative;
+     left: 200px;
+     top: 200px;
+     transition: 0.5s;
+     z-index: 1;
+ }
+
+ btn#signUp:hover{
+     cursor: pointer;
+     background-color: rgba(var(--button-colour), 0.75);
+ }
+
+ div#blur{
+     width: 100vw;
+     height: 100vh;
+     z-index: 1;
+     transition:2s;
+ }
+
+ #blur>div{
+     position:fixed;
+     justify-content: center;
+     left:10%;
+     bottom:5%;
+     width:80%;
+     height: 80%;
+     transition: 2s;
+ }

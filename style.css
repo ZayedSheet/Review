@@ -20,16 +20,21 @@ nav {
     grid-column: 11 / span 6;
     list-style: none;
     background-color: lightcoral;
+    align-items: center;
+    text-align: center;
+    height: 100%;
 }
 
 .nav-links a{
+    height: 100%;
+    display: grid;
     color: white;
     text-decoration: none;
     font-size: 20px;
     border: solid;
     border-color: black;
     border-width: 1px;
-    width: 100%;
+    align-items: center;
 }
 
 
@@ -47,6 +52,8 @@ nav {
     }
 
     nav {
+        display: grid;
+        grid-auto-flow: row;
         position: sticky;
         top: 0px;
         z-index: 99;
@@ -62,14 +69,19 @@ nav {
     }
 
     .nav-links {
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
         position: fixed;
         background: #5b78c7;
         height: 100vh;
         width: 100%;
-        flex-direction: column;
         clip-path: circle(0px at 90% -10%);
         -webkit-clip-path: circle(0px at 90% -10%);
         transition: all 1s ease-out;
+    }
+
+    .nav-links a {
+        grid-auto-flow: row;
     }
 
     .nav-links.open {

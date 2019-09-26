@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
         signUpBtn.style.display = "none";
         blur.style.display = "";
         blur.style.backgroundColor = "rgba(0,0,0,0.31)";
-        box.style.backgroundColor = "red";
+        box.style.backgroundColor = "rgba(255,255,255,0.75)";
     })
   });
 

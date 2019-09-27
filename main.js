@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const blur = document.querySelector("div#blur");
     const box = document.querySelector("#blur>div");
-    const form = document.querySelector("form");
+    const form_signUp = document.getElementById("form_signUp");
+    const form_login = document.getElementById("form_login");
 
     console.log(navLinks);
 
@@ -17,26 +18,29 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     /*   LOGIN BUTTON    */
-    //
-    // btn[0].addEventListener("click", function () {
-    //
-    // });
+    btn[0].addEventListener("click", function () {
+        setBlur(true);
+        setButtons(false);
+        form_login.style.display = "inline";
+    });
 
 
     /*   SIGN UP BUTTON   */
     btn[1].addEventListener("click", function(){
-        btn[2].style.display = "inline";
-        form.style.display = "inline";
+        form_signUp.style.display = "inline";
         setButtons(false);
         setBlur(true);
     });
 
+    /*    CLOSE BUTTON   */
     btn[2].addEventListener("click", function(){
-        btn[2].style.display = "none";
-        form.style.display = "none";
+        form_signUp.style.display = "none";
+        form_login.style.display = "none";
         setBlur(false);
         setButtons(true);
     });
+
+    /* ----- Helper Functions ----- */
 
     function setButtons(condition){
         if(condition){
@@ -50,13 +54,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function setBlur(condition){
         if(condition){
+            btn[2].style.display = "inline";
             btn[2].style.backgroundColor = "rgba(63, 179, 255, 0.5)";
             blur.style.backgroundColor = "rgba(0,0,0,0.31)";
             box.style.backgroundColor = "rgba(255,255,255,0.75)";
         }else{
             btn[2].style.backgroundColor = "rgba(63, 179, 255, 0)";
+            btn[2].style.display = "none";
             blur.style.backgroundColor = "rgba(0,0,0,0)";
-            box.style.backgroundColor = "rgba(255,255,255,0.75)";
+            box.style.backgroundColor = "rgba(255,255,255,0)";
         }
     }
   });

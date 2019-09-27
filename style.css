@@ -79,7 +79,7 @@ nav {
     height: 50%;
     border: 2px solid blue;
     border-left: none;
-    border-radius: 0px 50px 50px 0px;
+    border-radius: 0 50px 50px 0;
 }
 
 @media screen and (max-width: 768px){
@@ -186,9 +186,9 @@ nav {
  #blur>div{
      position:fixed;
      justify-content: center;
-     left:10%;
+     left:6%;
      bottom:5%;
-     width:80%;
+     width:88%;
      height: 80%;
      transition: 2.5s;
  }

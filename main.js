@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // const links = document.querySelectorAll('.nav-links li');
 
     const signUpBtn = document.querySelector(".signUp");
-    const closeBtn = document.querySelector(".close")
+    const closeBtn = document.querySelector(".close");
     const blur = document.querySelector("div#blur");
     const box = document.querySelector("#blur>div");
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(){
         closeBtn.style.display = "none";
         closeBtn.style.backgroundColor = "rgba(63, 179, 255, 0)";
         blur.style.backgroundColor = "rgba(0,0,0,0)";
-        box.style.backgroundColor = "rgba(255,255,255,0)";
+        box.style.backgroundColor = "rgba(255,255,255,0.75)";
     });
 
   });

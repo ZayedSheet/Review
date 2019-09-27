@@ -143,6 +143,15 @@ nav {
     background-image: url("img/background_landing.png");
 }
 
+/*    BUTTON    */
+
+ btn{
+     transition: 2s;
+ }
+
+
+/*    SIGN UP BUTTON   */
+
  btn#signUp{
      background-color: rgba(var(--button-colour),0.5);
      /*opacity: 0.5;*/
@@ -158,6 +167,23 @@ nav {
      cursor: pointer;
      background-color: rgba(var(--button-colour), 0.75);
  }
+
+ /*    CLOSE BUTTON   */
+
+ btn#close{
+     display: none;
+     padding: 20px 20px;
+     position: absolute;
+     right: 0;
+     background-color: rgba(var(--button-colour),0.5);
+ }
+
+ btn#close:hover{
+     cursor: pointer;
+     background-color: rgba(var(--button-colour), 0.75);
+ }
+
+ /*     BLUR     */
 
  div#blur{
      width: 100vw;

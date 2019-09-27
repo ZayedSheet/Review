@@ -144,19 +144,8 @@ nav {
 
 /*    BUTTON    */
 
- .button{
+ .button-style{
      transition-duration: 2s;
- }
-
- .button:hover{
-     cursor: pointer;
-     background-color: rgba(var(--button-colour), 0.75);
- }
-
-
-/*    SIGN UP BUTTON   */
-
- .signUp{
      background-color: rgba(var(--button-colour),0.5);
      padding: 20px 50px;
      position: relative;
@@ -165,16 +154,29 @@ nav {
      z-index: 1;
  }
 
+ .button-style:hover{
+     cursor: pointer;
+     background-color: rgba(var(--button-colour), 0.75);
+ }
+
+/*    SIGN UP BUTTON   */
+
+
  /*    CLOSE BUTTON   */
 
  .close{
-     display: none;
-     padding: 20px 20px;
-     position: absolute;
-     right: 0;
+      display: none;
+      padding: 20px 20px;
+      position: absolute;
+      right: 0;
+  }
+
+ .close:hover{
+     cursor: pointer;
+     background-color: rgba(var(--button-colour), 0.75);
  }
 
- /*     BLUR     */
+ /*     Sign Up Page     */
 
  div#blur{
      width: 100vw;
@@ -191,4 +193,9 @@ nav {
      width:88%;
      height: 80%;
      transition: 2.5s;
+ }
+
+ form{
+     display:none;
+     transition:2.5s;
  }

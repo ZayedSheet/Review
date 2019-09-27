@@ -34,7 +34,8 @@
     <div id="blur">
         <div>
             <btn class="close">Close</btn>
-            <form>
+            <form id="form_signUp">
+                <h2>Create an Account</h2>
                 Name:<br>
                 <input type="text" name="name"><br>
                 Email:<br>
@@ -45,7 +46,17 @@
                 <input type="password" name="password"><br>
                 Re-enter Password:<br>
                 <input type="password" name="password"><br>
-                <input type="submit" value="Submit">
+                <input type="checkbox" name="Terms" value="True">
+                    I accept the Terms and Conditions <br>
+                <input type="submit" value="Register">
+            </form>
+            <form id="form_login">
+                <h2>Login</h2>
+                Username:<br>
+                <input type="text" name="user"><br>
+                Password:<br>
+                <input type="password" name="password"><br>
+                <input type="submit" value="Login">
             </form>
         </div>
     </div>

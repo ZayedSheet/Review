@@ -166,24 +166,14 @@ nav {
      z-index: 1;
  }
 
- /*.signUp:hover{*/
- /*    cursor: pointer;*/
- /*    background-color: rgba(var(--button-colour), 0.75);*/
- /*}*/
-
  /*    CLOSE BUTTON   */
 
- btn#close{
+ .close{
      /*display: none;*/
      padding: 20px 20px;
      position: absolute;
      right: 0;
      background-color: rgba(var(--button-colour),0.5);
- }
-
- btn#close:hover{
-     cursor: pointer;
-     background-color: rgba(var(--button-colour), 0.75);
  }
 
  /*     BLUR     */

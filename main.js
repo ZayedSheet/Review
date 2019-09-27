@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const navLinks = document.querySelector('.nav-links');
     // const links = document.querySelectorAll('.nav-links li');
 
-    const signUpBtn = document.querySelector("btn#signUp");
+    const signUpBtn = document.querySelector(".signUp");
     const closeBtn = document.getElementById("close");
     const blur = document.querySelector("div#blur");
     const box = document.querySelector("#blur>div");

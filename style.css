@@ -13,7 +13,7 @@ nav {
     background: #5b78c7;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    top: 0px;
+    top: 0;
     z-index: 99;
     position: sticky;
     align-items: center;
@@ -79,7 +79,6 @@ nav {
     height: 50%;
     border: 2px solid blue;
     border-left: none;
-    height: 3vw;
     border-radius: 0px 50px 50px 0px;
 }
 
@@ -145,33 +144,37 @@ nav {
 
 /*    BUTTON    */
 
- btn{
-     transition: 2s;
+ .button{
+     transition: 0.5s;
+ }
+
+ .button:hover{
+     cursor: pointer;
+     background-color: rgba(var(--button-colour), 0.75);
  }
 
 
 /*    SIGN UP BUTTON   */
 
- btn#signUp{
+ .signUp{
      background-color: rgba(var(--button-colour),0.5);
      /*opacity: 0.5;*/
      padding: 20px 50px;
      position: relative;
      left: 200px;
      top: 200px;
-     transition: 0.5s;
      z-index: 1;
  }
 
- btn#signUp:hover{
-     cursor: pointer;
-     background-color: rgba(var(--button-colour), 0.75);
- }
+ /*.signUp:hover{*/
+ /*    cursor: pointer;*/
+ /*    background-color: rgba(var(--button-colour), 0.75);*/
+ /*}*/
 
  /*    CLOSE BUTTON   */
 
  btn#close{
-     display: none;
+     /*display: none;*/
      padding: 20px 20px;
      position: absolute;
      right: 0;

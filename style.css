@@ -140,7 +140,7 @@ nav {
 #landing-page {
     position:relative;
     background-size: cover;
-    background-image: url("Images/Background.png");
+    background-image: url("img/background_landing.png");
 }
 
  btn#signUp{

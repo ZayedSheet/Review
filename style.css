@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    outline:none;
 }
 
 :root{
@@ -24,20 +25,19 @@ nav {
     grid-template-columns: 1fr 1fr 1fr;
     grid-column: 11 / span 6;
     list-style: none;
-    background-color: lightcoral;
     align-items: center;
     text-align: center;
     height: 100%;
 }
 
 .nav-links a{
-    height: 100%;
+    height: 70%;
     display: grid;
     color: white;
     text-decoration: none;
     font-size: 1.5vw;
-    border: solid;
-    border-color: black;
+    border-right: solid;
+    border-color: grey;
     border-width: 1px;
     align-items: center;
 }
@@ -104,18 +104,29 @@ form.search::after {
     display: table;
 }
 
-input[name=search]:focus{
+/* input[name=search]:focus{
     outline:none;
-}
+} */
 
 #landing-page{
-    height: 100vh;
+    height: 90vh;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(10, 1fr);
+    background-size: cover;
+    background-image: url("img/background_landing.png");
 }
 
 @media screen and (max-width: 768px){
+
+
+    .nav-links a{
+        border-bottom: solid;
+        border-right: none;
+        height: 100%;
+        width: 100%;
+        font-size: 4vw;
+    }
 
     .search-nav{
         display:none;  /* nav search bar gets removed when in mobile */
@@ -178,35 +189,46 @@ input[name=search]:focus{
     }
 }
 
-#landing-page {
-    position:relative;
-    background-size: cover;
-    background-image: url("img/background_landing.png");
-}
+/*#landing-page {*/
+/*    position:relative;*/
+/*    background-size: cover;*/
+/*    background-image: url("img/background_landing.png");*/
+/*}*/
 
 /*    BUTTON    */
 
  .buttons{
-     z-index: 3;
-     position: absolute;
-     margin: 20px;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%,-50%);
+     grid-column: 4 /span 10;
+     grid-row: 5/ span 1;
+     width: 100%;
+     height: 80%;
+     align-self: end;
  }
 
  .button-style{
      transition-duration: 2s;
+     border: none;
      background-color: rgba(var(--button-colour),0.5);
-     padding: 20px 50px;
-     position: relative;
-     z-index: 2;
+     /*padding: 20px 50px;*/
+     /*position: relative;*/
+     /*z-index: 2;*/
+     float: left;
+     width: 48.5%;
+     height: 90%;
+     margin-bottom: 10%;
+     border-radius: 50px 50px 50px 50px;
  }
 
  .button-style:hover{
      cursor: pointer;
      background-color: rgba(var(--button-colour), 0.75);
  }
+
+ .loginBtn{
+     margin-right: 3%;
+ }
+
+
 
 /*    SIGN UP BUTTON   */
 
@@ -228,10 +250,11 @@ input[name=search]:focus{
  /*     Sign Up Page     */
 
  div#blur{
-     width: 100vw;
+     width: 100%;
      height: 100vh;
      z-index: 1;
      transition: 2s;
+     position: fixed;
  }
 
  #blur>div{
@@ -245,7 +268,7 @@ input[name=search]:focus{
      transition: 2.5s;
  }
 
- form{
+ div#blur > div > form{
      display:none;
      transition:2.5s;
  }

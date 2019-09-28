@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function(){
     const navLinks = document.querySelector('.nav-links');
     // const links = document.querySelectorAll('.nav-links li');
 
-    //btn[0] = Login, btn[1] = SignUp, btn[2] = close
-    const button = document.querySelectorAll("button");
+    //btn[0] = Login, btn[1] = SignUp
+    const button = document.querySelectorAll(".log_buttons");
 
     const blur = document.querySelector("div#blur");
     const box = document.querySelector("#blur>div");
@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function(){
     /*   SIGN UP BUTTON   */
     button[1].addEventListener("click", function(){
         form_signUp.style.display = "inline";
-        setButtons(false);
         setBlur(true);
+        setButtons(false);
     });
 
     /*    CLOSE BUTTON   */

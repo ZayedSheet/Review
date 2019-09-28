@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // const links = document.querySelectorAll('.nav-links li');
 
     //btn[0] = Login, btn[1] = SignUp, btn[2] = close
-    const btn = document.querySelectorAll("btn");
+    const button = document.querySelectorAll("button");
 
     const blur = document.querySelector("div#blur");
     const box = document.querySelector("#blur>div");
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     /*   LOGIN BUTTON    */
-    btn[0].addEventListener("click", function () {
+    button[0].addEventListener("click", function () {
         setBlur(true);
         setButtons(false);
         form_login.style.display = "inline";
@@ -26,14 +26,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /*   SIGN UP BUTTON   */
-    btn[1].addEventListener("click", function(){
+    button[1].addEventListener("click", function(){
         form_signUp.style.display = "inline";
         setButtons(false);
         setBlur(true);
     });
 
     /*    CLOSE BUTTON   */
-    btn[2].addEventListener("click", function(){
+    button[2].addEventListener("click", function(){
         form_signUp.style.display = "none";
         form_login.style.display = "none";
         setBlur(false);
@@ -44,23 +44,23 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function setButtons(condition){
         if(condition){
-            btn[0].style.display = "inline";
-            btn[1].style.display = "inline";
+            button[0].style.display = "inline";
+            button[1].style.display = "inline";
         }else{
-            btn[0].style.display = "none";
-            btn[1].style.display = "none";
+            button[0].style.display = "none";
+            button[1].style.display = "none";
         }
     }
 
     function setBlur(condition){
         if(condition){
-            btn[2].style.display = "inline";
-            btn[2].style.backgroundColor = "rgba(63, 179, 255, 0.5)";
+            button[2].style.display = "inline";
+            button[2].style.backgroundColor = "rgba(63, 179, 255, 0.5)";
             blur.style.backgroundColor = "rgba(0,0,0,0.31)";
             box.style.backgroundColor = "rgba(255,255,255,0.75)";
         }else{
-            btn[2].style.backgroundColor = "rgba(63, 179, 255, 0)";
-            btn[2].style.display = "none";
+            button[2].style.backgroundColor = "rgba(63, 179, 255, 0)";
+            button[2].style.display = "none";
             blur.style.backgroundColor = "rgba(0,0,0,0)";
             box.style.backgroundColor = "rgba(255,255,255,0)";
         }

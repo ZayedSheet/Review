@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Review</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="main.js"></script>
 </head>
@@ -10,11 +11,13 @@
 
 <nav>
     <a href="home" id="nav-brand"></a>
-    <div class="search">
-        <input class="search-bar" type="text" placeholder="Search..">
-        <button type="submit" class="search-button">
-            <i class="fa fa-search"></i>
-        </button>
+    <div class="search-nav">
+        <form class="search" action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
     </div>
     <div class="hamburger">
         <div class="line"></div>
@@ -34,6 +37,17 @@
         <btn class="button-style signBtn">Sign Up</btn>
     </div>
     <div id="blur">
+    <div class="search-main">
+        <form class="search" action="/action_page.php">
+            <input type="text" placeholder="Search.." name="search">
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+    <!-- <btn class="button-style" id="signUp">Sign Up</btn> -->
+    <!-- <btn class="button-style" id="login>">Login</btn> -->
+    <!-- <div id="blur">
         <div>
             <btn class="close">Close</btn>
             <form id="form_signUp">
@@ -61,7 +75,7 @@
                 <input type="submit" value="Login">
             </form>
         </div>
-    </div>
+    </div> -->
 </div>
 
 </body>

@@ -1,12 +1,12 @@
- * {
-     margin: 0;
-     padding: 0;
-     box-sizing: border-box;
- }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
- :root{
-     --button-colour: 63, 179, 255;
- }
+:root{
+    --button-colour: 63, 179, 255;
+}
 
 nav {
     height: 10vh;
@@ -58,31 +58,72 @@ nav {
     background-repeat: no-repeat;
 }
 
-.search{
-    grid-column-start: 5;
+
+.search-nav{
+    grid-column: 6 / span 3;
+    /* background-color: red; */
     width: 100%;
-    height: 100%;
-    background-color: red;
 }
 
-.search-bar{
-    height: 40%;
+.search-main{
+    grid-column: 4 /span 10;
+    grid-row: 6/ span 1;
+    display: none;
+}
+
+form.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid blue;
+    border-radius: 50px 0px 0px 50px;
     float: left;
-    width: 10vw;
-    border: 2px solid blue;
-    border-right: none;
-    border-radius: 50px 0 0 50px;
+    width: 80%;
+    background: #f1f1f1;
 }
 
-.search-button{
-    width: 10%;
-    height: 50%;
-    border: 2px solid blue;
+form.search button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid blue;
+    border-radius: 0px 50px 50px 0px;
     border-left: none;
-    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+}
+
+form.search button:hover {
+    background: #0b7dda;
+}
+
+form.search::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+input[name=search]:focus{
+    outline:none;
+}
+
+#landing-page{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(10, 1fr);
 }
 
 @media screen and (max-width: 768px){
+
+    .search-nav{
+        display:none;  /* nav search bar gets removed when in mobile */
+    }
+
+    .search-main{
+        display: block;
+    }
 
     .line{
         width: 30px;

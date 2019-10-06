@@ -265,18 +265,17 @@ form.search::after {
 }
 #map-view{
     float:left;
-    background-image: url("../img/map.jpg");
+    background-image: url("../img/map_big.jpg");
+    background-position: center;
     background-size: cover;
-    width:50%;
+    width:100%;
     height:100%;
     transition: 1s;
 }
 
 #list-view{
-    float:left;
-    background-color: #d2d2d2;
-    background-size: cover;
-    width:50%;
+    position: fixed;
+    right:15px;
     height:100%;
 }
 
@@ -289,21 +288,38 @@ form.search::after {
     width: 450px;
     height: 15%;
     background-color: #547ec2;
+    border-radius: 5px;
+}
+
+.list-item:hover{
+    cursor: pointer;
 }
 
 .item-image{
     margin: auto;
-    background-color: red;
+    background-image: url("../img/gorge.jpg");
+    background-size: cover;
     height: 90%;
-    width: 90%
+    width: 85%
 }
 
 h2 {
     font-family: "Arial", serif;
+    font-size: 15px;
+    margin: 10px;
 }
 
 p {
     font-family: "Arial", serif;
+}
+
+.star{
+    font-size: 12px;
+    color: #fec005;
+    float: right;
+    margin-left: 7px;
+    text-align: center;
+
 }
 
 @media screen and (max-width: 768px){
@@ -321,7 +337,8 @@ p {
     }
     #map-view{
         float:left;
-        background-image: url("../img/map.jpg");
+        background-image: url("../img/map_big.jpg");
+        background-position: center;
         background-size: cover;
         width:50%;
         height:100%;
@@ -334,6 +351,8 @@ p {
 
     #list-view{
         float:left;
+        position: relative;
+        background-color: lightgray;
         background-size: cover;
         width:50%;
         height:100%;
@@ -399,3 +418,6 @@ p {
         align-items: center;
     }
 }
+
+
+

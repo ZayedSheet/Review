@@ -9,7 +9,7 @@
     --button-colour: 63, 179, 255;
 }
 
-nav {
+nav{
     height: 10vh;
     background: #5b78c7;
     display: grid;
@@ -57,7 +57,7 @@ nav {
     /* background-color: black; */
     width: 100%;
     height: 3vw;
-    background-image: url("img/Logo_aligned.png");
+    background-image: url("../img/Logo_aligned.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -72,11 +72,12 @@ nav {
 
 .search-main{
     grid-column: 4 /span 10;
-    grid-row: 5/ span 1;
+    grid-row: 1/ span 1;
     display: none;
 }
 
 form.search input[type=text] {
+    position:relative;
     padding: 10px;
     font-size: 17px;
     border: 1px solid blue;
@@ -123,95 +124,16 @@ form.search::after {
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(10, 1fr);
     background-size: cover;
-    background-image: url("img/background_desktop.png");
     background-position-x: center;
     background-position-y: bottom;
 }
 
-
-/*    BUTTON    */
-
-.buttons-main{
-    display: none;
-    grid-column: 4 /span 10;
-    grid-row: 4/ span 1;
-    width: 100%;
-    height: 80%;
-    align-self: end;
-    z-index: 3;
-}
-
-
-.button-style{
-    transition-duration: 2s;
-    border: none;
-    background-color: rgba(var(--button-colour),0.5);
-    float: left;
-    width: 48.5%;
-    height: 90%;
-    margin-bottom: 10%;
-    border-radius: 50px 50px 50px 50px;
-}
-
-.button-style:hover{
-    cursor: pointer;
-    background-color: rgba(var(--button-colour), 0.75);
-}
-
-.login-button{
-    margin-right: 3%;
-}
-
-
-
-/*    SIGN UP BUTTON   */
-
-
-/*    CLOSE BUTTON   */
-
-.close{
-     display: none;
-     padding: 20px 20px;
-     position: absolute;
-     right: 0;
- }
-
-.close:hover{
-    cursor: pointer;
-    background-color: rgba(var(--button-colour), 0.75);
-}
-
-/*     Sign Up Page     */
-
-div#blur{
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    transition: 2s;
-    position: fixed;
-}
-
-#blur>div{
-    position:fixed;
-    max-width: 768px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom:5%;
-    width:88%;
-    height: 80%;
-    transition: 2.5s;
-    z-index: 5;
-}
-
-div#blur > div > form{
-    display:none;
-    transition:2.5s;
-}
-
 @media screen and (max-width: 768px){
 
-    #landing-page{
-        background-image: url("img/background_landing.png");
+    form.search{
+        position:relative;
+        top:80%;
+        transform: translateY(-50%);
     }
 
     .nav-links a{
@@ -298,5 +220,131 @@ div#blur > div > form{
     .button-style:hover{
         cursor: pointer;
         background-color: rgba(var(--button-colour), 0.75);
+    }
+}
+
+/** NEW **/
+
+/* https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.views{
+    position:fixed;
+    width:100%;
+    height:100%;
+    right: 0;
+    transition: 0s;
+}
+#map-view{
+    float:left;
+    background-image: url("../img/map.jpg");
+    background-size: cover;
+    width:50%;
+    height:100%;
+    transition: 1s;
+}
+
+#list-view{
+    float:left;
+    background-size: cover;
+    width:50%;
+    height:100%;
+}
+
+@media screen and (max-width: 768px){
+
+    .views{
+        position:fixed;
+        width:200%;
+        height:100%;
+        right: 0;
+        transition: 1s;
+    }
+    #map-view{
+        float:left;
+        background-image: url("../img/map.jpg");
+        background-size: cover;
+        width:50%;
+        height:100%;
+        transition: 1s;
+    }
+
+    .map-view{
+        right: -100%;
+    }
+
+    #list-view{
+        float:left;
+        background-size: cover;
+        width:50%;
+        height:100%;
+    }
+
+
+    #toggle-background{
+        position:fixed;
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
+
+        background-color: #0b7dda;
+
+        width: 250px;
+        height: 60px;
+        bottom: 10px;
+        /*Horizontal centering*/
+        left:50%;
+        transform: translateX(-50%);
+        border-radius: 30px;
+    }
+
+    .toggle{
+        display:grid;
+    }
+
+    div.toggle {
+        position:relative;
+        display:grid;
+        background-color: white;
+        height: 50px;
+        width: 100%;
+        border-radius: 25px;
+        margin:auto;
+        transition: 1s;
+    }
+
+    div.toggle:hover{
+        cursor: pointer;
+    }
+
+    .toggle-switch{
+        position: relative;
+        background-color: lightblue;
+        width: 46px;
+        height: 46px;
+        border-radius: 23px;
+        margin-top: auto;
+        margin-bottom: auto;
+        left:3px;
+        transition: 0.5s;
+    }
+
+    .toggle-map{
+        left:33px;
+    }
+
+    p.toggle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

@@ -305,63 +305,91 @@ div#blur > div > form{
 
 /** NEW **/
 
+@media screen and (max-width: 768px){
+
+    .views{
+        position:fixed;
+        width:200%;
+        height:100%;
+        right: 0%;
+        transition: 1s;
+    }
+    #map-view{
+        float:left;
+        background-image: url("img/map.jpg");
+        width:50%;
+        height:100%;
+        transition: 1s;
+    }
+
+    .map-view{
+        right: -100%;
+    }
+
+    #list-view{
+        float:left;
+        background-size: cover;
+        width:50%;
+        height:100%;
+    }
 
 
-#toggle-background{
-    position:fixed;
+    #toggle-background{
+        position:fixed;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr;
 
-    background-color: #0b7dda;
+        background-color: #0b7dda;
 
-    width: 250px;
-    height: 60px;
-    bottom: 10px;
-    /*Horizontal centering*/
-    left:50%;
-    transform: translateX(-50%);
-    border-radius: 30px;
-}
+        width: 250px;
+        height: 60px;
+        bottom: 10px;
+        /*Horizontal centering*/
+        left:50%;
+        transform: translateX(-50%);
+        border-radius: 30px;
+    }
 
-.toggle{
-    display:grid;
-}
+    .toggle{
+        display:grid;
+    }
 
-div.toggle {
-    position:relative;
-    display:grid;
-    background-color: white;
-    height: 50px;
-    width: 100%;
-    border-radius: 25px;
-    margin:auto;
-    transition: 1s;
-}
+    div.toggle {
+        position:relative;
+        display:grid;
+        background-color: white;
+        height: 50px;
+        width: 100%;
+        border-radius: 25px;
+        margin:auto;
+        transition: 1s;
+    }
 
-div.toggle:hover{
-    cursor: pointer;
-}
+    div.toggle:hover{
+        cursor: pointer;
+    }
 
-.toggle-switch{
-    position: relative;
-    background-color: red;
-    width: 46px;
-    height: 46px;
-    border-radius: 23px;
-    margin-top: auto;
-    margin-bottom: auto;
-    left:3px;
-    transition: 0.5s;
-}
+    .toggle-switch{
+        position: relative;
+        background-color: red;
+        width: 46px;
+        height: 46px;
+        border-radius: 23px;
+        margin-top: auto;
+        margin-bottom: auto;
+        left:3px;
+        transition: 0.5s;
+    }
 
-.map{
-    left:33px;
-}
+    .toggle-map{
+        left:33px;
+    }
 
-p.toggle{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    p.toggle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

@@ -274,12 +274,43 @@ form.search::after {
 
 #list-view{
     float:left;
+    background-color: #d2d2d2;
     background-size: cover;
     width:50%;
     height:100%;
 }
 
+.list-item{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
+    position: relative;
+    float:top;
+    margin: 15px auto;
+    width: 450px;
+    height: 15%;
+    background-color: #547ec2;
+}
+
+.item-image{
+    margin: auto;
+    background-color: red;
+    height: 90%;
+    width: 90%
+}
+
+h2 {
+    font-family: "Arial", serif;
+}
+
+p {
+    font-family: "Arial", serif;
+}
+
 @media screen and (max-width: 768px){
+
+    .list-item{
+        top: 100px;
+    }
 
     .views{
         position:fixed;

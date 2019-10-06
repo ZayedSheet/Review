@@ -9,6 +9,114 @@
     --button-colour: 63, 179, 255;
 }
 
+nav {
+    height: 10vh;
+    background: #5b78c7;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 0.5%;
+    top: 0;
+    z-index: 99;
+    position: sticky;
+    align-items: center;
+}
+
+.nav-links{
+    float: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row: 1;
+    grid-column: 4 / span 6;
+    list-style: none;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.nav-links a{
+    height: 70%;
+    display: grid;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5vw;
+    border-right: solid;
+    border-color: grey;
+    border-width: 1px;
+    align-items: center;
+}
+
+
+.nav-links a:hover{
+    color: black;
+}
+
+#nav-brand{
+    display: grid;
+    grid-column: 2 / span 2;
+    /* background-color: black; */
+    width: 100%;
+    height: 3vw;
+    background-image: url("../img/Logo_aligned.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.search-nav{
+    grid-column: 10 / span 4;
+    grid-row: 1;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.search-main{
+    grid-column: 4 /span 10;
+    grid-row: 5/ span 1;
+    display: none;
+}
+
+form.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid blue;
+    border-radius: 50px 0px 0px 50px;
+    float: left;
+    width: 85%;
+    background: white;
+}
+
+form.search button {
+    float: left;
+    width: 15%;
+    padding: 10px;
+    background: white;
+    font-size: 17px;
+    border: 1px solid blue;
+    border-radius: 0px 50px 50px 0px;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.search button:hover {
+    background: #0b7dda;
+}
+
+form.search::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* input[name=search]:focus{
+    outline:none;
+} */
+
+.buttons-nav{
+    grid-column: 14 / span 2;
+    height: 50%
+}
+
 #landing-page{
     height: 90vh;
     display: grid;
@@ -31,6 +139,23 @@
     height: 80%;
     align-self: end;
     z-index: 3;
+}
+
+
+.button-style{
+    transition-duration: 2s;
+    border: none;
+    background-color: rgba(var(--button-colour),0.5);
+    float: left;
+    width: 48.5%;
+    height: 90%;
+    margin-bottom: 10%;
+    border-radius: 50px 50px 50px 50px;
+}
+
+.button-style:hover{
+    cursor: pointer;
+    background-color: rgba(var(--button-colour), 0.75);
 }
 
 .login-button{
@@ -89,7 +214,89 @@ div#blur > div > form{
         background-image: url("../img/background_landing.png");
     }
 
+    .nav-links a{
+        border-bottom: solid;
+        border-right: none;
+        height: 100%;
+        width: 100%;
+        font-size: 4vw;
+    }
+
+    .search-nav{
+        display:none;  /* nav search bar gets removed when in mobile */
+    }
+
+    .search-main{
+        display: block;
+        z-index: 4;
+    }
+
+    .line{
+        width: 30px;
+        height: 3px;
+        background: white;
+        margin: 5px;
+    }
+
+    nav{
+        display: grid;
+        grid-auto-flow: row;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+    }
+
+    #nav-brand{
+        grid-column: 5 / span 8;
+        z-index: 99;
+        height: 75%;
+        width: 100%;
+        background-position: center;
+
+    }
+
+    .hamburger{
+        position: absolute;
+        cursor: pointer;
+        right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 5;
+    }
+
+    .nav-links{
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        position: fixed;
+        background: #5b78c7;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        clip-path: circle(0px at 90% -10%);
+        -webkit-clip-path: circle(0px at 90% -10%);
+        transition: all 1s ease-out;
+        z-index: 4;
+    }
+
+    .nav-links a{
+        grid-auto-flow: row;
+    }
+
+    .nav-links.open{
+        clip-path: circle(1500px at 90% -10%);
+        -webkit-clip-path: circle(1500px at 90% -10%);
+    }
+
     .buttons-main{
         display: block;
+    }
+
+    .buttons-nav{
+        display: none;
+    }
+
+    .button-style:hover{
+        cursor: pointer;
+        background-color: rgba(var(--button-colour), 0.75);
     }
 }

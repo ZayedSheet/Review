@@ -128,86 +128,6 @@ form.search::after {
     background-position-y: bottom;
 }
 
-
-/*    BUTTON    */
-
-.buttons-main{
-    display: none;
-    grid-column: 4 /span 10;
-    grid-row: 4/ span 1;
-    width: 100%;
-    height: 80%;
-    align-self: end;
-    z-index: 3;
-}
-
-
-.button-style{
-    transition-duration: 2s;
-    border: none;
-    background-color: rgba(var(--button-colour),0.5);
-    float: left;
-    width: 48.5%;
-    height: 90%;
-    margin-bottom: 10%;
-    border-radius: 50px 50px 50px 50px;
-}
-
-.button-style:hover{
-    cursor: pointer;
-    background-color: rgba(var(--button-colour), 0.75);
-}
-
-.login-button{
-    margin-right: 3%;
-}
-
-
-
-/*    SIGN UP BUTTON   */
-
-
-/*    CLOSE BUTTON   */
-
-.close{
-    display: none;
-    padding: 20px 20px;
-    position: absolute;
-    right: 0;
-}
-
-.close:hover{
-    cursor: pointer;
-    background-color: rgba(var(--button-colour), 0.75);
-}
-
-/*     Sign Up Page     */
-
-div#blur{
-    width: 100%;
-    height: 100vh;
-    z-index: 1;
-    transition: 2s;
-    position: fixed;
-}
-
-#blur>div{
-    position:fixed;
-    max-width: 768px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom:5%;
-    width:88%;
-    height: 80%;
-    transition: 2.5s;
-    z-index: 5;
-}
-
-div#blur > div > form{
-    display:none;
-    transition:2.5s;
-}
-
 @media screen and (max-width: 768px){
 
     form.search{
@@ -305,18 +225,53 @@ div#blur > div > form{
 
 /** NEW **/
 
+/* https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
+
+.views{
+    position:fixed;
+    width:100%;
+    height:100%;
+    right: 0;
+    transition: 0s;
+}
+#map-view{
+    float:left;
+    background-image: url("img/map.jpg");
+    background-size: cover;
+    width:50%;
+    height:100%;
+    transition: 1s;
+}
+
+#list-view{
+    float:left;
+    background-size: cover;
+    width:50%;
+    height:100%;
+}
+
 @media screen and (max-width: 768px){
 
     .views{
         position:fixed;
         width:200%;
         height:100%;
-        right: 0%;
+        right: 0;
         transition: 1s;
     }
     #map-view{
         float:left;
         background-image: url("img/map.jpg");
+        background-size: cover;
         width:50%;
         height:100%;
         transition: 1s;
@@ -373,7 +328,7 @@ div#blur > div > form{
 
     .toggle-switch{
         position: relative;
-        background-color: red;
+        background-color: lightblue;
         width: 46px;
         height: 46px;
         border-radius: 23px;

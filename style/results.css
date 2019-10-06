@@ -120,12 +120,6 @@ form.search::after {
 
 #landing-page{
     height: 90vh;
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(10, 1fr);
-    background-size: cover;
-    background-position-x: center;
-    background-position-y: bottom;
 }
 
 .button-style{
@@ -151,9 +145,11 @@ form.search::after {
 @media screen and (max-width: 768px){
 
     form.search{
-        position:relative;
-        top:80%;
-        transform: translateY(-50%);
+        position:fixed;
+        top:15vh;
+        width:80%;
+        left:50%;
+        transform: translateX(-50%);
     }
 
     .nav-links a{
@@ -263,8 +259,9 @@ form.search::after {
     right: 0;
     transition: 0s;
 }
-#map-view{
-    float:left;
+.map-view{
+    position:fixed;
+    z-index: 1;
     background-image: url("../img/map_big.jpg");
     background-position: center;
     background-size: cover;
@@ -274,19 +271,20 @@ form.search::after {
 }
 
 #list-view{
-    position: fixed;
+    z-index: 2;
+    position: absolute;
     right:15px;
-    height:100%;
 }
 
 .list-item{
     display:grid;
     grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
     position: relative;
     float:top;
     margin: 15px auto;
     width: 450px;
-    height: 15%;
+    height: 110px;
     background-color: #547ec2;
     border-radius: 5px;
 }
@@ -324,38 +322,43 @@ p {
 
 @media screen and (max-width: 768px){
 
-    .list-item{
-        top: 100px;
+    body{
+        background-color: lightgrey;
     }
 
-    .views{
-        position:fixed;
-        width:200%;
-        height:100%;
-        right: 0;
-        transition: 1s;
+    #landing-page{
+        height: auto;
+        width: 100%;
     }
-    #map-view{
-        float:left;
+
+    .list-item{
+        top: 15vh;
+    }
+
+    .map-view {
+        position: fixed;
+        z-index: 2;
+        float: left;
         background-image: url("../img/map_big.jpg");
         background-position: center;
         background-size: cover;
-        width:50%;
-        height:100%;
+        right: 100%;
+        width: 100%;
+        height: 100%;
         transition: 1s;
     }
 
-    .map-view{
-        right: -100%;
+    .map-view-enable{
+        right: 0;
     }
 
     #list-view{
         float:left;
+        right:0;
         position: relative;
-        background-color: lightgray;
         background-size: cover;
-        width:50%;
-        height:100%;
+        width:100%;
+        height:auto;
     }
 
 
@@ -375,6 +378,7 @@ p {
         left:50%;
         transform: translateX(-50%);
         border-radius: 30px;
+        z-index: 2;
     }
 
     .toggle{

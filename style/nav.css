@@ -190,3 +190,19 @@ form.search::after {
         background-color: rgba(var(--button-colour), 0.75);
     }
 }
+
+.button-style{
+    transition-duration: 2s;
+    border: none;
+    background-color: rgba(var(--button-colour),0.5);
+    float: left;
+    width: 48.5%;
+    height: 90%;
+    margin-bottom: 10%;
+    border-radius: 50px 50px 50px 50px;
+}
+
+.button-style:hover{
+    cursor: pointer;
+    background-color: rgba(var(--button-colour), 0.75);
+}

@@ -74,6 +74,7 @@ nav {
     grid-column: 4 /span 10;
     grid-row: 5/ span 1;
     display: none;
+    z-index: -1 ;
 }
 
 form.search input[type=text] {
@@ -303,9 +304,11 @@ div#blur > div > form{
 
 /* -----------   Forms   ------------ */
 
-#form_signUp > h1{
+#form_signUp > h1, #form_login > h1{
     text-align: center;
 }
+
+
 
 /* ----------- Centering ------------ */
 
@@ -329,7 +332,7 @@ div#blur > div > form{
 
 div.add-object{
     position: absolute;
-    height:90vh;
+    height:100%;
     bottom:0;
     padding:50px;
     border-radius: 20px;
@@ -338,7 +341,7 @@ div.add-object{
     /*background-color: cornflowerblue;*/
 }
 
-.add-object > input[type=text], .add-object > select{
+.add-object > input, .add-object > select{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -371,14 +374,15 @@ div.add-object{
 .add-object > .button-style{
     position: relative;
     display: block;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     width: auto;
     padding: 10px 80px;
 }
 
 .add-object > h1 {
     text-align: center;
-    margin: 40px;
+    margin: 60px 0 40px 0;
 }
 
 

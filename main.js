@@ -3,10 +3,13 @@ document.addEventListener("DOMContentLoaded", function(){
     const navLinks = document.querySelector('.nav-links');
     // const links = document.querySelectorAll('.nav-links li');
 
-    //btn[0] = Login, btn[1] = SignUp
+    /*
+    button[0] = Login, button[1] = SignUp, button[2] = Close
+     */
     const button = document.querySelectorAll(".log_buttons");
     const signInNav = document.querySelector(".sign-button");
     const logInNav = document.querySelector(".login-button");
+    const searchMain = document.querySelector(".search-main");
 
 
     const blur = document.querySelector("div#blur");
@@ -55,9 +58,11 @@ document.addEventListener("DOMContentLoaded", function(){
         if(condition){
             button[0].style.display = "inline";
             button[1].style.display = "inline";
+            searchMain.style.display = "inline";
         }else{
             button[0].style.display = "none";
             button[1].style.display = "none";
+            searchMain.style.display = "none";
         }
     }
 

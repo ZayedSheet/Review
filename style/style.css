@@ -299,6 +299,14 @@ div#blur > div > form{
     }
 }
 
+
+
+/* -----------   Forms   ------------ */
+
+#form_signUp > h1{
+    text-align: center;
+}
+
 /* ----------- Centering ------------ */
 
 .centerY{

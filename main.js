@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     //btn[0] = Login, btn[1] = SignUp
     const button = document.querySelectorAll(".log_buttons");
+    const signInNav = document.querySelector(".sign-button");
+    const logInNav = document.querySelector(".login-button");
+
 
     const blur = document.querySelector("div#blur");
     const box = document.querySelector("#blur>div");
@@ -18,19 +21,13 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     /*   LOGIN BUTTON    */
-    button[0].addEventListener("click", function () {
-        setBlur(true);
-        setButtons(false);
-        form_login.style.display = "inline";
-    });
+    button[0].addEventListener("click", enableLogIn);
+    logInNav.addEventListener("click", enableLogIn);
 
 
     /*   SIGN UP BUTTON   */
-    button[1].addEventListener("click", function(){
-        form_signUp.style.display = "inline";
-        setBlur(true);
-        setButtons(false);
-    });
+    button[1].addEventListener("click", enableSignUp);
+    signInNav.addEventListener("click", enableSignUp);
 
     /*    CLOSE BUTTON   */
     button[2].addEventListener("click", function(){
@@ -42,7 +39,17 @@ document.addEventListener("DOMContentLoaded", function(){
 
     /* ----- Helper Functions ----- */
 
+    function enableLogIn(){
+        setBlur(true);
+        setButtons(false);
+        form_login.style.display = "inline";
+    }
 
+    function enableSignUp(){
+        form_signUp.style.display = "inline";
+        setBlur(true);
+        setButtons(false);
+    }
 
     function setButtons(condition){
         if(condition){

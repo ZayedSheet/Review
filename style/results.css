@@ -146,6 +146,7 @@ form.search::after {
 
     form.search{
         position:fixed;
+        z-index: 4;
         top:15vh;
         width:80%;
         left:50%;

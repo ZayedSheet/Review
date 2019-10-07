@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     /* ----- Helper Functions ----- */
 
+
+
     function setButtons(condition){
         if(condition){
             button[0].style.display = "inline";

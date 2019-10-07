@@ -320,7 +320,7 @@ div#blur > div > form{
 /* ----------- Add item page ------------ */
 
 div.add-object{
-    position: fixed;
+    position: absolute;
     height:90vh;
     bottom:0;
     padding:50px;
@@ -340,10 +340,24 @@ div.add-object{
     box-sizing: border-box;
 }
 
+.add-object > input[type=number]{
+    width: calc(50% - 2px); /* minus 2px to compensate for border */
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 .add-object > label {
     display: block;
     text-align: center;
     margin: 10px auto;
+}
+
+#pic{
+    display: block;
 }
 
 .add-object > .button-style{
@@ -351,12 +365,13 @@ div.add-object{
     display: block;
     margin-top: 10px;
     width: auto;
-    padding: 20px 80px;
+    padding: 10px 80px;
 }
 
 .add-object > h1 {
     text-align: center;
     margin: 40px;
 }
+
 
 

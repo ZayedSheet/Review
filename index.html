@@ -29,7 +29,7 @@
         <div class="line"></div>
     </div>
     <ul class="nav-links">
-        <a href="create.html">Add Area</a>
+        <a href="create.html">Add an Area</a>
         <a href="#">About</a>
         <a href="#">About</a>
     </ul>
@@ -53,31 +53,31 @@
 
     <div id="blur">
     <!---------    FORMS       --------->
-        <div>
+        <div class="centerX">
             <button class="close log_buttons">Close</button>
             <!---------    SIGN UP FORM       --------->
             <form class ="add-object" id="form_signUp">
                 <h1>Create an Account</h1>
-                Name:<br>
+                <label>Name</label>
                 <input type="text" name="name"><br>
-                Email:<br>
+                <label>Email</label>
                 <input type="email" name="email"><br>
-                Username:<br>
+                <label>Username</label>
                 <input type="text" name="user"><br>
-                Password:<br>
+                <label>Password</label>
                 <input type="password" name="password"><br>
-                Re-enter Password:<br>
-                <input type="password" name="password"><br>
-                <input type="checkbox" name="Terms" value="True">
+                <label>Re-enter Password</label>
+                <input type="password" id="password2" name="password"><br>
+                <input type="checkbox" id="terms" name="Terms" value="True">
                 I accept the Terms and Conditions <br>
                 <input type="submit" value="Register">
             </form>
             <!---------   LOGIN FORMS       --------->
-            <form id="form_login">
+            <form class="add-object" id="form_login">
                 <h1>Login</h1>
-                Username:<br>
+                <label>Username</label>
                 <input type="text" name="user"><br>
-                Password:<br>
+                <label>Password</label>
                 <input type="password" name="password"><br>
                 <input type="submit" value="Login">
             </form>

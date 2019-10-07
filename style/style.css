@@ -132,6 +132,10 @@ form.search::after {
 
 /*    BUTTON    */
 
+#account-button{
+    width: 100%;
+}
+
 .buttons-main{
     display: none;
     grid-column: 4 /span 10;
@@ -186,25 +190,24 @@ div#blur{
     width: 100%;
     height: 100vh;
     z-index: 1;
-    transition: 2s;
+    transition: 1.5s;
     position: fixed;
 }
 
 #blur>div{
     position:fixed;
     max-width: 768px;
-    left: 50%;
-    transform: translateX(-50%);
     bottom:5%;
     width:88%;
     height: 80%;
-    transition: 2.5s;
+    transition: 1.8s;
     z-index: 5;
 }
 
 div#blur > div > form{
     display:none;
     transition:2.5s;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px){
@@ -300,14 +303,20 @@ div#blur > div > form{
     }
 }
 
-
-
 /* -----------   Forms   ------------ */
 
-#form_signUp > h1, #form_login > h1{
-    text-align: center;
+#form_signUp > input, #form_login > input{
+    width: 80%;
+    margin-left: 10%;
 }
 
+#form_signUp > input[type="checkbox"]{
+    width: auto;
+}
+
+#form_signUp{
+    text-align: center;
+}
 
 
 /* ----------- Centering ------------ */
@@ -341,7 +350,8 @@ div.add-object{
     /*background-color: cornflowerblue;*/
 }
 
-.add-object > input, .add-object > select{
+.add-object > input,
+.add-object > select{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -364,7 +374,7 @@ div.add-object{
 .add-object > label {
     display: block;
     text-align: center;
-    margin: 10px auto;
+    margin: 5px auto;
 }
 
 #pic{

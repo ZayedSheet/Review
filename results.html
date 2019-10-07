@@ -21,8 +21,9 @@
         </form>
     </div>
     <div class="buttons-nav">
-        <button class="button-style login-button">Login</button>
-        <button class="button-style sign-button">Sign Up</button>
+<!--        <button class="button-style login-button">Login</button>-->
+<!--        <button class="button-style sign-button">Sign Up</button>-->
+        <button id="account-button" class="button-style">Hello, Username!</button>
     </div>
     <div class="hamburger">
         <div class="line"></div>
@@ -30,14 +31,19 @@
         <div class="line"></div>
     </div>
     <ul class="nav-links">
-        <a href="#">About</a>
+        <a href="create.html">Add an Area</a>
         <a href="#">About</a>
         <a href="#">About</a>
     </ul>
 </nav>
 
+<!--Everything below the navbar-->
 <div id="landing-page">
+
+<!--    List-view of the search results-->
+
     <div id="list-view">
+<!--        Each element in the list is a search result-->
         <ul>
             <li class="list-item">
                 <div class="item-image" id="item1"></div>
@@ -56,7 +62,6 @@
                 <div class="item-image" id="item2"></div>
                 <div>
                     <h2>Hamilton
-                        <i class="fas fa-star star"></i>
                         <i class="fas fa-star star"></i>
                         <i class="fas fa-star star"></i>
                         <i class="fas fa-star star"></i>
@@ -121,9 +126,10 @@
             </li>
         </ul>
         </div>
+
     <div class="map-view"></div>
 
-
+<!--    Search bar in the mobile version of the page-->
     <div class="search-main">
         <form class="search" action="/action_page.php">
             <input type="text" placeholder="Search.." name="search">
@@ -133,6 +139,7 @@
         </form>
     </div>
 
+<!--    Toggle switch to change from map view to list view on mobile -->
     <div id = "toggle-background">
         <p class="toggle noselect">LIST</p>
         <div class="toggle">

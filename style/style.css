@@ -298,3 +298,65 @@ div#blur > div > form{
         background-color: rgba(var(--button-colour), 0.75);
     }
 }
+
+/* ----------- Centering ------------ */
+
+.centerY{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.centerX{
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.center{
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ----------- Add item page ------------ */
+
+div.add-object{
+    position: fixed;
+    height:90vh;
+    bottom:0;
+    padding:50px;
+    border-radius: 20px;
+    min-width: 400px; /* Prevents form from being unreadable with small width */
+    width: 50%;
+    /*background-color: cornflowerblue;*/
+}
+
+.add-object > input[type=text], .add-object > select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-object > label {
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.add-object > .button-style{
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    width: auto;
+    padding: 20px 80px;
+}
+
+.add-object > h1 {
+    text-align: center;
+    margin: 40px;
+}
+
+

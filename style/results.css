@@ -180,7 +180,8 @@ form.search::after {
     nav{
         display: grid;
         grid-auto-flow: row;
-        position: sticky;
+        position: fixed;
+        width:100%;
         top: 0;
         z-index: 99;
     }
@@ -334,6 +335,7 @@ p {
     #landing-page{
         height: auto;
         width: 100%;
+        position: absolute;
     }
 
     .list-item{
@@ -360,7 +362,7 @@ p {
     #list-view{
         float:left;
         right:0;
-        position: relative;
+        position: absolute;
         background-size: cover;
         width:100%;
         height:auto;

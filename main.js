@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const searchMain = document.querySelector(".search-main");
 
 
-    const blur = document.querySelector("div#blur");
+    const blur = document.querySelector("div#background-blur");
     const box = document.querySelector("#blur>div");
     const form_signUp = document.getElementById("form_signUp");
     const form_login = document.getElementById("form_login");

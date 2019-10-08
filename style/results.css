@@ -1,10 +1,8 @@
-/** NEW **/
+/** ---- NEW ---- **/
 
-#account-button{
-    width: 100%;
-}
-
-/* https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting */
+/* https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting
+Code will ensure the list and map text (in the toggle) cannot be highlighted
+*/
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -15,13 +13,6 @@
                                   supported by Chrome, Opera and Firefox */
 }
 
-.views{
-    position:fixed;
-    width:100%;
-    height:100%;
-    right: 0;
-    transition: 0s;
-}
 .map-view{
     position:fixed;
     z-index: 1;
@@ -30,7 +21,7 @@
     background-size: cover;
     width:100%;
     height:100%;
-    transition: 1s;
+    transition: 1s; /* Slide in transition time */
 }
 
 #list-view{
@@ -41,6 +32,7 @@
 
 
 .list-item{
+    /*Each item*/
     display:grid;
     grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr;
@@ -312,6 +304,10 @@ form.search::after {
 .buttons-nav{
     grid-column: 14 / span 2;
     height: 50%
+}
+
+#account-button{
+    width: 100%;
 }
 
 #landing-page{

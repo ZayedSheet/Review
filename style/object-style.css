@@ -150,8 +150,8 @@ form.search::after {
 
  .description > h1 {
     display: inline;
-    font-size: 2vw;
-    font-size: calc(16px + 2vw);
+    font-size: 2vw; /* incase calc isnt browser supported */
+    font-size: calc(16px + 2vw); /* the font-size is 16px + 2vw (this way it looks good in desktop and mobile */
     padding-right: 2vw;
  }
 
@@ -176,7 +176,7 @@ form.search::after {
 /* -------------- object Overview -------------- */
 .obj-overview-content{
     display: grid;
-    margin: 0px 6.25% 0px 6.25%;
+    margin: 0px 6.25% 0px 6.25%; /*6.25% margin to line up with 16 grid system */
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 2fr 1fr;
     grid-column-gap: 1%;
@@ -207,7 +207,7 @@ form.search::after {
 
     /* <------------------- Object Overview Pictures -----------------> */
     .obj-pictures {
-        grid-column: 1 / span 2;
+        grid-column: 1 / span 2; /* starts at grid line 1 and spans 2 grid lines*/
         display: grid;
         grid-template-columns: 3fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
@@ -490,7 +490,7 @@ form.search::after {
 .obj-review-list > li {
     list-style: none;
     margin: 2vh 2vw 2vh 2vw;
-    border-bottom: 1px solid lightblue;
+    border-bottom: 1px solid lightblue; /* to separate list items, adds line at bottom */
     padding-bottom: 3vh;
 }
 
@@ -545,7 +545,7 @@ form.search::after {
     }
 
     .obj-pictures{
-        grid-column: 1 / -1;
+        grid-column: 1 / -1; /*spans from column line 1 to -1 (last column line */
         grid-row: 1;
         grid-template-rows: 1fr;
         grid-template-columns: 1fr;

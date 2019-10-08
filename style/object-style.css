@@ -60,7 +60,7 @@ nav {
     /* background-color: black; */
     width: 100%;
     height: 3vw;
-    background-image: url("img/Logo_aligned.png");
+    background-image: url("../img/Logo_aligned.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -119,6 +119,7 @@ form.search::after {
     border: none;
     background-color: rgba(var(--button-colour),0.5);
     float: left;
+    font-size: 1vw;
     width: 48.5%;
     height: 90%;
     margin-bottom: 10%;
@@ -524,6 +525,10 @@ form.search::after {
 
 .right-side a:hover {
     background-color: darkgray;
+}
+
+#account-button{
+    width: 100%;
 }
 
 

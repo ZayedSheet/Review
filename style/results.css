@@ -147,7 +147,7 @@ form.search::after {
     form.search{
         position:fixed;
         z-index: 4;
-        top:15vh;
+        top:12vh;
         width:80%;
         left:50%;
         transform: translateX(-50%);
@@ -282,6 +282,7 @@ form.search::after {
     right:15px;
 }
 
+
 .list-item{
     display:grid;
     grid-template-columns: 1fr 2fr;
@@ -362,6 +363,8 @@ p {
     #list-view{
         float:left;
         right:0;
+        top: 2vh;
+        padding-bottom: 180px;
         position: absolute;
         background-size: cover;
         width:100%;

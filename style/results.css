@@ -27,6 +27,7 @@ Code will ensure the list and map text (in the toggle) cannot be highlighted
 #list-view{
     z-index: 2;
     position: absolute;
+    top:10vh;
     right:15px;
 }
 
@@ -182,6 +183,8 @@ p {
     }
 }
 
+
+
 /* ------ Code from style.css ------- */
 
 * {
@@ -333,6 +336,8 @@ form.search::after {
 .login-button{
     margin-right: 3%;
 }
+
+
 
 @media screen and (max-width: 768px){
 

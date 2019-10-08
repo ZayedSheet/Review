@@ -213,7 +213,8 @@ nav{
     grid-gap: 0.5%;
     top: 0;
     z-index: 99;
-    position: sticky;
+    position: fixed;
+    width:100%;
     align-items: center;
 }
 

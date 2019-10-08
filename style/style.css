@@ -11,6 +11,7 @@
 
 nav {
     height: 10vh;
+    min-height: 50px;
     background: #5b78c7;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -57,7 +58,7 @@ nav {
     /* background-color: black; */
     width: 100%;
     height: 3vw;
-    background-image: url("img/Logo_aligned.png");
+    background-image: url("../img/Logo_aligned.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -74,6 +75,7 @@ nav {
     grid-column: 4 /span 10;
     grid-row: 5/ span 1;
     display: none;
+    z-index: -1 ;
 }
 
 form.search input[type=text] {
@@ -117,19 +119,34 @@ form.search::after {
     height: 50%
 }
 
+
 #landing-page{
     height: 90vh;
+    bottom: 0;
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(10, 1fr);
     background-size: cover;
-    background-image: url("img/background_desktop.png");
     background-position-x: center;
     background-position-y: bottom;
 }
 
+#background{
+    width:100%;
+    height:90vh;
+    bottom: 0;
+    position:fixed;
+    background-image: url("../img/background_desktop.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
 /*    BUTTON    */
+
+#account-button{
+    width: 100%;
+}
 
 .buttons-main{
     display: none;
@@ -162,8 +179,6 @@ form.search::after {
     margin-right: 3%;
 }
 
-
-
 /*    SIGN UP BUTTON   */
 
 
@@ -182,36 +197,49 @@ form.search::after {
 }
 
 /*     Sign Up Page     */
+#background-blur{
+    width:100%;
+    height:100%;
+}
 
 div#blur{
+    grid-column: 1/-1;
+    grid-row: 1/-1;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
-    transition: 2s;
-    position: fixed;
+    transition: 1.5s;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 #blur>div{
-    position:fixed;
+    position:absolute;
     max-width: 768px;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom:5%;
     width:88%;
-    height: 80%;
-    transition: 2.5s;
+    top: 5%;
+    min-height: 80%;
+    height: auto;
+    transition: 1.8s;
     z-index: 5;
 }
 
 div#blur > div > form{
     display:none;
     transition:2.5s;
+    text-align: center;
 }
 
 @media screen and (max-width: 768px){
 
+    #background{
+        background-position-y: bottom;
+        background-image: url("../img/background_landing.png");
+    }
+
+
     #landing-page{
-        background-image: url("img/background_landing.png");
+        /*background-image: url("../img/background_landing.png");*/
     }
 
     .nav-links a{
@@ -284,7 +312,7 @@ div#blur > div > form{
 
     .nav-links.open{
         clip-path: circle(1500px at 90% -10%);
-        -webkit-clip-path: circle(1500px at 90% -10%); 
+        -webkit-clip-path: circle(1500px at 90% -10%);
     }
 
     .buttons-main{
@@ -300,3 +328,96 @@ div#blur > div > form{
         background-color: rgba(var(--button-colour), 0.75);
     }
 }
+
+/* -----------   Forms   ------------ */
+
+#form_signUp > input, #form_login > input{
+    width: 80%;
+    margin-left: 10%;
+}
+
+#form_signUp > input[type="checkbox"]{
+    width: auto;
+}
+
+#form_signUp, #form_login{
+    text-align: center;
+}
+
+
+/* ----------- Centering ------------ */
+
+.centerY{
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.centerX{
+    left:50%;
+    transform: translateX(-50%);
+}
+
+.center{
+    left:50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* ----------- Add item page ------------ */
+
+div.add-object{
+    position: relative;
+    height:100%;
+    border-radius: 20px;
+    min-width: 400px; /* Prevents form from being unreadable with small width */
+    width: 50%;
+    /*background-color: cornflowerblue;*/
+}
+
+.add-object > input,
+.add-object > select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-object > input[type=number]{
+    width: calc(50% - 2px); /* minus 2px to compensate for border */
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.add-object > label {
+    display: block;
+    text-align: center;
+    margin: 5px auto;
+}
+
+#pic{
+    display: block;
+}
+
+.add-object > .button-style{
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: auto;
+    padding: 10px 80px;
+}
+
+.add-object > h1 {
+    text-align: center;
+    margin: 60px 0 40px 0;
+}
+
+
+

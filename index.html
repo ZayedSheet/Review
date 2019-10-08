@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <title>Review</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <script src="main.js"></script>
 </head>
 <body>
 
 <nav>
-    <a href="home" id="nav-brand"></a>
+    <a href="index.html" id="nav-brand"></a>
     <div class="search-nav">
-        <form class="search" action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit">
+        <form class="search">
+            <input type="text" placeholder="Search..">
+            <button type="button" onclick="window.location.href='results.html'">
                 <i class="fa fa-search" style="color:blue;"></i>
             </button>
         </form>
@@ -29,18 +29,18 @@
         <div class="line"></div>
     </div>
     <ul class="nav-links">
-        <a href="#">About</a>
+        <a href="create.html">Add an Area</a>
         <a href="#">About</a>
         <a href="#">About</a>
     </ul>
 </nav>
-
+<div id="background"><div id="background-blur"></div></div>
 <div id="landing-page">
 
     <div class="search-main">
         <form class="search" action="/action_page.php">
         <input type="text" placeholder="Search.." name="search">
-        <button type="submit">
+        <button type="button" onclick="window.location.href='results.html'">
             <i class="fa fa-search"></i>
         </button>
         </form>
@@ -53,31 +53,31 @@
 
     <div id="blur">
     <!---------    FORMS       --------->
-        <div>
+        <div class="centerX">
             <button class="close log_buttons">Close</button>
             <!---------    SIGN UP FORM       --------->
-            <form id="form_signUp">
-                <h2>Create an Account</h2>
-                Name:<br>
+            <form class ="add-object" id="form_signUp">
+                <h1>Create an Account</h1>
+                <label>Name</label>
                 <input type="text" name="name"><br>
-                Email:<br>
+                <label>Email</label>
                 <input type="email" name="email"><br>
-                Username:<br>
+                <label>Username</label>
                 <input type="text" name="user"><br>
-                Password:<br>
+                <label>Password</label>
                 <input type="password" name="password"><br>
-                Re-enter Password:<br>
-                <input type="password" name="password"><br>
-                <input type="checkbox" name="Terms" value="True">
+                <label>Re-enter Password</label>
+                <input type="password" id="password2" name="password"><br>
+                <input type="checkbox" id="terms" name="Terms" value="True">
                 I accept the Terms and Conditions <br>
                 <input type="submit" value="Register">
             </form>
             <!---------   LOGIN FORMS       --------->
-            <form id="form_login">
-                <h2>Login</h2>
-                Username:<br>
+            <form class="add-object" id="form_login">
+                <h1>Login</h1>
+                <label>Username</label>
                 <input type="text" name="user"><br>
-                Password:<br>
+                <label>Password</label>
                 <input type="password" name="password"><br>
                 <input type="submit" value="Login">
             </form>

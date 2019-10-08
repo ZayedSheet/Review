@@ -3,10 +3,16 @@ document.addEventListener("DOMContentLoaded", function(){
     const navLinks = document.querySelector('.nav-links');
     // const links = document.querySelectorAll('.nav-links li');
 
-    //btn[0] = Login, btn[1] = SignUp
+    /*
+    button[0] = Login, button[1] = SignUp, button[2] = Close
+     */
     const button = document.querySelectorAll(".log_buttons");
+    const signInNav = document.querySelector(".sign-button");
+    const logInNav = document.querySelector(".login-button");
+    const searchMain = document.querySelector(".search-main");
 
-    const blur = document.querySelector("div#blur");
+
+    const blur = document.querySelector("div#background-blur");
     const box = document.querySelector("#blur>div");
     const form_signUp = document.getElementById("form_signUp");
     const form_login = document.getElementById("form_login");
@@ -18,19 +24,13 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
     /*   LOGIN BUTTON    */
-    button[0].addEventListener("click", function () {
-        setBlur(true);
-        setButtons(false);
-        form_login.style.display = "inline";
-    });
+    button[0].addEventListener("click", enableLogIn);
+    logInNav.addEventListener("click", enableLogIn);
 
 
     /*   SIGN UP BUTTON   */
-    button[1].addEventListener("click", function(){
-        form_signUp.style.display = "inline";
-        setBlur(true);
-        setButtons(false);
-    });
+    button[1].addEventListener("click", enableSignUp);
+    signInNav.addEventListener("click", enableSignUp);
 
     /*    CLOSE BUTTON   */
     button[2].addEventListener("click", function(){
@@ -42,13 +42,27 @@ document.addEventListener("DOMContentLoaded", function(){
 
     /* ----- Helper Functions ----- */
 
+    function enableLogIn(){
+        setBlur(true);
+        setButtons(false);
+        form_login.style.display = "inline";
+    }
+
+    function enableSignUp(){
+        form_signUp.style.display = "inline";
+        setBlur(true);
+        setButtons(false);
+    }
+
     function setButtons(condition){
         if(condition){
             button[0].style.display = "inline";
             button[1].style.display = "inline";
+            searchMain.style.display = "inline";
         }else{
             button[0].style.display = "none";
             button[1].style.display = "none";
+            searchMain.style.display = "none";
         }
     }
 

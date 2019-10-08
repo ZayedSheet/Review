@@ -391,7 +391,7 @@ div.add-object{
 }
 
 .add-object > input[type=number]{
-    width: calc(50% - 2px); /* minus 2px to compensate for border */
+    width: calc(50% - 4px); /* minus 2px to compensate for border */
     padding: 12px 20px;
     margin: 8px 0;
     display: inline;

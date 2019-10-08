@@ -11,6 +11,7 @@
 
 nav {
     height: 10vh;
+    min-height: 50px;
     background: #5b78c7;
     display: grid;
     grid-template-columns: repeat(16, 1fr);

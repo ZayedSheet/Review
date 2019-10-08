@@ -135,7 +135,7 @@ form.search::after {
 #background{
     width:100%;
     height:90vh;
-    bottom: 0;
+    bottom: 10vh;
     position:fixed;
     background-image: url("../img/background_desktop.png");
     background-size: cover;

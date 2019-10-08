@@ -366,9 +366,7 @@ div#blur > div > form{
 
 div.add-object{
     position: relative;
-    top:40vh;
     height:100%;
-    padding:50px;
     border-radius: 20px;
     min-width: 400px; /* Prevents form from being unreadable with small width */
     width: 50%;

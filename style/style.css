@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     outline:none;
+    font-family: "Arial", "Times New Roman";
 }
 
 :root{
@@ -167,6 +168,7 @@ form.search::after {
     width: 48.5%;
     height: 100%;
     font-size: 1vw;
+    font-size: calc(10px + .4vw);
     margin-bottom: 10%;
     border-radius: 50px 50px 50px 50px;
 }
@@ -328,6 +330,8 @@ div#blur > div > form{
         cursor: pointer;
         background-color: rgba(var(--button-colour), 0.75);
     }
+
+    .button-style{height: 90%;}
 }
 
 /* -----------   Forms   ------------ */

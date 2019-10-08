@@ -192,6 +192,7 @@ p {
     padding: 0;
     box-sizing: border-box;
     outline:none;
+    font-family: "Arial", "Times New Roman";
 }
 
 :root{

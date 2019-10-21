@@ -9,8 +9,8 @@ const Home = () => {
             <div id="list-view">
                 {/*        Each element in the list is a search result*/}
                 <ul>
-                    <li className="list-item" onClick="window.location.href='object.html'">
-                        <div className="item-image" id="item1"></div>
+                    <li id="item1" className="list-item" onClick="window.location.href='object.html'">
+                        <div className="item-image"></div>
                         <div>
                             <h2>Niagara Region
                                 <i className="fas fa-star star"></i>
@@ -23,8 +23,8 @@ const Home = () => {
                                 officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
                         </div>
                     </li>
-                    <li className="list-item">
-                        <div className="item-image" id="item2"></div>
+                    <li id="item2"className="list-item">
+                        <div className="item-image"></div>
                         <div>
                             <h2>Hamilton
                                 <i className="fas fa-star star"></i>
@@ -37,8 +37,8 @@ const Home = () => {
                                 factories.</p>
                         </div>
                     </li>
-                    <li className="list-item">
-                        <div className="item-image" id="item3"></div>
+                    <li id="item3" className="list-item">
+                        <div className="item-image"></div>
                         <div>
                             <h2>Barrie
                                 <i className="fas fa-star star"></i>
@@ -51,8 +51,8 @@ const Home = () => {
                                 officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
                         </div>
                     </li>
-                    <li className="list-item">
-                        <div className="item-image" id="item4"></div>
+                    <li id="item4" className="list-item">
+                        <div className="item-image"></div>
                         <div>
                             <h2>Barrie
                                 <i className="fas fa-star star"></i>
@@ -65,8 +65,8 @@ const Home = () => {
                                 officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
                         </div>
                     </li>
-                    <li className="list-item">
-                        <div className="item-image" id="item4"></div>
+                    <li id="item4" className="list-item">
+                        <div className="item-image"></div>
                         <div>
                             <h2>Barrie
                                 <i className="fas fa-star star"></i>
@@ -79,8 +79,8 @@ const Home = () => {
                                 officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
                         </div>
                     </li>
-                    <li className="list-item">
-                        <div className="item-image" id="item4"></div>
+                    <li  id="item5" className="list-item">
+                        <div className="item-image"></div>
                         <div>
                             <h2>Barrie
                                 <i className="fas fa-star star"></i>

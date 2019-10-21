@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import {validate} from "@babel/types";
+import {useState} from 'react';
 
 const useSignUpForm = (numCaseErrors) => {
     const [inputs, setInputs] = useState({}); //state variable to keep track of the field inputs
@@ -24,10 +23,10 @@ const useSignUpForm = (numCaseErrors) => {
             }
         }
 
-        if(errorExists ||  Object.keys(validationErrors).length != numCaseErrors){ alert("errors");return};
+        if(errorExists ||  Object.keys(validationErrors).length !== numCaseErrors){ alert("errors");return}
         alert("No Errors");
         // console.log(inputs);
-    }
+    };
 
     /**
      * updates state when input changes
@@ -41,10 +40,10 @@ const useSignUpForm = (numCaseErrors) => {
         setInputs(
             inputs => ({...inputs, [event.target.name]: event.target.value})
             );
-    }
+    };
 
     const displayError = (event) => {
-        let printedError = null;
+        // let printedError = null;
         if (validationErrors[event.target.name]){
             for(const error of Object.values(validationErrors[event.target.name])){
                 if (error != null){
@@ -55,7 +54,7 @@ const useSignUpForm = (numCaseErrors) => {
             }
             // document.querySelector(`p[for=${event.target.name}]`).innerHTML=validationErrors[event.target.name[0]]
         }
-    }
+    };
 
     /**
      * Function that updates field errors
@@ -68,36 +67,36 @@ const useSignUpForm = (numCaseErrors) => {
         switch(fieldname.name) {
             case 'displayName':
                 validationErrors[fieldname.name] = {
-                    ['inputError']: fieldname.value.match(/^[a-zA-Z ]+$/) ? null : 'invalid name, your name can only contain letters',
+                    ['inputError']: fieldname.value.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/) ? null : 'invalid name, your name can only contain letters',
                     ['lengthError']: (fieldLength > 2 && fieldLength < 20) ? null : 'invalid name length'
                 };
-            break;
+                break;
             case 'userEmail':
                 validationErrors[fieldname.name] = {
                     ['inputError'] : fieldname.value.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ? null : 'invalid email'
                 };
-            break;
+                break;
             case 'userName':
                 validationErrors[fieldname.name] = {
                     ['inputError'] : fieldname.value.match(/^[a-zA-Z0-9]+$/) ? null : 'invalid username, your name can only contain letters and numbers',
                     ['lengthError']: (fieldLength > 4 && fieldLength < 20) ? null : 'invalid user name length'
                 };
-
-            break;
+                break;
             case 'userPassword':
                 validationErrors[fieldname.name] = {
                     ['inputError'] : fieldname.value.match(/^[a-zA-Z0-9]+$/) ? null : 'invalid password',
                     ['lengthError'] : (fieldLength > 6 && fieldLength < 30) ? null : 'invalid password length'
                 };
-            break;
+                break;
             case 'terms':
                 validationErrors[fieldname.name] = {
                     ['inputError'] : fieldname.checked ? null : 'You must accept the terms',
                 };
+                break;
             default: break;
 
         }
-    }
+    };
 
     return {
         handleSubmit,
@@ -108,6 +107,6 @@ const useSignUpForm = (numCaseErrors) => {
     };
 
 
-}
+};
 
 export default useSignUpForm;

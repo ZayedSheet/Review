@@ -25,15 +25,15 @@ const Submission = () => {
         <form id="full-page-form" className="form-style">
             <h1>Add an Area!</h1>
             <div>
-            <label htmlFor="name">Area Name</label>
-            <input type="text" id="name" name="area-name" placeholder="Name of area.."/><br/>
+            <label htmlFor="areaName">Area Name</label>
+            <input type="text" name="areaName" placeholder="Name of area.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required autoFocus/><br/>
             </div>
             <div>
-            <label htmlFor="city">City</label>
-            <input type="text" id="city" name="lastname" placeholder="City Name.."/><br/>
+            <label htmlFor="areaCity">City</label>
+            <input type="text" name="areaCity" placeholder="City Name.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required/><br/>
             </div>
             <div>
-            <label htmlFor="country">Country</label>
+            <label htmlFor="areaCountry">Country</label>
             <select>
                 <option value="CA">Canada</option>
                 <option value="US">United States</option>
@@ -287,13 +287,13 @@ const Submission = () => {
             </select>
             </div>
             <div>
-            <label htmlFor="overview">Overview</label>
-            <input type="text" id="overview" name="lastname" placeholder="Short overview on the area..."/><br/>
+            <label htmlFor="areaOverview">Overview</label>
+            <input type="text" name="areaOverview" placeholder="Short overview on the area..."/><br/>
             </div>
             <div>
-            <label htmlFor="cords">Co-ordinates</label>
-            <input type="number" id="cords" name="latitude" placeholder='Latitude...'/>
-            <input type="number" name="longitude" placeholder="Longitude.."/><br/>
+            <label htmlFor="areaCords">Co-ordinates</label>
+            <input type="number" id="areaCords" name="latitude" placeholder='Latitude...'/>
+            <input type="number" id="areaCords" name="longitude" placeholder="Longitude.."/><br/>
             <button type={"button"} onClick={getLocation}>Enter my current coordinates</button>
             </div>
             <div>

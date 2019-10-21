@@ -22,7 +22,7 @@ form.search input[type=text] {
     background: white;
 }
 
-form.search button {
+.search-button {
     float: left;
     width: 15%;
     padding: 10px;
@@ -34,7 +34,7 @@ form.search button {
     cursor: pointer;
 }
 
-form.search button:hover {
+.search-button:hover {
     background: #0b7dda;
 }
 

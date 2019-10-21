@@ -1,0 +1,51 @@
+.search-nav{
+    grid-column: 10 / span 4;
+    grid-row: 1;
+    /* background-color: red; */
+    width: 100%;
+}
+
+.search-main{
+    grid-column: 4 /span 10;
+    grid-row: 5/ span 1;
+    display: none;
+    z-index: -1 ;
+}
+
+form.search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid blue;
+    border-radius: 50px 0px 0px 50px;
+    float: left;
+    width: 85%;
+    background: white;
+}
+
+form.search button {
+    float: left;
+    width: 15%;
+    padding: 10px;
+    background: white;
+    font-size: 17px;
+    border: 1px solid blue;
+    border-radius: 0px 50px 50px 0px;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.search button:hover {
+    background: #0b7dda;
+}
+
+
+@media screen and (max-width: 768px){
+    .search-nav{
+        display:none;  /* nav search bar gets removed when in mobile */
+    }
+
+    .search-main{
+        display: block;
+        z-index: 4;
+    }
+}

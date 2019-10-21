@@ -12,7 +12,7 @@ const LoginForm = () => {
 
     return (
         <div className={"blur-background"}>
-            <form onSubmit={handleSubmit} className={"form-style"}>
+            <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>
                 <a onClick={toggleForm} className="close"/>
                 <h1>Login</h1>
                 <div>

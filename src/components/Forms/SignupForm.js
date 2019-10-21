@@ -17,7 +17,7 @@ const SignupForm = () => {
 
     return (
         <div className={"blur-background"}>
-            <form onSubmit={handleSubmit} className={"form-style"}>
+            <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>
                     <a onClick={toggleForm} className="close"/>
                     <h1>Create an Account</h1>
                     <div>

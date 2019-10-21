@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import useSignUpForm from './FormHook';
 
 const SignupForm = () => {
@@ -8,12 +8,12 @@ const SignupForm = () => {
     // let userPassword = "userPassword";
     // let terms = "terms";
     // let initialErrors = {displayName: null, userEmail: null,}
-    const {inputs, handleInputChange, handleSubmit, displayError, validationErrors} = useSignUpForm(5);
+    const {inputs, handleInputChange, handleSubmit, displayError, validationErrors} = useSignUpForm();
     console.log({validationErrors});
 
     const toggleForm = () => {
         document.getElementById("signup").classList.toggle("signup");
-    }
+    };
 
     return (
         <div className={"blur-background"}>
@@ -22,33 +22,33 @@ const SignupForm = () => {
                     <h1>Create an Account</h1>
                     <div>
                         <label>Name</label>
-                        <input onBlur={displayError} type="text" name="displayName" onChange={handleInputChange} value={inputs.displayName}/><br/>
-                        <p for="displayName" className={"error-message myclass"}/>
+                        <input onBlur={displayError} type="text" name="displayName" onChange={handleInputChange} value={inputs.displayName} required/><br/>
+                        <p htmlFor="displayName" className={"error-message myclass"}/>
                     </div>
                     <div>
                         <label>Email</label>
-                        <input onBlur={displayError} type="email" name="userEmail" onChange={handleInputChange} value={inputs.userEmail}/><br/>
-                        <p for="userEmail" className={"error-message"}/>
+                        <input onBlur={displayError} type="email" name="userEmail" onChange={handleInputChange} value={inputs.userEmail} required/><br/>
+                        <p htmlFor="userEmail" className={"error-message"}/>
                     </div>
                     <div>
                         <label>Username</label>
-                        <input onBlur={displayError} type="text" name="userName"onChange={handleInputChange} value={inputs.userName}/><br/>
-                        <p for="userName" className={"error-message"}/>
+                        <input onBlur={displayError} type="text" name="userName" onChange={handleInputChange} value={inputs.userName} required/><br/>
+                        <p htmlFor="userName" className={"error-message"}/>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input onBlur={displayError} type="password" name="userPassword" onChange={handleInputChange} value={inputs.userPassword}/><br/>
-                        <p for="userPassword" className={"error-message"}/>
+                        <input onBlur={displayError} type="password" name="userPassword" onChange={handleInputChange} value={inputs.userPassword} required/><br/>
+                        <p htmlFor="userPassword" className={"error-message"}/>
                     </div>
                     {/*<label>Re-enter Password</label>*/}
                     {/*<input type="password" id="passwordConfirm" name="password" onChange={handleInputChange} value={inputs.passwordConfirm}/><br/>*/}
-                    <div class="terms-and-conditions">
+                    <div className="terms-and-conditions">
                         <input type="checkbox" id="terms" name="terms" onChange={handleInputChange} value="true"/>I accept the Terms and Conditions
                     </div>
                     <input type="submit" value={"Sign Up"}/>
             </form>
         </div>
     );
-}
+};
 
 export default SignupForm;

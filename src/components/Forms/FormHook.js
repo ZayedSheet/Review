@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-const useSignUpForm = (numCaseErrors) => {
+const useSignUpForm = () => {
     const [inputs, setInputs] = useState({}); //state variable to keep track of the field inputs
     const [validationErrors] = useState({}); //variable to contain all the input field errors. We use a state variable to update the page when rerendered
 
@@ -23,9 +23,11 @@ const useSignUpForm = (numCaseErrors) => {
             }
         }
 
-        if(errorExists ||  Object.keys(validationErrors).length !== numCaseErrors){ alert("errors");return}
+        if(errorExists){
+            alert("errors");
+            return;
+        }
         alert("No Errors");
-        // console.log(inputs);
     };
 
     /**

@@ -1,7 +1,7 @@
 #full-page-form{
     width: 100%;
     height: 100vh;
-    padding: 15vh 5%;
+    margin: 10vh 0;
     /*background-color: blue;*/
 }
 
@@ -32,21 +32,21 @@
 
 #pop-up-form > div{
     width: 75%;
-    padding: 10px 0px;
+    padding: 10px 0;
 }
 
 #full-page-form > div{
     width: 50%;
-    padding: 1% 0%;
+    padding: 1% 0;
 }
 
 .form-style > h1 {
-    padding: 15px 0px;
+    padding: 15px 0;
 }
 
 .terms-and-conditions{
     font-size: 15px;
-    padding: 2.5px 0px;
+    padding: 2.5px 0;
 }
 
 .form-style select{
@@ -75,7 +75,7 @@
     transform: translateX(0);
     width: 20px;
     height: 20px;
-    margin: 0px;
+    margin: 0;
 }
 
 .form-style input[type="submit"]{
@@ -139,8 +139,11 @@ form label {
 }
 
 @media screen and (max-width: 768px){
+    #full-page-form{
+        padding: 0 5%;
+    }
     #full-page-form > div{
         width: 100%;
-        padding: 1% 0%;
+        padding: 1% 0;
     }
 }

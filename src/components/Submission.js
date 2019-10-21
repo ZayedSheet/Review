@@ -1,8 +1,28 @@
 import React from 'react';
 
+
 const Submission = () => {
+    let longitude = false;
+    let latitude = false;
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation unsupported");
+        }
+    }
+
+    function showPosition(position) {
+        longitude = position.coords.longitude;
+        document.querySelector("input[name='longitude']").value = longitude;
+        latitude = position.coords.latitude;
+        document.querySelector("input[name='latitude']").value = latitude;
+
+    }
+
     return(
-        <form id="full-page-form" className="form-style" action="/action_page.php">
+        <form id="full-page-form" className="form-style">
             <h1>Add an Area!</h1>
             <div>
             <label htmlFor="name">Area Name</label>
@@ -272,8 +292,9 @@ const Submission = () => {
             </div>
             <div>
             <label htmlFor="cords">Co-ordinates</label>
-            <input type="number" id="cords" name="area-name" placeholder="Latitude.."/>
-            <input type="number" name="area-name" placeholder="Longitude.."/><br/>
+            <input type="number" id="cords" name="latitude" placeholder='Latitude...'/>
+            <input type="number" name="longitude" placeholder="Longitude.."/><br/>
+            <button type={"button"} onClick={getLocation}>Enter my current coordinates</button>
             </div>
             <div>
             <label htmlFor="pic">Picture</label>
@@ -282,7 +303,7 @@ const Submission = () => {
             <input type="submit" value="Submit"/>
         </form>
     );
-}
+};
 
 export default Submission;
 

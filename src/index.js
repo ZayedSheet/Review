@@ -5,7 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
-import Footer from "./components/Footer/Footer";
 
 
 ReactDOM.render(<App />, document.getElementById('landing-page'));

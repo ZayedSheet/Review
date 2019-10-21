@@ -25,7 +25,7 @@ nav {
     height: 100%;
 }
 
-.nav-links a{
+.nav-links > *{
     height: 70%;
     display: grid;
     color: white;
@@ -38,7 +38,7 @@ nav {
 }
 
 
-.nav-links a:hover{
+.nav-links >*:hover{
     color: black;
 }
 
@@ -54,7 +54,7 @@ nav {
 }
 
 @media screen and (max-width: 768px){
-    .nav-links a{
+    .nav-links > *{
         border-bottom: solid;
         border-right: none;
         height: 100%;
@@ -110,7 +110,7 @@ nav {
         z-index: 4;
     }
 
-    .nav-links a{
+    .nav-links > *{
         grid-auto-flow: row;
     }
 

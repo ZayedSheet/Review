@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import SearchBar from '../Search/SearchBar';
 import SigninLoginButton from '../Buttons/SigninLoginButton';
+import { NavLink } from 'react-router-dom';
 import "./Navbar.css";
 
 
@@ -9,7 +10,8 @@ const Navbar = () => {
 
     return(
         <nav id="navbar">
-            <a href="index.html" id="nav-brand"></a>
+            {/*<a href="index.html" id="nav-brand"></a>*/}
+            <NavLink to="/" id="nav-brand"></NavLink>
             <div class="search-nav">
                 <SearchBar/>
             </div>
@@ -23,9 +25,9 @@ const Navbar = () => {
                 <div className="line"></div>
             </div>
             <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-                <a href="create.html">Add an Area</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <NavLink to={"/Submission"}>Add an Area</NavLink>
+                <NavLink to={"/Submission"}>About</NavLink>
+                <NavLink to={"/Submission"}>Contact</NavLink>
             </ul>
         </nav>
     );

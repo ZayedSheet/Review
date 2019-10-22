@@ -39,9 +39,6 @@ const Home = () => {
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
                         officiis, repellendus? Asperiores consequuntur deserunt ea id.
                     </ListItem>
-
-
-
                 </ul>
             </div>
 

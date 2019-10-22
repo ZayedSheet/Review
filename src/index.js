@@ -10,7 +10,6 @@ import LoginForm from "./components/Forms/LoginForm";
 ReactDOM.render(<App />, document.getElementById('landing-page'));
 ReactDOM.render(<SignupForm />, document.getElementById('signup'));
 ReactDOM.render(<LoginForm/>, document.getElementById('login'));
-// ReactDOM.render(<Footer/>, document.getElementById('footer'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

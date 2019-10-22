@@ -73,7 +73,7 @@ nav {
     nav{
         display: grid;
         grid-auto-flow: row;
-        position: sticky;
+        position: fixed;
         top: 0;
         z-index: 99;
     }

@@ -11,18 +11,18 @@ const Navbar = () => {
     return(
         <nav id="navbar">
             {/*<a href="index.html" id="nav-brand"></a>*/}
-            <NavLink to="/" id="nav-brand"></NavLink>
-            <div class="search-nav">
+            <NavLink to="/" id="nav-brand"/>
+            <div className="search-nav">
                 <SearchBar/>
             </div>
-            <div class="buttons-nav">
+            <div className="buttons-nav">
                 <SigninLoginButton formName={"login"}> Login </SigninLoginButton>
                 <SigninLoginButton formName={"signup"}> Sign Up </SigninLoginButton>
             </div>
             <div className="hamburger" onClick={() => toggleLinks(!isOpen)}>
-                <div className="line"></div>
-                <div className="line"></div>
-                <div className="line"></div>
+                <div className="line"/>
+                <div className="line"/>
+                <div className="line"/>
             </div>
             <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
                 <NavLink to={"/Submission"}>Add an Area</NavLink>
@@ -31,6 +31,6 @@ const Navbar = () => {
             </ul>
         </nav>
     );
-}
+};
 
 export default Navbar;

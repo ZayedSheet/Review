@@ -9,7 +9,7 @@ const linkStyle = {
 
 const ListItem = (props) => {
     return(
-        <NavLink style={linkStyle} to={props.to}>
+        <NavLink to={props.to} style={linkStyle}>
             <li id={props.id} className="list-item" onClick="window.location.href='object.html'">
                 <div className="item-image"/>
                 <div>

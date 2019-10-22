@@ -3,12 +3,12 @@ import './results.css'
 import MapContainer from "./MapContainer";
 import Stars from "./Misc/Star"
 
-const Home = () => {
+const toggleMap = () => {
+    document.querySelector(".toggle-switch").classList.toggle('toggle-map');
+    document.querySelector(".map-view").classList.toggle('map-view-enable');
+};
 
-    const toggleMap = () => {
-        document.querySelector(".toggle-switch").classList.toggle('toggle-map');
-        document.querySelector(".map-view").classList.toggle('map-view-enable');
-    };
+const Home = () => {
 
     return (
         <>

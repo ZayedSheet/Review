@@ -60,11 +60,7 @@ const Home = () => {
                         <div className="item-image"/>
                         <div>
                             <h2>Barrie
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
+                                <Stars value={5}/>
                             </h2>
                             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
                                 officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
@@ -74,11 +70,7 @@ const Home = () => {
                         <div className="item-image"/>
                         <div>
                             <h2>Barrie
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
-                                <i className="fas fa-star star"/>
+                                <Stars value={4}/>
                             </h2>
                             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
                                 officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>

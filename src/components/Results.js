@@ -1,7 +1,7 @@
 import React from 'react';
 import './results.css'
 import MapContainer from "./MapContainer";
-import Stars from "./Misc/Star"
+import ListItem from "./Submission/ListItem";
 
 const toggleMap = () => {
     document.querySelector(".toggle-switch").classList.toggle('toggle-map');
@@ -15,67 +15,33 @@ const Home = () => {
             <div id="list-view">
                 {/*        Each element in the list is a search result*/}
                 <ul>
-                    <li id="item1" className="list-item" onClick="window.location.href='object.html'">
-                        <div className="item-image"/>
-                        <div>
-                            <h2>Niagara Region
-                                <Stars value={4}/>
-                            </h2>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                                officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
-                        </div>
-                    </li>
-                    <li id="item2" className="list-item">
-                        <div className="item-image"/>
-                        <div>
-                            <h2>Hamilton
-                                <Stars value={4}/>
-                            </h2>
-                            <p> Hamilton features many types of factories.
-                                Big factories, small factories, and even medium
-                                factories.</p>
-                        </div>
-                    </li>
-                    <li id="item3" className="list-item">
-                        <div className="item-image"/>
-                        <div>
-                            <h2>Barrie
-                                <Stars value={5}/>
-                            </h2>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                                officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
-                        </div>
-                    </li>
-                    <li id="item4" className="list-item">
-                        <div className="item-image"/>
-                        <div>
-                            <h2>Barrie
-                                <Stars value={3}/>
-                            </h2>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                                officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
-                        </div>
-                    </li>
-                    <li id="item4" className="list-item">
-                        <div className="item-image"/>
-                        <div>
-                            <h2>Barrie
-                                <Stars value={5}/>
-                            </h2>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                                officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
-                        </div>
-                    </li>
-                    <li  id="item5" className="list-item">
-                        <div className="item-image"/>
-                        <div>
-                            <h2>Barrie
-                                <Stars value={4}/>
-                            </h2>
-                            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                                officiis, repellendus? Asperiores consequuntur deserunt ea id.</p>
-                        </div>
-                    </li>
+                    <ListItem id="item1" stars={4} title={"Niagara Region"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, optio!
+                    </ListItem>
+                    <ListItem id="item2" stars={4} title={"Hamilton"}>
+                        Hamilton features many types of factories.
+                        Big factories, small factories, and even medium
+                        factories.
+                    </ListItem>
+                    <ListItem id="item3" stars={4} title={"Barrie"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
+                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                    </ListItem>
+                    <ListItem id="item4" stars={4} title={"Barrie"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
+                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                    </ListItem>
+                    <ListItem id="item5" stars={4} title={"Barrie"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
+                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                    </ListItem>
+                    <ListItem id="item6" stars={4} title={"Barrie"}>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
+                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                    </ListItem>
+
+
+
                 </ul>
             </div>
 

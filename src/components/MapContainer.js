@@ -32,6 +32,7 @@ export const MapContainer = (props) => {
                 <Marker
                     position={{ lat: 44.3894, lng: -79.6903}}
                     onClick={() => handleClick("item3")}/>
+
             </Map>
 
         );

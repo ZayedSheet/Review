@@ -15,27 +15,27 @@ const Home = () => {
             <div id="list-view">
                 {/*        Each element in the list is a search result*/}
                 <ul>
-                    <ListItem id="item1" stars={4} title={"Niagara Region"}>
+                    <ListItem to="../Area" id="item1" stars={4} title={"Niagara Region"}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, optio!
                     </ListItem>
-                    <ListItem id="item2" stars={4} title={"Hamilton"}>
+                    <ListItem to="../Area" id="item2" stars={4} title={"Hamilton"}>
                         Hamilton features many types of factories.
                         Big factories, small factories, and even medium
                         factories.
                     </ListItem>
-                    <ListItem id="item3" stars={4} title={"Barrie"}>
+                    <ListItem to="../Area" id="item3" stars={4} title={"Barrie"}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
                         officiis, repellendus? Asperiores consequuntur deserunt ea id.
                     </ListItem>
-                    <ListItem id="item4" stars={4} title={"Barrie"}>
+                    <ListItem to="../Area" id="item4" stars={4} title={"Barrie"}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
                         officiis, repellendus? Asperiores consequuntur deserunt ea id.
                     </ListItem>
-                    <ListItem id="item5" stars={4} title={"Barrie"}>
+                    <ListItem to="../Area" id="item5" stars={4} title={"Barrie"}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
                         officiis, repellendus? Asperiores consequuntur deserunt ea id.
                     </ListItem>
-                    <ListItem id="item6" stars={4} title={"Barrie"}>
+                    <ListItem to="../Area" id="item6" stars={4} title={"Barrie"}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
                         officiis, repellendus? Asperiores consequuntur deserunt ea id.
                     </ListItem>

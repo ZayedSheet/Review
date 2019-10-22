@@ -76,11 +76,12 @@ p {
     margin-left: 7px;
     text-align: center;
 }
-#list-view > ul{
-    background-color: lightgrey;
-}
 
 @media screen and (max-width: 768px){
+
+    #list-view > ul{
+        background-color: lightgrey;
+    }
 
     body{
         background-color: lightgrey;
@@ -99,7 +100,9 @@ p {
         background-size: cover;
         right: 100%;
         width: 100%;
-        height: 100%;
+        height: auto;
+        top:80px;
+        bottom:0;
         transition: 1s;
     }
 

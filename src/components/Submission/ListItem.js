@@ -10,7 +10,7 @@ const linkStyle = {
 const ListItem = (props) => {
     return(
         <NavLink to={props.to} style={linkStyle}>
-            <li id={props.id} className="list-item" onClick="window.location.href='object.html'">
+            <li id={props.id} className="list-item">
                 <div className="item-image"/>
                 <div>
                     <h2>{props.title}

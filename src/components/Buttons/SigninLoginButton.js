@@ -4,7 +4,7 @@ import './SigninLoginButton.css' //Styling specific to the buttons
 /**
  * Sign and login button
  * @param props properties of the component,
- *        in this case props.formName is the form that the button toggles (either sign in or login form)
+ *              props.formName is the form that the button toggles (either sign in or login form)
  * @returns A sign in or login Component (depending on formName property)
  */
 const SigninLoginButton = (props) => {

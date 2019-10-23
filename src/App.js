@@ -12,6 +12,9 @@ import Area from './components/Area';
 import NavBar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer';
 
+import SignupForm from "./components/Forms/SignupForm";
+import LoginForm from "./components/Forms/LoginForm";
+
 /**
  * This component represents every page on the website.
  * It contains the logic needed to switch between the pages.
@@ -31,6 +34,12 @@ const App = () => {
               <Route path="/Results" component={Results}/>
               <Route path="/Area" component={Area}/>
             </Switch>
+            <div id="signup" className="signup">
+                <SignupForm/>
+            </div>
+            <div id="login" className="login">
+                <LoginForm/>
+            </div>
             <Footer/> {/*  Footer (will be on all pages)*/}
         </div>
       </BrowserRouter>

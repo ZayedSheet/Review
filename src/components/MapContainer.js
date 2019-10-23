@@ -19,10 +19,7 @@ export const MapContainer = (props) => {
                 google={props.google}
                 zoom={10}
                 style={mapStyles}
-                initialCenter={{
-                    lat: 43.256531,
-                    lng: -79.874420
-                }}>
+                initialCenter={props.center}>
                 <Marker
                     position={{ lat: 43.256531, lng: -79.874420}}
                     onClick={() => handleClick("item2")}/>
@@ -32,7 +29,6 @@ export const MapContainer = (props) => {
                 <Marker
                     position={{ lat: 44.3894, lng: -79.6903}}
                     onClick={() => handleClick("item3")}/>
-
             </Map>
 
         );

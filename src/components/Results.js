@@ -43,7 +43,7 @@ const Home = () => {
             </div>
 
             <div className="map-view">
-                <MapContainer/>
+                <MapContainer center={{lat: 43.256531, lng: -79.874420}}/>
             </div>
 
             <div id="toggle-background">

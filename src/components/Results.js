@@ -54,7 +54,7 @@ const Results = (props) => {
             {/*Container for the map view of the search results, displayed using Google Maps API
             The map is centered at the users location if they search by location, or a default location otherwise*/}
             <div className="map-view">
-                <MapContainer center={props.location.locationProp}/>
+                <MapContainer center={props.location.locationProp ? props.location.locationProp : { lat: 43.0896, lng: -79.0849}}/>
             </div>
 
             {/* Toggle switch to toggle between map and list view on mobile */}

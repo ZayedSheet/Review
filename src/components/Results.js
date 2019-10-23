@@ -24,20 +24,16 @@ const Home = () => {
                         factories.
                     </ListItem>
                     <ListItem to="../Area" id="item3" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, perspiciatis!
                     </ListItem>
                     <ListItem to="../Area" id="item4" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit.
                     </ListItem>
                     <ListItem to="../Area" id="item5" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, provident!
                     </ListItem>
                     <ListItem to="../Area" id="item6" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad delectus fugit in ipsam
-                        officiis, repellendus? Asperiores consequuntur deserunt ea id.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, magnam.
                     </ListItem>
                 </ul>
             </div>

@@ -89,6 +89,8 @@ p {
 
     .list-item{
         top: 80px;
+        width:100%;
+        overflow: hidden;
     }
 
     .map-view {

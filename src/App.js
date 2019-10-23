@@ -10,21 +10,29 @@ import Area from './components/Area';
 import NavBar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer';
 
+/**
+ * This component represents every page on the website.
+ * It contains the logic needed to switch between the pages.
+ * @returns A Page on the website
+ */
 const App = () => {
   return (
+      //Browser Enables switching between components via NavLink Components
       <BrowserRouter>
         <div>
-          <NavBar/>
+          <NavBar/> {/*  Navigation Bar (will be on all pages)*/}
+            {/*Switch Component contains all possible components that
+            may be rendered between the NavBar and the Footer*/}
             <Switch>
               <Route path="/" component={Home} exact/>
               <Route path="/Submission" component={Submission}/>
               <Route path="/Results" component={Results}/>
               <Route path="/Area" component={Area}/>
             </Switch>
-            <Footer/>
+            <Footer/> {/*  Footer (will be on all pages)*/}
         </div>
       </BrowserRouter>
   )
-}
+};
 
 export default App;

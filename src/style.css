@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   outline:none;
-  font-family: "Arial", "Times New Roman";
+  font-family: "Arial", "Times New Roman", serif;
 }
 
 :root{
@@ -32,7 +32,6 @@
   }
 
 }
-
 
 .centerY{
   top: 50%;

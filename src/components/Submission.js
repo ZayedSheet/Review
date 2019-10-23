@@ -35,6 +35,8 @@ const Submission = () => {
     }
 
     return(
+        //TODO - Comments for css/html5 validation
+
         /*
         Form for the add an object (aka an area) to a page,
         contains css/html5 form validation using the pattern and required attribute

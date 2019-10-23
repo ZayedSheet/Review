@@ -1,15 +1,11 @@
 import React from 'react';
+
 import useSignUpForm from './FormHook';
 
 //TODO - Comments
 
 const SignupForm = () => {
-    // let displayName = "displayName";
-    // let userEmail = "userEmail";
-    // let userName = "userName";
-    // let userPassword = "userPassword";
-    // let terms = "terms";
-    // let initialErrors = {displayName: null, userEmail: null,}
+
     const {inputs, handleInputChange, handleSubmit, displayError, validationErrors} = useSignUpForm();
     console.log({validationErrors});
 

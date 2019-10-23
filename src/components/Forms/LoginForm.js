@@ -2,24 +2,29 @@ import React from 'react';
 import useSignUpForm from './FormHook';
 import './Form.css'
 
-//TODO - Comments
-
+/**
+ * Login Form Component
+ * @returns {*}
+ */
 const LoginForm = () => {
-    const {inputs, handleInputChange, handleSubmit, validationErrors} = useSignUpForm();
-    console.log({validationErrors});
+    const {inputs, handleInputChange, handleSubmit} = useSignUpForm(); //retreives functions and state variables from form hook
+    // console.log({validationErrors});
 
+    /**
+     * toggles the "login" class to close the form with display: none
+     */
     const toggleForm = () => {
         document.getElementById("login").classList.toggle("login");
     };
 
     return (
         <div className={"blur-background"}>
-            <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>
-                <a onClick={toggleForm} className="close"/>
+            <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>{/*Runs the handleSubmit function from form hook when submit button is clicked*/}
+                <a onClick={toggleForm} className="close"/>{/*Runs the toggleForm function on click to close the form*/}
                 <h1>Login</h1>
                 <div>
                     <label>Username</label>
-                    <input type="text" name="userName" onChange={handleInputChange} value={inputs.userName} required/><br/>
+                    <input type="text" name="userName" onChange={handleInputChange} value={inputs.userName} required/><br/>{/*Runs the handleInputChange function in form hook on input change*/}
                 </div>
                 <div>
                     <label>Password</label>

@@ -2,30 +2,35 @@ import React from 'react';
 
 import useSignUpForm from './FormHook';
 
-//TODO - Comments
-
+/**
+ * Sign up form component
+ * @returns {*}
+ */
 const SignupForm = () => {
 
-    const {inputs, handleInputChange, handleSubmit, displayError, validationErrors} = useSignUpForm();
+    const {inputs, handleInputChange, handleSubmit, displayError, validationErrors} = useSignUpForm(); //retrieves the following functions and state variables from the form hook
     console.log({validationErrors});
 
+    /**
+     * Function that closes the form
+     **/
     const toggleForm = () => {
-        document.getElementById("signup").classList.toggle("signup");
+        document.getElementById("signup").classList.toggle("signup"); //toggles the signup class to close the form (adds display: none property)
     };
 
     return (
         <div className={"blur-background"}>
-            <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>
-                    <a onClick={toggleForm} className="close"/>
+            <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>{/*Runs the handleSubmit function from form hookwhen the submit button is clicked*/}
+                    <a onClick={toggleForm} className="close"/>{/*closes the form on click by running toggleForm function*/}
                     <h1>Create an Account</h1>
                     <div>
                         <label>Name</label>
-                        <input onBlur={displayError} type="text" name="displayName" onChange={handleInputChange} value={inputs.displayName} required/><br/>
-                        <p htmlFor="displayName" className={"error-message myclass"}/>
+                        <input onBlur={displayError} type="text" name="displayName" onChange={handleInputChange} value={inputs.displayName} required/><br/>{/*Runs the displayError function from form hook onBlur (when the field loses focus)*/}
+                        <p htmlFor="displayName" className={"error-message myclass"}/>{/*paragraph element to display any errors with the input of the field*/}
                     </div>
                     <div>
                         <label>Email</label>
-                        <input onBlur={displayError} type="email" name="userEmail" onChange={handleInputChange} value={inputs.userEmail} required/><br/>
+                        <input onBlur={displayError} type="email" name="userEmail" onChange={handleInputChange} value={inputs.userEmail} required/><br/>{/*runs the handleInputChange function from form hook on input change*/}
                         <p htmlFor="userEmail" className={"error-message"}/>
                     </div>
                     <div>

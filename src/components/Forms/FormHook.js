@@ -50,7 +50,7 @@ const useSignUpForm = () => {
     };
 
     /**
-     * function to display a form's error if an error exists
+     * function to display a form's error if an error exists.
      * @param event the current form
      */
     const displayError = (event) => {

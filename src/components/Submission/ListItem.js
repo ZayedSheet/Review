@@ -2,8 +2,6 @@ import React from 'react';
 import Stars from "./Star"; //Star rating will be displayed on each list item
 import {NavLink} from "react-router-dom";
 
-//TODO - Comments
-
 //Prevents all text tags (h2 and p) under NavLink to be styled like link elements
 const linkStyle = {
     textDecoration: 'none',

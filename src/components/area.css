@@ -36,7 +36,7 @@
 /* -------------- object Overview -------------- */
 .obj-overview-content{
     display: grid;
-    margin: 0px 6.25% 0px 6.25%; /*6.25% margin to line up with 16 grid system */
+    margin: 0 6.25% 0 6.25%; /*6.25% margin to line up with 16 grid system */
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 2fr 1fr;
     grid-column-gap: 1%;
@@ -76,7 +76,7 @@
 }
 
 #remove-style {
-    padding: 0px;
+    padding: 0;
     border-style: none;
 }
 
@@ -130,7 +130,7 @@
 
 .obj-overview-list > li {
     list-style-type: none;
-    padding: .5vh 0px .5vh 0px;
+    padding: .5vh 0 .5vh 0;
     width: 100%;
     height: auto;
 }
@@ -162,13 +162,13 @@ div.active-review {
 }
 
 .five-overview-bar {
-    background-image: linear-gradient(120deg, rgba(63, 179, 255)  0%, blue 100%);
+    background-image: linear-gradient(120deg, rgb(63, 179, 255)  0%, blue 100%);
     background-repeat: no-repeat;
     background-size: 95% 100%;
 }
 
 .four-overview-bar{
-    background-image: linear-gradient(120deg, rgba(63, 179, 255) 0%, blue 100%); /*sets a gradient as the background of the div */
+    background-image: linear-gradient(120deg, rgb(63, 179, 255) 0%, blue 100%); /*sets a gradient as the background of the div */
     background-repeat: no-repeat; /*gradient takes full width without repeating */
     background-size: 5% 100%;  /* background (gradient) take 5% width, 100% height */
 }
@@ -183,7 +183,7 @@ div.active-review {
 }
 
 .overview-review-list li{
-    margin: 1vh 0px 1vh 0px;
+    margin: 1vh 0 1vh 0;
 }
 
 
@@ -222,11 +222,13 @@ div.active-review {
     font-size: 1vw;
     font-size: calc(10px + .4vw);
     margin: .75vh 1vw .75vh 1vw;
-    font-weight: 150;
+    font-weight: 200;
 }
 
 .overview-map{
-    background-color: white;
+    background-color: pink;
+    /*position: fixed;*/
+    position: relative;
 }
 
 .travel-info{
@@ -238,16 +240,16 @@ div.active-review {
 /* <------------------ Object Location Overview Start---------------> */
 
 .obj-location-overview p{
-    margin: 0vh 1vw 0vh 1vw;
+    margin: 0 1vw 0 1vw;
     font-size: 1vw;
     font-size: calc(10px + .4vw);
 }
 
 .obj-location-overview h3{
-    margin: 1vh 1vw 0vh 1vw;
+    margin: 1vh 1vw 0 1vw;
     font-size: 1vw;
     font-size: calc(10px + .4vw);
-    font-weight: 750;
+    font-weight: 700;
 }
 
 .fa-desktop {
@@ -355,7 +357,7 @@ div.active-review {
 }
 
 .obj-review-list  p {
-    padding: 1vh 0vw 1vh 0vw;
+    padding: 1vh 0 1vh 0;
 }
 
 /* ------------------ Object Reviews End-------------------- */

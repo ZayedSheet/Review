@@ -1,5 +1,6 @@
 import React from 'react';
 import './area.css'
+import Star from "./Submission/Star";
 import MapContainer from "./MapContainer";
 
 
@@ -14,26 +15,22 @@ const Home = () => {
                     <span>Waterfall</span>
                     <span>Nature</span>
                 </li>
-                <p>Tourist region in Canada Ontario most known for Niagra Falls, the most powerful falls in North
+                <p>Tourist region in Canada Ontario most known for Niagara Falls, the most powerful falls in North
                     America</p>
             </div>
 
             <div className="obj-overview-content">
                 <div id="remove-style" className="obj-pictures">
                     <div className="overview-main-image"><h1>Photo (22)</h1></div>
-                    <div className="side-image overview-side-image1"></div>
-                    <div className="side-image overview-side-image2"></div>
-                    <div className="side-image overview-side-image3"></div>
+                    <div className="side-image overview-side-image1"/>
+                    <div className="side-image overview-side-image2"/>
+                    <div className="side-image overview-side-image3"/>
                 </div>
                 <div className="obj-review-overview">
                     <h1>Review Overview</h1>
                     <div className="obj-overview-rating">
             <span>Rating
-            <i className="fas fa-star star"></i>
-            <i className="fas fa-star star"></i>
-            <i className="fas fa-star star"></i>
-            <i className="fas fa-star star"></i>
-            <i className="fas fa-star star"></i>
+            <Star value={5}/>
             </span>
                         <a href="#reviews" className="obj-overview-rating-allreviews"> 39 Reviews</a>
                     </div>
@@ -78,22 +75,24 @@ const Home = () => {
                     <div className="travel-info">
                         <h2>Travel Overview</h2>
                         <div>
-                            <h3><i className="fa fa-globe" aria-hidden="true"></i> Location: <br/> Canada, Ontario</h3>
-                            <h3><i className="fas fa-map"></i> Area: <br/> Niagara</h3>
-                            <h3><i className="fa fa-map-marker" aria-hidden="true"></i> Latitute,
+                            <h3><i className="fa fa-globe" aria-hidden="true"/> Location: <br/> Canada, Ontario</h3>
+                            <h3><i className="fas fa-map"/> Area: <br/> Niagara</h3>
+                            <h3><i className="fa fa-map-marker" aria-hidden="true"/> Latitute,
                                 Longitude: <br/> 43.0582 N, 79.2902 W</h3>
                         </div>
                     </div>
-                    <div className="overview-map"></div>
+                    <div className="overview-map">
+                        <MapContainer center={{ lat: 43.0896, lng: -79.0849}}/>
+                    </div>
                 </div>
                 <div className="obj-location-overview">
                     <h2> Location Overview</h2>
                     <p>Niagara is a region located in south Ontario, Canada, between Lake Ontario and Lake Erie. It is
                         an 'area of wonder' with a breathtaking waterfall, nature trails, events and festivities and
                         lush vineyards</p>
-                    <h3><i className="fas fa-desktop"></i> https://niagarafalls.ca/</h3>
-                    <h3><i className="fas fa-clock"></i> Closes In: 5H</h3>
-                    <h3><i className="fas fa-clock"></i> People typically spend: 3H here</h3>
+                    <h3><i className="fas fa-desktop"/> https://niagarafalls.ca/</h3>
+                    <h3><i className="fas fa-clock"/> Closes In: 5H</h3>
+                    <h3><i className="fas fa-clock"/> People typically spend: 3H here</h3>
                 </div>
             </div>
 
@@ -104,11 +103,7 @@ const Home = () => {
                         <form className="review-form" action="">
                             <div className="review-form-item">
                                 <label>Rating</label>
-                                <i className="fas fa-star star"></i>
-                                <i className="fas fa-star star"></i>
-                                <i className="fas fa-star star"></i>
-                                <i className="fas fa-star star"></i>
-                                <i className="fas fa-star star"></i>
+                                <Star value={5}/>
                             </div>
                             <div className="review-form-item">
                                 <label htmlFor="review-title">Title</label>
@@ -116,7 +111,7 @@ const Home = () => {
                             </div>
                             <div className="review-form-item">
                                 <label htmlFor="review-description">Description</label>
-                                <textarea id="review-description" name="message" rows="100" cols="100"></textarea>
+                                <textarea id="review-description" name="message" rows="100" cols="100"/>
                             </div>
                             <div className="review-form-item">
                                 <input type="submit" value="Submit"/>
@@ -124,44 +119,28 @@ const Home = () => {
                         </form>
                     </div>
                 </div>
-                <div className="obj-review">
+                <div id="reviews" className="obj-review">
                     <div className="obj-review-list">
                         <li>
                             <span>Username1</span>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
+                            <Star value={5}/>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, pariatur?</p>
                         </li>
                         <li>
                             <span>Username2</span>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
+                            <Star value={5}/>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad blanditiis, ipsa culpa
                                 reprehenderit animi voluptatibus.</p>
                         </li>
                         <li>
                             <span>Username3</span>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
+                            <Star value={5}/>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi neque accusamus
                                 aspernatur optio blanditiis dicta tempore excepturi quibusdam qui incidunt!</p>
                         </li>
                         <li>
                             <span>Username4</span>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
-                            <i className="fas fa-star star"></i>
+                            <Star value={5}/>
                             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero quidem sed
                                 pariatur!</p>
                         </li>

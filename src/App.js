@@ -17,7 +17,7 @@ import Footer from './components/Footer/Footer';
  */
 const App = () => {
   return (
-      //Browser Enables switching between components via NavLink Components
+      //BrowseRouter Enables switching between components via NavLink Components
       <BrowserRouter>
         <div>
           <NavBar/> {/*  Navigation Bar (will be on all pages)*/}

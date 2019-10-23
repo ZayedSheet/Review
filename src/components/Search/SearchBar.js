@@ -10,8 +10,6 @@ const SearchBar = () => {
     const isToggled = () => {
         if (navigator.geolocation && !locationToggled){
             navigator.geolocation.getCurrentPosition(getPosition);
-            document.querySelector(".search .fa-location-arrow").style.color = "#0b7dda";
-            locationToggled = true;
         }
         else{
             document.querySelector(".search .fa-location-arrow").style.color = "#cccccc";
@@ -22,6 +20,8 @@ const SearchBar = () => {
     function getPosition(position) {
         longitude = position.coords.longitude;
         latitude = position.coords.latitude;
+        document.querySelector(".search .fa-location-arrow").style.color = "#0b7dda";
+        locationToggled = true;
     }
 
     return(

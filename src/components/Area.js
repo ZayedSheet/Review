@@ -6,7 +6,7 @@ import MapContainer from "./MapContainer";
 const Home = () => {
 
     return (
-        <>
+        <div className="area-container">
             <div className="description">
                 <h1>Niagara Region</h1>
                 <li className="known-for">
@@ -168,7 +168,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

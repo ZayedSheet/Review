@@ -2,11 +2,13 @@ import React from 'react';
 import './style.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+//Component for every page on the website
 import Home from './components/Home';
 import Submission from './components/Submission';
 import Results from './components/Results';
 import Area from './components/Area';
 
+//Components for NavBar/Footer (Components that appear on all pages)
 import NavBar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer';
 

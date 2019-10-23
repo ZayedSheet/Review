@@ -1,5 +1,5 @@
 import React from 'react';
-import './SigninLoginButton.css'
+import './SigninLoginButton.css' //Styling specific to the buttons
 
 /**
  * Sign and login button

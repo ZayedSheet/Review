@@ -10,7 +10,7 @@ const toggleMap = () => {
 
 const Home = (props) => {
 
-    console.log(props.location.locationProp);
+    // console.log(props.location.locationProp);
 
     return (
         <>

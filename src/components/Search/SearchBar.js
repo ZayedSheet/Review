@@ -17,7 +17,7 @@ const SearchBar = () => {
     coordinates set to false until user searches by location
      */
     let [locationToggled, updateToggle] = useState(false);
-    let [coords, updateLongitude] = useState({lat: false, lng: false});
+    let [coords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -28,10 +28,10 @@ const SearchBar = () => {
         if (navigator.geolocation && !locationToggled){
             navigator.geolocation.getCurrentPosition(getPosition);
         }
-        else{
-            document.querySelector(".search .fa-location-arrow").style.color = "#cccccc";
+        else{ //if search by location is already toggled or geolocation doesn't work on this browser
+            document.querySelector(".search .fa-location-arrow").style.color = "#cccccc"; //sets search by location icon back to grey
             updateToggle(false);
-            updateLongitude( {lat:false, lng:false});
+            updateLongitude( { lat: 43.0896, lng: -79.0849}); //sets location back to niagara
         }
     };
 
@@ -42,7 +42,7 @@ const SearchBar = () => {
      */
     function getPosition(position) {
         updateLongitude( {lat:position.coords.latitude, lng:position.coords.longitude});
-        document.querySelector(".search .fa-location-arrow").style.color = "#0b7dda";
+        document.querySelector(".search .fa-location-arrow").style.color = "#0b7dda"; //sets get location button to blue
         updateToggle(true);
     }
 
@@ -59,7 +59,7 @@ const SearchBar = () => {
             {/*Search button*/}
             <NavLink className="search-button" to={{
                 pathname: '/Results',
-                locationProp: {
+                locationProp: { //props for the results page. This tells the page where to initially center the map
                     lat: coords.lat,
                     lng: coords.lng
                 }

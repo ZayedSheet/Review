@@ -26,6 +26,7 @@ const App = () => {
       <BrowserRouter>
         <div>
           <NavBar/> {/*  Navigation Bar (will be on all pages)*/}
+
             {/*Switch Component contains all possible components that
             may be rendered between the NavBar and the Footer*/}
             <Switch>
@@ -34,13 +35,18 @@ const App = () => {
               <Route path="/Results" component={Results}/>
               <Route path="/Area" component={Area}/>
             </Switch>
+
+            {/*Content on all pages below*/}
+
+            {/*Container for Sign Up Form*/}
             <div id="signup" className="signup">
                 <SignupForm/>
             </div>
+            {/*Container for Log in Form*/}
             <div id="login" className="login">
                 <LoginForm/>
             </div>
-            <Footer/> {/*  Footer (will be on all pages)*/}
+            <Footer/>
         </div>
       </BrowserRouter>
   )

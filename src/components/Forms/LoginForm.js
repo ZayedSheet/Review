@@ -2,6 +2,8 @@ import React from 'react';
 import useSignUpForm from './FormHook';
 import './Form.css'
 
+//TODO - Comments
+
 const LoginForm = () => {
     const {inputs, handleInputChange, handleSubmit, validationErrors} = useSignUpForm();
     console.log({validationErrors});

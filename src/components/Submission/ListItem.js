@@ -2,6 +2,8 @@ import React from 'react';
 import Stars from "./Star";
 import {NavLink} from "react-router-dom";
 
+//TODO - Comments
+
 const linkStyle = {
     textDecoration: 'none',
     color: 'black',

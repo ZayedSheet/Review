@@ -35,7 +35,6 @@ const Submission = () => {
     }
 
     return(
-        //TODO - Comments for css/html5 validation
 
         /*
         Form for the add an object (aka an area) to a page,
@@ -48,11 +47,13 @@ const Submission = () => {
             <div>
                 <label htmlFor="areaName">Area Name</label>
                 <input type="text" name="areaName" placeholder="Name of area.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required autoFocus/><br/>
+                {/*Ensures input matches the regex pattern for names. No white spaces can occur before or after the full name and only one space is allowed between strings. This field is autofocused when page renders. This field is required to be filled*/}
             </div>
             {/*Input for the city of the object*/}
             <div>
                 <label htmlFor="areaCity">City</label>
                 <input type="text" name="areaCity" placeholder="City Name.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required/><br/>
+                {/*Ensures input matches regex pattern for names. Required attributes means this field is required to be filled*/}
             </div>
             {/*Input of the country of the object*/}
             <div>

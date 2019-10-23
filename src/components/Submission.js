@@ -9,7 +9,7 @@ const Submission = () => {
     Coordinates (longitude and latitude) of the user,
     set the false until the button is clicked to retrieve them
      */
-    let coords = {longitude: false, latitude:false}
+    let coords = {longitude: false, latitude:false};
 
     /**
      * Checks if the geolocation api is supported,
@@ -17,7 +17,7 @@ const Submission = () => {
      */
     function getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(getPosition);
         } else {
             alert("Geolocation unsupported");
         }
@@ -28,12 +28,10 @@ const Submission = () => {
      * @param position The longitude and latitude of the user,
      * obtained from the geoLoaction api.
      */
-    function showPosition(position) {
-        coords.longitude = position.coords.longitude;
+    function getPosition(position) {
+        coords = {longitude: position.coords.longitude, latitude: position.coords.latitude};
         document.querySelector("input[name='longitude']").value = coords.longitude;
-        coords.latitude = position.coords.latitude;
         document.querySelector("input[name='latitude']").value = coords.latitude;
-
     }
 
     return(

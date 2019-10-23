@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./SearchBar.css";
+
 /*
 Nav Link Component allows links to be added to change the current page.
 In other words, change the component in the App.js switch statement
@@ -15,9 +16,8 @@ const SearchBar = () => {
     Variables for geolocation functionality,
     coordinates set to false until user searches by location
      */
-    let locationToggled = false;
-    let longitude = false;
-    let latitude = false;
+    let [locationToggled, updateToggle] = useState(false);
+    let [coords, updateLongitude] = useState({lat: false, lng: false});
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -30,7 +30,8 @@ const SearchBar = () => {
         }
         else{
             document.querySelector(".search .fa-location-arrow").style.color = "#cccccc";
-            locationToggled = false;
+            updateToggle(false);
+            updateLongitude( {lat:false, lng:false});
         }
     };
 
@@ -40,10 +41,9 @@ const SearchBar = () => {
      * obtained from the geoLoaction api.
      */
     function getPosition(position) {
-        longitude = position.coords.longitude;
-        latitude = position.coords.latitude;
+        updateLongitude( {lat:position.coords.latitude, lng:position.coords.longitude});
         document.querySelector(".search .fa-location-arrow").style.color = "#0b7dda";
-        locationToggled = true;
+        updateToggle(true);
     }
 
     return(
@@ -57,7 +57,13 @@ const SearchBar = () => {
                 <i className="fas fa-location-arrow"/>
             </div>
             {/*Search button*/}
-            <NavLink className="search-button" to="/Results" type="button">
+            <NavLink className="search-button" to={{
+                pathname: '/Results',
+                locationProp: {
+                    lat: coords.lat,
+                    lng: coords.lng
+                }
+            }} type="button">
                 <i className="fa fa-search"/>
             </NavLink>
         </form>

@@ -8,7 +8,9 @@ const toggleMap = () => {
     document.querySelector(".map-view").classList.toggle('map-view-enable');
 };
 
-const Home = () => {
+const Home = (props) => {
+
+    console.log(props.location.locationProp);
 
     return (
         <>
@@ -39,7 +41,7 @@ const Home = () => {
             </div>
 
             <div className="map-view">
-                <MapContainer center={{lat: 43.256531, lng: -79.874420}}/>
+                <MapContainer center={props.location.locationProp}/>
             </div>
 
             <div id="toggle-background">

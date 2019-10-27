@@ -9,6 +9,7 @@ const useSignUpForm = () => {
     const [inputs, setInputs] = useState({}); //state variable to keep track of the field inputs
     const [validationErrors] = useState({}); //variable to contain all the input field errors. We use a state variable to update the page when rerendered
     const [wasFocused] = useState({});
+    const [errorMessage, setErrorMessage] = useState({});
 
 
     /**
@@ -53,11 +54,15 @@ const useSignUpForm = () => {
         if (wasFocused[event.target.name]){
             for(const error of Object.values(validationErrors[event.target.name])){ //for every error in this form's error object
                 if (error != null){ //if the error is not null (an error exists)
-                    document.querySelector(`p[for=${event.target.name}]`).innerHTML=error; //sets the innerHTML for that specific form's paragraph element to be the error
+                    setErrorMessage(
+                        errorMessage => ({...errorMessage, [event.target.name]: error})
+                    );
                     return;//here we return rather than concatenating errors because we'd only like to display one error at a time
                 }
             }
-            document.querySelector(`p[for=${event.target.name}]`).innerHTML=null; //if no errors were found, the paragraph doesn't display anything.
+            setErrorMessage(
+                errorMessage => ({...errorMessage, [event.target.name]: ''})
+            );
         }
     };
 
@@ -66,15 +71,20 @@ const useSignUpForm = () => {
      * @param event the current form
      */
     const displayError = (event) => {
-        if (validationErrors[event.target.name]){ //if the form has its error attribute added already
+        event.persist();
+        if (validationErrors[event.target.name]){ //if the form has its error attribute added already (the user didnt just leave the field empty)
             wasFocused[event.target.name] = true;
             for(const error of Object.values(validationErrors[event.target.name])){ //for every error in this form's error object
                 if (error != null){ //if the error is not null (an error exists)
-                    document.querySelector(`p[for=${event.target.name}]`).innerHTML=error; //sets the innerHTML for that specific form's paragraph element to be the error
+                    setErrorMessage(
+                        errorMessage => ({...errorMessage, [event.target.name]: error})
+                    );
                     return;//here we return rather than concatenating errors because we'd only like to display one error at a time
                 }
             }
-            document.querySelector(`p[for=${event.target.name}]`).innerHTML=null; //if no errors were found, the paragraph doesn't display anything.
+            setErrorMessage(
+                errorMessage => ({...errorMessage, [event.target.name]: ''})
+            );
         }
     };
 
@@ -127,7 +137,8 @@ const useSignUpForm = () => {
         handleInputChange,
         displayError,
         inputs,
-        validationErrors
+        validationErrors,
+        errorMessage
     };
 
 

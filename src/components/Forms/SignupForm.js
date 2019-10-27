@@ -8,7 +8,7 @@ import useSignUpForm from './FormHook';
  */
 const SignupForm = () => {
 
-    const {inputs, handleInputChange, handleSubmit, displayError, validationErrors} = useSignUpForm(); //retrieves the following functions and state variables from the form hook
+    const {inputs, handleInputChange, handleSubmit, displayError, validationErrors, errorMessage} = useSignUpForm(); //retrieves the following functions and state variables from the form hook
     console.log({validationErrors});
 
     /**
@@ -26,22 +26,22 @@ const SignupForm = () => {
                     <div>
                         <label>Name</label>
                         <input onBlur={displayError} type="text" name="displayName" onChange={handleInputChange} value={inputs.displayName} required/><br/>{/*Runs the displayError function from form hook onBlur (when the field loses focus)*/}
-                        <p htmlFor="displayName" className={"error-message myclass"}/>{/*paragraph element to display any errors with the input of the field*/}
+                        <p htmlFor="displayName" className={"error-message myclass"}>{errorMessage.displayName}</p>{/*paragraph element to display any errors with the input of the field*/}
                     </div>
                     <div>
                         <label>Email</label>
                         <input onBlur={displayError} type="email" name="userEmail" onChange={handleInputChange} value={inputs.userEmail} required/><br/>{/*runs the handleInputChange function from form hook on input change*/}
-                        <p htmlFor="userEmail" className={"error-message"}/>
+                        <p htmlFor="userEmail" className={"error-message"}>{errorMessage.userEmail}</p>
                     </div>
                     <div>
                         <label>Username</label>
                         <input onBlur={displayError} type="text" name="userName" onChange={handleInputChange} value={inputs.userName} required/><br/>
-                        <p htmlFor="userName" className={"error-message"}/>
+                        <p htmlFor="userName" className={"error-message"}>{errorMessage.userName}</p>
                     </div>
                     <div>
                         <label>Password</label>
                         <input onBlur={displayError} type="password" name="userPassword" onChange={handleInputChange} value={inputs.userPassword} required/><br/>
-                        <p htmlFor="userPassword" className={"error-message"}/>
+                        <p htmlFor="userPassword" className={"error-message"}>{errorMessage.userPassword}</p>
                     </div>
                     {/*<label>Re-enter Password</label>*/}
                     {/*<input type="password" id="passwordConfirm" name="password" onChange={handleInputChange} value={inputs.passwordConfirm}/><br/>*/}

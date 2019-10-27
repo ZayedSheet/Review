@@ -8,6 +8,8 @@ import {useState} from 'react';
 const useSignUpForm = () => {
     const [inputs, setInputs] = useState({}); //state variable to keep track of the field inputs
     const [validationErrors] = useState({}); //variable to contain all the input field errors. We use a state variable to update the page when rerendered
+    const [wasFocused] = useState({});
+
 
     /**
      * checks everything is in order after submitting
@@ -47,6 +49,16 @@ const useSignUpForm = () => {
         setInputs(
             inputs => ({...inputs, [event.target.name]: event.target.value})
             );
+
+        if (wasFocused[event.target.name]){
+            for(const error of Object.values(validationErrors[event.target.name])){ //for every error in this form's error object
+                if (error != null){ //if the error is not null (an error exists)
+                    document.querySelector(`p[for=${event.target.name}]`).innerHTML=error; //sets the innerHTML for that specific form's paragraph element to be the error
+                    return;//here we return rather than concatenating errors because we'd only like to display one error at a time
+                }
+            }
+            document.querySelector(`p[for=${event.target.name}]`).innerHTML=null; //if no errors were found, the paragraph doesn't display anything.
+        }
     };
 
     /**
@@ -55,16 +67,17 @@ const useSignUpForm = () => {
      */
     const displayError = (event) => {
         if (validationErrors[event.target.name]){ //if the form has its error attribute added already
+            wasFocused[event.target.name] = true;
             for(const error of Object.values(validationErrors[event.target.name])){ //for every error in this form's error object
                 if (error != null){ //if the error is not null (an error exists)
                     document.querySelector(`p[for=${event.target.name}]`).innerHTML=error; //sets the innerHTML for that specific form's paragraph element to be the error
-                    break;//here we break rather than concatenating errors because we'd only like to display one error at a time
+                    return;//here we return rather than concatenating errors because we'd only like to display one error at a time
                 }
-                document.querySelector(`p[for=${event.target.name}]`).innerHTML=null; //if no errors were found, the paragraph doesn't display anything.
             }
-            // document.querySelector(`p[for=${event.target.name}]`).innerHTML=validationErrors[event.target.name[0]]
+            document.querySelector(`p[for=${event.target.name}]`).innerHTML=null; //if no errors were found, the paragraph doesn't display anything.
         }
     };
+
 
     /**
      * Function that updates field errors
@@ -77,31 +90,31 @@ const useSignUpForm = () => {
         switch(fieldname.name) {
             case 'displayName':
                 validationErrors[fieldname.name] = {
-                    ['inputError']: fieldname.value.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/) ? null : 'invalid name, your name can only contain letters', //regex that matches for names. Names cannot begin or end with whitespace. Only one whitespace is allowed between strings
-                    ['lengthError']: (fieldLength > 2 && fieldLength < 20) ? null : 'invalid name length' //name length must be greater than 2 and less than 20
+                    'inputError': fieldname.value.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/) ? null : 'invalid name, your name can only contain letters', //regex that matches for names. Names cannot begin or end with whitespace. Only one whitespace is allowed between strings
+                    'lengthError': (fieldLength > 2 && fieldLength < 20) ? null : 'invalid name length' //name length must be greater than 2 and less than 20
                 };
                 break;
             case 'userEmail':
                 validationErrors[fieldname.name] = {
-                    ['inputError'] : fieldname.value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ? null : 'invalid email' //regex that matches for emails. Allows special characters and ensures an @ is followed by a string which is followed by .
+                    'inputError' : fieldname.value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ? null : 'invalid email' //regex that matches for emails. Allows special characters and ensures an @ is followed by a string which is followed by .
                 };
                 break;
             case 'userName':
                 validationErrors[fieldname.name] = {
-                    ['inputError'] : fieldname.value.match(/^[a-zA-Z0-9]+$/) ? null : 'invalid username, your name can only contain letters and numbers', //regex that matches for names with letters and numbers only
-                    ['lengthError']: (fieldLength > 4 && fieldLength < 20) ? null : 'invalid user name length' //ensures username is greater than 4 and less than 20 characters
+                    'inputError' : fieldname.value.match(/^[a-zA-Z0-9]+$/) ? null : 'invalid username, your name can only contain letters and numbers', //regex that matches for names with letters and numbers only
+                    'lengthError': (fieldLength > 4 && fieldLength < 20) ? null : 'invalid user name length' //ensures username is greater than 4 and less than 20 characters
                 };
                 break;
             case 'userPassword':
                 validationErrors[fieldname.name] = {
                     // should password have regex? Revisit later
                     // ['inputError'] : fieldname.value.match(//) ? null : 'invalid password',
-                    ['lengthError'] : (fieldLength > 6 && fieldLength < 30) ? null : 'invalid password length' //ensures password is greater than 6 and less than 30 characters
+                    'lengthError' : (fieldLength > 6 && fieldLength < 30) ? null : 'invalid password length' //ensures password is greater than 6 and less than 30 characters
                 };
                 break;
             case 'terms':
                 validationErrors[fieldname.name] = {
-                    ['inputError'] : fieldname.checked ? null : 'You must accept the terms', //ensures user has checked the agree to terms checkbox
+                    'inputError' : fieldname.checked ? null : 'You must accept the terms', //ensures user has checked the agree to terms checkbox
                 };
                 break;
             default: break;

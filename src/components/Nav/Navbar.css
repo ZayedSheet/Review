@@ -2,7 +2,7 @@ nav {
     height: 80px;
     width: 100%;
     min-height: 50px;
-    background: #5b78c7;
+    background: rgba(21, 161, 220, 0);
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: 1fr;
@@ -28,7 +28,7 @@ nav {
 .nav-links > *{
     height: 70%;
     display: grid;
-    color: white;
+    color: #26a3c1;
     text-decoration: none;
     font-size: 1.5vw;
     border-right: solid;
@@ -39,7 +39,7 @@ nav {
 
 
 .nav-links >*:hover{
-    color: black;
+    /*color: black;*/
 }
 
 #nav-brand{
@@ -56,6 +56,7 @@ nav {
 @media screen and (max-width: 768px){
     .nav-links > *{
         border-bottom: solid;
+        border-color: #a5f0fa;
         border-right: none;
         height: 100%;
         width: 100%;
@@ -66,7 +67,7 @@ nav {
     .line{
         width: 30px;
         height: 3px;
-        background: white;
+        background: #26a3c1;
         margin: 5px;
     }
 
@@ -76,6 +77,7 @@ nav {
         position: fixed;
         top: 0;
         z-index: 99;
+        background-color: rgba(209, 255, 255, 0);
     }
 
     #nav-brand{
@@ -100,7 +102,7 @@ nav {
         grid-auto-flow: row;
         grid-template-columns: 1fr;
         position: fixed;
-        background: #5b78c7;
+        background: rgba(209, 255, 255, 0.91);
         height: 100vh;
         width: 100%;
         flex-direction: column;
@@ -110,8 +112,14 @@ nav {
         z-index: 4;
     }
 
+
     .nav-links > *{
         grid-auto-flow: row;
+    }
+
+    .nav-links >*:hover{
+        background-color: rgba(166, 202, 209, 0.91);
+        transition: .20s;
     }
 
     .nav-links.open{

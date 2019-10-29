@@ -6,7 +6,7 @@
 }
 
 .search-main{
-    grid-column: 4 /span 10;
+    grid-column: 2 /span 14;
     grid-row: 5/ span 1;
     display: none;
     z-index: -1 ;
@@ -15,7 +15,7 @@
 form.search input[type=text] {
     padding: 10px;
     font-size: 17px;
-    border: 1px solid blue;
+    border: 1px solid #0277d7;
     border-radius: 50px 0 0 50px;
     border-right: none;
     float: left;
@@ -29,7 +29,7 @@ form.search input[type=text] {
     padding: 10px 3px;
     background: white;
     font-size: 17px;
-    border: 1px solid blue;
+    border: 1px solid #0277d7;
     border-radius: 0 50px 50px 0;
     border-left: none;
     cursor: pointer;
@@ -41,7 +41,7 @@ form.search input[type=text] {
     padding: 10px 3px;
     background: white;
     font-size: 17px;
-    border: 1px solid blue;
+    border: 1px solid #0277d7;
     border-left: none;
     border-right: none;
     cursor: pointer;

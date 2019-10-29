@@ -28,8 +28,12 @@ const Navbar = () => {
 
             {/*Container with the sign in and login buttons*/}
             <div className="buttons-nav">
-                <SigninLoginButton formName={"login"}> Login </SigninLoginButton>
-                <SigninLoginButton formName={"signup"}> Sign Up </SigninLoginButton>
+                {/*<div className={"login-button-nav"}>*/}
+                    <SigninLoginButton formName={"login"}> Login </SigninLoginButton>
+                {/*</div>*/}
+                {/*<div className={"signup-button-nav"}>*/}
+                    <SigninLoginButton formName={"signup"}> Sign Up </SigninLoginButton>
+                {/*</div>*/}
             </div>
 
             {/* Hamburger button in the mobile version of the NavBar,
@@ -44,8 +48,8 @@ const Navbar = () => {
             isOpen controls a conditional render for the mobile version of the navbar,
             if true the open class is enabled therfore the links are visible*/}
             <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-                <NavLink to={"/Submission"}>Add an Area</NavLink>
-                <NavLink to={"/Submission"}>About</NavLink>
+                <NavLink to={"/Submission"}>Add Area</NavLink>
+                <NavLink to={"/Submission"}>My List</NavLink>
                 <NavLink to={"/Submission"}>Contact</NavLink>
             </ul>
         </nav>

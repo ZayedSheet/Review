@@ -28,11 +28,11 @@ nav {
 .nav-links > *{
     height: 70%;
     display: grid;
-    color: #26a3c1;
+    color: white;
     text-decoration: none;
     font-size: 1.5vw;
     border-right: solid;
-    border-color: grey;
+    border-color: rgba(167, 200, 230, 0.71);
     border-width: 1px;
     align-items: center;
 }
@@ -56,18 +56,20 @@ nav {
 @media screen and (max-width: 768px){
     .nav-links > *{
         border-bottom: solid;
-        border-color: #a5f0fa;
+        border-color: white;
         border-right: none;
         height: 100%;
         width: 100%;
         font-size: 4vw;
+        color: #0277d7;
+        /*grid-auto-flow: row;*/
     }
 
 
     .line{
         width: 30px;
         height: 3px;
-        background: #26a3c1;
+        background: #0277d7;
         margin: 5px;
     }
 
@@ -86,7 +88,6 @@ nav {
         height: 75%;
         width: 100%;
         background-position: center;
-
     }
 
     .hamburger{
@@ -110,11 +111,6 @@ nav {
         -webkit-clip-path: circle(0px at 90% -10%);
         transition: all 1s ease-out;
         z-index: 4;
-    }
-
-
-    .nav-links > *{
-        grid-auto-flow: row;
     }
 
     .nav-links >*:hover{

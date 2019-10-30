@@ -1,4 +1,5 @@
 import React from 'react';
+import {useState} from 'react'
 import './results.css'
 
 //Components within the results page
@@ -20,6 +21,21 @@ const toggleMap = () => {
  * @returns A Results Component
  */
 const Results = (props) => {
+    const [results] = useState([
+        {to: "../Area", id:"item1", stars: 5, title:"Niagara Region",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, optio!"},
+        {to: "../Area", id:"item2", stars: 3, title:"Hamilton",
+            description: "Hamilton features many types of factories: " +
+                "Big factories, small factories, and even medium factories."},
+        {to: "../Area", id:"item3", stars: 4, title:"Barrie",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."},
+        {to: "../Area", id:"item3", stars: 4, title:"Barrie",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."},
+        {to: "../Area", id:"item3", stars: 1, title:"Barrie",
+            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."}
+    ]);
+
+
     return (
         //Empty container for all elements as JSX does not allow adjacent elements
         <>
@@ -28,26 +44,11 @@ const Results = (props) => {
 
                 {/* Each element in the list is a search result displayed as a ListItem Component*/}
                 <ul>
-                    <ListItem to="../Area" id="item1" stars={4} title={"Niagara Region"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, optio!
-                    </ListItem>
-                    <ListItem to="../Area" id="item2" stars={4} title={"Hamilton"}>
-                        Hamilton features many types of factories.
-                        Big factories, small factories, and even medium
-                        factories.
-                    </ListItem>
-                    <ListItem to="../Area" id="item3" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, perspiciatis!
-                    </ListItem>
-                    <ListItem to="../Area" id="item4" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit.
-                    </ListItem>
-                    <ListItem to="../Area" id="item5" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, provident!
-                    </ListItem>
-                    <ListItem to="../Area" id="item6" stars={4} title={"Barrie"}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, magnam.
-                    </ListItem>
+                    {results.map(item => {
+                        return <ListItem to={item.to} id={item.id} stars={item.stars} title={item.title}>
+                            {item.description}
+                        </ListItem>
+                    })}
                 </ul>
             </div>
 

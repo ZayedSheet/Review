@@ -6,21 +6,14 @@ import './Form.css'
  * Login Form Component
  * @returns {*}
  */
-const LoginForm = () => {
+const LoginForm = (props) => {
     const {inputs, handleInputChange, handleSubmit} = useSignUpForm(); //retreives functions and state variables from form hook
-    // console.log({validationErrors});
 
-    /**
-     * toggles the "login" class to close the form with display: none
-     */
-    const toggleForm = () => {
-        document.getElementById("login").classList.toggle("login");
-    };
 
     return (
         <div className={"blur-background"}>
             <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>{/*Runs the handleSubmit function from form hook when submit button is clicked*/}
-                <a onClick={toggleForm} className="close"/>{/*Runs the toggleForm function on click to close the form*/}
+                <a onClick={()=> props.setLogin(false)} className="close"/>{/*Runs the toggleForm function on click to close the form*/}
                 <h1>Login</h1>
                 <div>
                     <label>Username</label>

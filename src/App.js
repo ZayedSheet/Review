@@ -11,6 +11,7 @@ import Area from './components/Area';
 //Components for NavBar/Footer (Components that appear on all pages)
 import NavBar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer';
+import { useState } from 'react';
 
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
@@ -21,11 +22,15 @@ import LoginForm from "./components/Forms/LoginForm";
  * @returns A Page on the website
  */
 const App = () => {
-  return (
-      //BrowseRouter Enables switching between components via NavLink Components
+
+    const [signup, setSignup] = useState(false);
+    const [login, setLogin] = useState(false);
+
+    return (
+      // BrowseRouter Enables switching between components via NavLink Components
       <BrowserRouter>
         <div>
-          <NavBar/> {/*  Navigation Bar (will be on all pages)*/}
+          <NavBar setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
 
             {/*Switch Component contains all possible components that
             may be rendered between the NavBar and the Footer*/}
@@ -37,15 +42,18 @@ const App = () => {
             </Switch>
 
             {/*Content on all pages below*/}
-
             {/*Container for Sign Up Form*/}
-            <div id="signup" className="signup">
-                <SignupForm/>
-            </div>
+            {signup &&
+                <div id="signup" className="signup">
+                    <SignupForm setSignup={setSignup}/>
+                </div>
+            }
             {/*Container for Log in Form*/}
-            <div id="login" className="login">
-                <LoginForm/>
-            </div>
+            {login &&
+                <div id="login" className="login">
+                    <LoginForm setLogin={setLogin}/>
+                </div>
+            }
             <Footer/>
         </div>
       </BrowserRouter>

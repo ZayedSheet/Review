@@ -11,7 +11,7 @@ import "./Navbar.css"; //Styling specific to the NavBar
  * The NavBar of a page
  * @returns A NavBar Component
  */
-const Navbar = () => {
+const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [isOpen, toggleLinks] = useState(false);
 
@@ -28,12 +28,8 @@ const Navbar = () => {
 
             {/*Container with the sign in and login buttons*/}
             <div className="buttons-nav">
-                {/*<div className={"login-button-nav"}>*/}
-                    <SigninLoginButton formName={"login"}> Login </SigninLoginButton>
-                {/*</div>*/}
-                {/*<div className={"signup-button-nav"}>*/}
-                    <SigninLoginButton formName={"signup"}> Sign Up </SigninLoginButton>
-                {/*</div>*/}
+                    <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}> Login </SigninLoginButton>
+                    <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}> Sign Up </SigninLoginButton>
             </div>
 
             {/* Hamburger button in the mobile version of the NavBar,

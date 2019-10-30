@@ -17,7 +17,7 @@ const SearchBar = () => {
     coordinates set to false until user searches by location
      */
     let [locationToggled, updateToggle] = useState(false);
-    let [coords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
+    let [centerCoords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -59,9 +59,8 @@ const SearchBar = () => {
             {/*Search button*/}
             <NavLink className="search-button" to={{
                 pathname: '/Results',
-                locationProp: { //props for the results page. This tells the page where to initially center the map
-                    lat: coords.lat,
-                    lng: coords.lng
+                state: { //props for the results page. This tells the page where to initially center the map
+                    centerCoords: centerCoords
                 }
             }} type="button">
                 <i className="fa fa-search"/>

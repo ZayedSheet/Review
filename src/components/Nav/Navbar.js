@@ -3,7 +3,7 @@ import React, {useState} from 'react'; //React hooks, allows state to be used in
 import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
 
-import { NavLink } from 'react-router-dom'; //Component to switch between pages via ReactRouter
+import { NavLink, useLocation } from 'react-router-dom'; //Component to switch between pages via ReactRouter
 
 import "./Navbar.css"; //Styling specific to the NavBar
 
@@ -14,10 +14,11 @@ import "./Navbar.css"; //Styling specific to the NavBar
 const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [isOpen, toggleLinks] = useState(false);
+    let location = useLocation();
 
     return(
         //Container with NavBar contents
-        <nav id="navbar">
+        <nav id="navbar" className={location.pathname === "/" ? "transparent" : ""}>
             {/*Routes to the home page when the logo is pressed */}
             <NavLink to="/" id="nav-brand"/>
 

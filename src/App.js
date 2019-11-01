@@ -35,7 +35,8 @@ const App = () => {
             {/*Switch Component contains all possible components that
             may be rendered between the NavBar and the Footer*/}
             <Switch>
-              <Route path="/" component={Home} exact/>
+              {/*<Route path="/" setLogin={setLogin} setSignup={setSignup} component={Home} exact/>*/}
+              <Route path="/" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
               <Route path="/Submission" component={Submission}/>
               <Route path="/Results" component={Results}/>
               <Route path="/Area" component={Area}/>

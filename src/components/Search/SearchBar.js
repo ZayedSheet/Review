@@ -45,8 +45,9 @@ const SearchBar = () => {
     function getPosition(position) {
         updateLongitude( {lat:position.coords.latitude, lng:position.coords.longitude});
         let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
-        searchByGeoElement[0].style.color = "#0b7dda"; //sets get location button to blue
-        searchByGeoElement[1].style.color = "#0b7dda"; //sets get location button to blue
+        for (let i = 0; i < searchByGeoElement.length; i++){
+            searchByGeoElement[i].style.color = "#0b7dda"; //sets get location button to blue
+        }
         updateToggle(true);
     }
 

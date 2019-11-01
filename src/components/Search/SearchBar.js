@@ -49,6 +49,7 @@ const SearchBar = () => {
         for (let i = 0; i < searchByGeoElement.length; i++){
             searchByGeoElement[i].style.color = "#0b7dda"; //sets get location button to blue
         }
+        searchByGeoElement[0].style.color = "#0b7dda";
         updateToggle(true);
     }
 

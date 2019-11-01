@@ -18,9 +18,9 @@ const Navbar = (props) => {
 
     return(
         //Container with NavBar contents
-        <nav id="navbar" className={location.pathname === "/" ? "transparent" : ""}>
+        <nav id="navbar" className={location.pathname === "/Review" || location.pathname === "/Review/" ? "transparent" : ""}>
             {/*Routes to the home page when the logo is pressed */}
-            <NavLink to="/" id="nav-brand"/>
+            <NavLink to="/Review" id="nav-brand"/>
 
             {/*Container with the nav search bar*/}
             <div className="search-nav">

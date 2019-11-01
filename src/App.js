@@ -49,7 +49,7 @@ const App = () => {
             may be rendered between the NavBar and the Footer*/}
             <Switch>
               {/*<Route path="/" setLogin={setLogin} setSignup={setSignup} component={Home} exact/>*/}
-              <Route path="/" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
+              <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
               <Route path="/Submission" component={Submission}/>
               <Route path="/Results" component={Results}/>
               <Route path="/Area" component={Area}/>

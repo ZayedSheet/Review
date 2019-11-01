@@ -106,6 +106,7 @@ p {
         background-size: cover;
         right: 100%;
         width: 100%;
+        padding: 0;
         height: auto;
         top:80px;
         bottom:0;

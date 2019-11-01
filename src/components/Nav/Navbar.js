@@ -45,9 +45,9 @@ const Navbar = (props) => {
             isOpen controls a conditional render for the mobile version of the navbar,
             if true the open class is enabled therfore the links are visible*/}
             <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-                <NavLink to={"/Submission"}>Add Area</NavLink>
-                <NavLink to={"/Submission"}>My List</NavLink>
-                <NavLink to={"/Submission"}>Contact</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>Add Area</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>My List</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>Contact</NavLink>
             </ul>
         </nav>
     );

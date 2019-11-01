@@ -29,7 +29,9 @@ const SearchBar = () => {
             navigator.geolocation.getCurrentPosition(getPosition);
         }
         else{ //if search by location is already toggled or geolocation doesn't work on this browser
-            document.querySelector(".search .fa-location-arrow").style.color = "#cccccc"; //sets search by location icon back to grey
+            let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
+            searchByGeoElement[0].style.color = "#cccccc"; //sets search by location icon back to grey
+            searchByGeoElement[1].style.color = "#cccccc"; //sets search by location icon back to grey
             updateToggle(false);
             updateLongitude( { lat: 43.0896, lng: -79.0849}); //sets location back to niagara
         }
@@ -42,7 +44,9 @@ const SearchBar = () => {
      */
     function getPosition(position) {
         updateLongitude( {lat:position.coords.latitude, lng:position.coords.longitude});
-        document.querySelector(".search .fa-location-arrow").style.color = "#0b7dda"; //sets get location button to blue
+        let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
+        searchByGeoElement[0].style.color = "#0b7dda"; //sets get location button to blue
+        searchByGeoElement[1].style.color = "#0b7dda"; //sets get location button to blue
         updateToggle(true);
     }
 

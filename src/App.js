@@ -26,6 +26,19 @@ const App = () => {
     const [signup, setSignup] = useState(false);
     const [login, setLogin] = useState(false);
 
+    let form;
+
+    if(signup){form =
+            <div id="signup" className="signup">
+                <SignupForm setSignup={setSignup}/>
+            </div>
+    }
+    if(login){form =
+        <div id="login" className="login">
+            <LoginForm setLogin={setLogin}/>
+        </div>
+    }
+
     return (
       // BrowseRouter Enables switching between components via NavLink Components
       <BrowserRouter>
@@ -44,17 +57,9 @@ const App = () => {
 
             {/*Content on all pages below*/}
             {/*Container for Sign Up Form*/}
-            {signup &&
-                <div id="signup" className="signup">
-                    <SignupForm setSignup={setSignup}/>
-                </div>
-            }
             {/*Container for Log in Form*/}
-            {login &&
-                <div id="login" className="login">
-                    <LoginForm setLogin={setLogin}/>
-                </div>
-            }
+            {form}
+
             <Footer/>
         </div>
       </BrowserRouter>

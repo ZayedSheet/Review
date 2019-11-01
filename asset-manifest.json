@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Review/static/css/main.27c48b03.chunk.css",
-    "main.js": "/Review/static/js/main.638cc251.chunk.js",
-    "main.js.map": "/Review/static/js/main.638cc251.chunk.js.map",
+    "main.js": "/Review/static/js/main.80ba35fa.chunk.js",
+    "main.js.map": "/Review/static/js/main.80ba35fa.chunk.js.map",
     "runtime-main.js": "/Review/static/js/runtime-main.174ca025.js",
     "runtime-main.js.map": "/Review/static/js/runtime-main.174ca025.js.map",
     "static/js/2.cd29dc2b.chunk.js": "/Review/static/js/2.cd29dc2b.chunk.js",
     "static/js/2.cd29dc2b.chunk.js.map": "/Review/static/js/2.cd29dc2b.chunk.js.map",
     "index.html": "/Review/index.html",
-    "precache-manifest.be81a8de304ae1fecfdd92363c254bc9.js": "/Review/precache-manifest.be81a8de304ae1fecfdd92363c254bc9.js",
+    "precache-manifest.92057b28ba2c40e130e59c4373e4d04a.js": "/Review/precache-manifest.92057b28ba2c40e130e59c4373e4d04a.js",
     "service-worker.js": "/Review/service-worker.js",
     "static/css/main.27c48b03.chunk.css.map": "/Review/static/css/main.27c48b03.chunk.css.map",
     "static/media/Navbar.css": "/Review/static/media/Logo_aligned.d53ab1c8.png",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.174ca025.js",
     "static/js/2.cd29dc2b.chunk.js",
     "static/css/main.27c48b03.chunk.css",
-    "static/js/main.638cc251.chunk.js"
+    "static/js/main.80ba35fa.chunk.js"
   ]
 }

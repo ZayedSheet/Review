@@ -3,7 +3,6 @@ import React from 'react';
 import SigninLoginButton from "./Buttons/SigninLoginButton";
 
 import SearchBar from "./Search/SearchBar";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 /**
  * Home page containing login/signup buttons, search bar and background image.

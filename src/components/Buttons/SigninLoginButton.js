@@ -12,18 +12,18 @@ const SigninLoginButton = (props) => {
     /**
      * Toggles visibility of the corresponding form (sign in or login form)
      */
-    const toggleForm = () => {
-        document.getElementById(props.formName).classList.toggle(props.formName);
-    }
+    // const toggleForm = () => {
+    //     document.getElementById(props.formName).classList.toggle(props.formName);
+    // }
 
     return(
       //  When the button is clicked, the corresponding form appears on screen
-      <button onClick={toggleForm} className={`button-style`}>
+      <button onClick={()=>props.setLoginSignup(true)} className={`button-style`}>
           {/*The text inside the button, will be the components children
           (the text between the components open and closing tag)*/}
           {props.children}
       </button>
     );
-}
+};
 
 export default SigninLoginButton;

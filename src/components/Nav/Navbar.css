@@ -2,7 +2,7 @@ nav {
     height: 80px;
     width: 100%;
     min-height: 50px;
-    background: rgba(21, 161, 220, 0);
+    background: rgb(53, 181, 255);
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: 1fr;
@@ -11,6 +11,10 @@ nav {
     z-index: 99;
     position: fixed;
     align-items: center;
+}
+
+nav.transparent{
+    background: rgba(21, 161, 220, 0);
 }
 
 .nav-links{
@@ -79,7 +83,6 @@ nav {
         position: fixed;
         top: 0;
         z-index: 99;
-        background-color: rgba(209, 255, 255, 0);
     }
 
     #nav-brand{

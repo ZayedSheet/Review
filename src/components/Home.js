@@ -3,12 +3,13 @@ import React from 'react';
 import SigninLoginButton from "./Buttons/SigninLoginButton";
 
 import SearchBar from "./Search/SearchBar";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 /**
  * Home page containing login/signup buttons, search bar and background image.
  * @returns Home Page as a Component
  */
-const Home = () => {
+const Home = (props) => {
     return (
         /* div.container contains the buttons, search bar and
          * displays the background of the home page between the navbar and header
@@ -18,8 +19,8 @@ const Home = () => {
             <div className={"buttons-main"}>
                 {/*Login/Signup buttons are done through a component
                  as the buttons have similar style and functionality*/}
-                <SigninLoginButton formName={"login"}>Login</SigninLoginButton>
-                <SigninLoginButton formName={"signup"}>Sign Up</SigninLoginButton>
+                <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}>Login</SigninLoginButton>
+                <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}>Sign Up</SigninLoginButton>
             </div>
 
             {/*Mobile Search Bar*/}

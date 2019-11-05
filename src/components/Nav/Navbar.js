@@ -3,7 +3,7 @@ import React, {useState} from 'react'; //React hooks, allows state to be used in
 import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
 
-import { NavLink } from 'react-router-dom'; //Component to switch between pages via ReactRouter
+import { NavLink, useLocation } from 'react-router-dom'; //Component to switch between pages via ReactRouter
 
 import "./Navbar.css"; //Styling specific to the NavBar
 
@@ -11,15 +11,16 @@ import "./Navbar.css"; //Styling specific to the NavBar
  * The NavBar of a page
  * @returns A NavBar Component
  */
-const Navbar = () => {
+const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [isOpen, toggleLinks] = useState(false);
+    let location = useLocation();
 
     return(
         //Container with NavBar contents
-        <nav id="navbar">
+        <nav id="navbar" className={location.pathname === "/Review" || location.pathname === "/Review/" ? "transparent" : ""}>
             {/*Routes to the home page when the logo is pressed */}
-            <NavLink to="/" id="nav-brand"/>
+            <NavLink to="/Review" id="nav-brand"/>
 
             {/*Container with the nav search bar*/}
             <div className="search-nav">
@@ -28,12 +29,8 @@ const Navbar = () => {
 
             {/*Container with the sign in and login buttons*/}
             <div className="buttons-nav">
-                {/*<div className={"login-button-nav"}>*/}
-                    <SigninLoginButton formName={"login"}> Login </SigninLoginButton>
-                {/*</div>*/}
-                {/*<div className={"signup-button-nav"}>*/}
-                    <SigninLoginButton formName={"signup"}> Sign Up </SigninLoginButton>
-                {/*</div>*/}
+                    <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}> Login </SigninLoginButton>
+                    <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}> Sign Up </SigninLoginButton>
             </div>
 
             {/* Hamburger button in the mobile version of the NavBar,
@@ -48,9 +45,9 @@ const Navbar = () => {
             isOpen controls a conditional render for the mobile version of the navbar,
             if true the open class is enabled therfore the links are visible*/}
             <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-                <NavLink to={"/Submission"}>Add Area</NavLink>
-                <NavLink to={"/Submission"}>My List</NavLink>
-                <NavLink to={"/Submission"}>Contact</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>Add Area</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>My List</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>Contact</NavLink>
             </ul>
         </nav>
     );

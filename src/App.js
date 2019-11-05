@@ -11,6 +11,7 @@ import Area from './components/Area';
 //Components for NavBar/Footer (Components that appear on all pages)
 import NavBar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer';
+import { useState } from 'react';
 
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
@@ -21,31 +22,44 @@ import LoginForm from "./components/Forms/LoginForm";
  * @returns A Page on the website
  */
 const App = () => {
-  return (
-      //BrowseRouter Enables switching between components via NavLink Components
+
+    const [signup, setSignup] = useState(false);
+    const [login, setLogin] = useState(false);
+
+    let form;
+
+    if(signup){form =
+            <div id="signup" className="signup">
+                <SignupForm setSignup={setSignup}/>
+            </div>
+    }
+    if(login){form =
+        <div id="login" className="login">
+            <LoginForm setLogin={setLogin}/>
+        </div>
+    }
+
+    return (
+      // BrowseRouter Enables switching between components via NavLink Components
       <BrowserRouter>
         <div>
-          <NavBar/> {/*  Navigation Bar (will be on all pages)*/}
+          <NavBar setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
 
             {/*Switch Component contains all possible components that
             may be rendered between the NavBar and the Footer*/}
             <Switch>
-              <Route path="/" component={Home} exact/>
+              {/*<Route path="/" setLogin={setLogin} setSignup={setSignup} component={Home} exact/>*/}
+              <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
               <Route path="/Submission" component={Submission}/>
               <Route path="/Results" component={Results}/>
               <Route path="/Area" component={Area}/>
             </Switch>
 
             {/*Content on all pages below*/}
-
             {/*Container for Sign Up Form*/}
-            <div id="signup" className="signup">
-                <SignupForm/>
-            </div>
             {/*Container for Log in Form*/}
-            <div id="login" className="login">
-                <LoginForm/>
-            </div>
+            {form}
+
             <Footer/>
         </div>
       </BrowserRouter>

@@ -17,7 +17,8 @@ const SearchBar = () => {
     coordinates set to false until user searches by location
      */
     let [locationToggled, updateToggle] = useState(false);
-    let [coords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
+    let [centerCoords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
+    let [style, locationEnabled] = useState({color: "#cccccc"});
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -29,7 +30,11 @@ const SearchBar = () => {
             navigator.geolocation.getCurrentPosition(getPosition);
         }
         else{ //if search by location is already toggled or geolocation doesn't work on this browser
-            document.querySelector(".search .fa-location-arrow").style.color = "#cccccc"; //sets search by location icon back to grey
+            let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
+            // for (let i = 0; i < searchByGeoElement.length; i++){
+            //     searchByGeoElement[i].style.color = "#cccccc"; //sets search by location icon back to grey
+            // }
+            locationEnabled({color :"#cccccc"});
             updateToggle(false);
             updateLongitude( { lat: 43.0896, lng: -79.0849}); //sets location back to niagara
         }
@@ -42,7 +47,12 @@ const SearchBar = () => {
      */
     function getPosition(position) {
         updateLongitude( {lat:position.coords.latitude, lng:position.coords.longitude});
-        document.querySelector(".search .fa-location-arrow").style.color = "#0b7dda"; //sets get location button to blue
+        let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
+        // for (let i = 0; i < searchByGeoElement.length; i++){
+        //     searchByGeoElement[i].style.color = "#0b7dda"; //sets get location button to blue
+        // }
+        // searchByGeoElement[0].style.color = "#0b7dda";
+        locationEnabled({color :"#0b7dda"});
         updateToggle(true);
     }
 
@@ -54,14 +64,13 @@ const SearchBar = () => {
             {/*Container for the search by location button,
             when clicked it toggles search by location and sets the coords*/}
             <div onClick={isToggled} title="Click me to toggle search by location!" className={"search-location-button"}>
-                <i className="fas fa-location-arrow"/>
+                <i style={style} className="fas fa-location-arrow"/>
             </div>
             {/*Search button*/}
             <NavLink className="search-button" to={{
                 pathname: '/Results',
-                locationProp: { //props for the results page. This tells the page where to initially center the map
-                    lat: coords.lat,
-                    lng: coords.lng
+                state: { //props for the results page. This tells the page where to initially center the map
+                    centerCoords: centerCoords
                 }
             }} type="button">
                 <i className="fa fa-search"/>

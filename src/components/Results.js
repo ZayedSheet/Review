@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react'
+import {useLocation} from 'react-router-dom';
 import './results.css'
 
 //Components within the results page
@@ -21,6 +22,7 @@ const toggleMap = () => {
  * @returns A Results Component
  */
 const Results = (props) => {
+    const location = useLocation();
     const [results] = useState([
         {to: "../Area", id:"item1", stars: 5, title:"Niagara Region",
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, optio!"},
@@ -55,7 +57,7 @@ const Results = (props) => {
             {/*Container for the map view of the search results, displayed using Google Maps API
             The map is centered at the users location if they search by location, or a default location otherwise*/}
             <div className="map-view">
-                <MapContainer center={props.location.locationProp ? props.location.locationProp : { lat: 43.0896, lng: -79.0849}}/>
+                <MapContainer center={location.state.centerCoords ? location.state.centerCoords :{lat: 43.0896, lng: -79.0849}}/>
             </div>
 
             {/* Toggle switch to toggle between map and list view on mobile */}

@@ -6,22 +6,16 @@ import useSignUpForm from './FormHook';
  * Sign up form component
  * @returns {*}
  */
-const SignupForm = () => {
+const SignupForm = (props) => {
 
     const {inputs, handleInputChange, handleSubmit, displayError, validationErrors, errorMessage} = useSignUpForm(); //retrieves the following functions and state variables from the form hook
     console.log({validationErrors});
 
-    /**
-     * Function that closes the form
-     **/
-    const toggleForm = () => {
-        document.getElementById("signup").classList.toggle("signup"); //toggles the signup class to close the form (adds display: none property)
-    };
 
     return (
         <div className={"blur-background"}>
             <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>{/*Runs the handleSubmit function from form hookwhen the submit button is clicked*/}
-                    <a onClick={toggleForm} className="close"/>{/*closes the form on click by running toggleForm function*/}
+                    <a onClick={() => props.setSignup(false)} className="close" />{/*closes the form on click by running toggleForm function*/}
                     <h1>Create an Account</h1>
                     <div>
                         <label>Name</label>

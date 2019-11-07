@@ -3,9 +3,9 @@ import {useState} from 'react';
 
 /**
  * creates a generic hook for sign up forms (identifies behaviors for submit and inputchange)
- * @returns {{displayError: displayError, handleSubmit: handleSubmit, inputs: {}, validationErrors: {}, handleInputChange: handleInputChange}}
+ * @returns {{displayError: displayError, checkSubmit: checkSubmit, inputs: {}, validationErrors: {}, handleInputChange: handleInputChange}}
  */
-const useSignUpForm = () => {
+const useForm = () => {
     const [inputs, setInputs] = useState({}); //state variable to keep track of the field inputs
     const [validationErrors] = useState({}); //variable to contain all the input field errors. We use a state variable to update the page when rerendered
     const [wasFocused] = useState({});
@@ -16,7 +16,7 @@ const useSignUpForm = () => {
      * checks everything is in order after submitting
      * @param event submit
      */
-    const handleSubmit = (event) => {
+    const checkSubmit = (event) => {
         let errorExists = false; //initializes a variable to check if any errors exist
         if (event) {
             event.preventDefault();
@@ -32,10 +32,9 @@ const useSignUpForm = () => {
         }
 
         if(errorExists){ //if an error was found
-            alert("errors");
-            return; //doesn't submit
+            return false;
         }
-        alert("No Errors");
+        return true;
     };
 
     /**
@@ -109,7 +108,7 @@ const useSignUpForm = () => {
                     'inputError' : fieldname.value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) ? null : 'invalid email' //regex that matches for emails. Allows special characters and ensures an @ is followed by a string which is followed by .
                 };
                 break;
-            case 'userName':
+            case 'username':
                 validationErrors[fieldname.name] = {
                     'inputError' : fieldname.value.match(/^[a-zA-Z0-9]+$/) ? null : 'invalid username, your name can only contain letters and numbers', //regex that matches for names with letters and numbers only
                     'lengthError': (fieldLength > 4 && fieldLength < 20) ? null : 'invalid user name length' //ensures username is greater than 4 and less than 20 characters
@@ -133,7 +132,7 @@ const useSignUpForm = () => {
     };
 
     return { //returns the following functions and state variables
-        handleSubmit,
+        checkSubmit,
         handleInputChange,
         displayError,
         inputs,
@@ -144,4 +143,4 @@ const useSignUpForm = () => {
 
 };
 
-export default useSignUpForm;
+export default useForm;

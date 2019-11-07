@@ -1,6 +1,7 @@
 import React from 'react';
+import axios from 'axios';
 
-import useSignUpForm from './FormHook';
+import useForm from './FormHook';
 
 /**
  * Sign up form component
@@ -8,9 +9,15 @@ import useSignUpForm from './FormHook';
  */
 const SignupForm = (props) => {
 
-    const {inputs, handleInputChange, handleSubmit, displayError, validationErrors, errorMessage} = useSignUpForm(); //retrieves the following functions and state variables from the form hook
-    console.log({validationErrors});
+    const {inputs, handleInputChange, checkSubmit, displayError, validationErrors, errorMessage} = useForm(); //retrieves the following functions and state variables from the form hook
+    console.log(inputs);
 
+    const handleSubmit = () => {
+        if(checkSubmit()){
+            axios.post('http://localhost:5000/users/add', inputs)
+                .then(res => console.log(res.data));
+        }
+    };
 
     return (
         <div className={"blur-background"}>
@@ -29,8 +36,8 @@ const SignupForm = (props) => {
                     </div>
                     <div>
                         <label>Username</label>
-                        <input onBlur={displayError} type="text" name="userName" onChange={handleInputChange} value={inputs.userName} required/><br/>
-                        <p htmlFor="userName" className={"error-message"}>{errorMessage.userName}</p>
+                        <input onBlur={displayError} type="text" name="username" onChange={handleInputChange} value={inputs.username} required/><br/>
+                        <p htmlFor="username" className={"error-message"}>{errorMessage.username}</p>
                     </div>
                     <div>
                         <label>Password</label>

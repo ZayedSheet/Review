@@ -3,11 +3,11 @@ const bycrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-    displayName:{
+    name:{
         type: String,
         required: true,
     },
-    userEmail:{
+    email:{
       type: String,
       required: true,
       unique: true
@@ -19,7 +19,7 @@ const userSchema = new Schema({
         trim: true,
         minlength: 3
     },
-    userPassword: {
+    password: {
         type: String,
         required: true
     }

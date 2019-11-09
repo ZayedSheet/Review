@@ -9,24 +9,24 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
     const username = req.body.username;
-    const userPassword = req.body.userPassword;
-    const displayName = req.body.displayName;
-    const userEmail = req.body.userEmail;
+    const password = req.body.password;
+    const name = req.body.name;
+    const email = req.body.email;
 
-    if (!userEmail) {
+    if (!email) {
         return res.send({
             success: false,
             message: 'Error: Email cannot be blank.'
         });
     }
-    if (!userPassword) {
+    if (!password) {
         return res.send({
             success: false,
             message: 'Error: Password cannot be blank.'
         });
     }
 
-    const newUser = new User({username, userPassword, displayName, userEmail});
+    const newUser = new User({username, password, name, email});
 
     newUser.save()
         .then(() => res.json('User added!'))

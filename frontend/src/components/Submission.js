@@ -1,10 +1,19 @@
 import React from 'react';
+import axios from 'axios';
+import useForm from './Forms/FormHook';
 
 /**
  * Submission page where users can add an area (a object) to the website
  * @returns A Submission Page Component
  */
 const Submission = () => {
+
+    const {inputs, handleInputChange} = useForm(); //retrieves the following functions and state variables from the form hook
+
+    const handleSubmit = () => {
+        axios.post('http://localhost:5000/objects/add', inputs)
+            .then(res => console.log(res.data));
+    };
     /*
     Coordinates (longitude and latitude) of the user,
     set the false until the button is clicked to retrieve them
@@ -31,7 +40,7 @@ const Submission = () => {
     function getPosition(position) {
         coords = {longitude: position.coords.longitude, latitude: position.coords.latitude};
         document.querySelector("input[name='longitude']").value = coords.longitude;
-        document.querySelector("input[name='latitude']").value = coords.latitude;
+        document.querySelector("input[name='coordinates']").value = coords.latitude;
     }
 
     return(
@@ -41,25 +50,25 @@ const Submission = () => {
         contains css/html5 form validation using the pattern and required attribute
         Each input is separated in divs to allow easier css grids usage
          */
-        <form id="full-page-form" className="form-style">
+        <form onSubmit={handleSubmit} id="full-page-form" className="form-style">
             <h1>Add an Area!</h1>
             {/*Input for the name of the area*/}
             <div>
-                <label htmlFor="areaName">Area Name</label>
-                <input type="text" name="areaName" placeholder="Name of area.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required autoFocus/><br/>
+                <label htmlFor="name">Area Name</label>
+                <input onChange={handleInputChange} type="text" name="name" placeholder="Name of area.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required autoFocus/><br/>
                 {/*Ensures input matches the regex pattern for names. No white spaces can occur before or after the full name and only one space is allowed between strings. This field is autofocused when page renders. This field is required to be filled*/}
             </div>
             {/*Input for the city of the object*/}
             <div>
-                <label htmlFor="areaCity">City</label>
-                <input type="text" name="areaCity" placeholder="City Name.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required/><br/>
+                <label htmlFor="city">City</label>
+                <input onChange={handleInputChange} type="text" name="city" placeholder="City Name.." pattern="^([a-zA-Z]+\s)*[a-zA-Z]+$" required/><br/>
                 {/*Ensures input matches regex pattern for names. Required attributes means this field is required to be filled*/}
             </div>
             {/*Input of the country of the object*/}
             <div>
-                <label htmlFor="areaCountry">Country</label>
+                <label htmlFor="country">Country</label>
                 {/*Select Input is used to only allow one country to be selected from a set of predetermined options*/}
-                <select>
+                <select onChange={handleInputChange} name="country">
                     <option value="CA">Canada</option>
                     <option value="US">United States</option>
                     <option value="AF">Afghanistan</option>
@@ -314,14 +323,14 @@ const Submission = () => {
             {/*Input for a general overview/description of the object*/}
             <div>
                 <label htmlFor="areaOverview">Overview</label>
-                <input type="text" name="areaOverview" placeholder="Short overview on the area..."/><br/>
+                <input onChange={handleInputChange} type="text" name="overview" placeholder="Short overview on the area..."/><br/>
             </div>
             {/*Inputs of the coordinates of the object,
             can be autofilled via geolocation api*/}
             <div>
                 <label htmlFor="areaCords">Co-ordinates</label>
-                <input type="number" id="areaCords" name="latitude" placeholder='Latitude...'/>
-                <input type="number" id="areaCords" name="longitude" placeholder="Longitude.."/><br/>
+                <input onChange={handleInputChange} type="number" id="areaCords" name="coordinates" placeholder='Latitude...'/>
+                <input onChange={handleInputChange} type="number" id="areaCords" name="longitude" placeholder="Longitude.."/><br/>
                 {/*Button the allow user to autofill coordinates based on location*/}
                 <button type={"button"} onClick={getLocation}>Enter my current coordinates</button>
             </div>

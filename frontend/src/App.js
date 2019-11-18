@@ -30,7 +30,7 @@ const App = () => {
 
     if(signup){form =
             <div id="signup" className="signup">
-                <SignupForm setSignup={setSignup}/>
+                <SignupForm setLogin={setLogin} setSignup={setSignup}/>
             </div>
     }
     if(login){form =

@@ -12,10 +12,13 @@ const SignupForm = (props) => {
     const {inputs, handleInputChange, fieldNames, checkSubmit, displayError, errorMessage} = useForm(); //retrieves the following functions and state variables from the form hook
     console.log(inputs);
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
         if(checkSubmit()){
             axios.post('http://localhost:5000/users/add', inputs)
                 .then(res => console.log(res.data));
+            props.setSignup(false);
+            props.setLogin(true);
         }
     };
 

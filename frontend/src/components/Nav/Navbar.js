@@ -16,6 +16,19 @@ const Navbar = (props) => {
     const [isOpen, toggleLinks] = useState(false);
     let location = useLocation();
 
+    let navButtons = (
+        <div className="buttons-nav">
+            <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}> Login </SigninLoginButton>
+            <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}> Sign Up </SigninLoginButton>
+        </div>
+    );
+    console.log("User", props.username);
+    if(props.username){navButtons =
+        <div className="buttons-nav">
+            <button>{props.username}</button>
+        </div>
+    }
+
     return(
         //Container with NavBar contents
         <nav id="navbar" className={location.pathname === "/Review" || location.pathname === "/Review/" ? "transparent" : ""}>
@@ -27,11 +40,7 @@ const Navbar = (props) => {
                 <SearchBar/>
             </div>
 
-            {/*Container with the sign in and login buttons*/}
-            <div className="buttons-nav">
-                    <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}> Login </SigninLoginButton>
-                    <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}> Sign Up </SigninLoginButton>
-            </div>
+            {navButtons}
 
             {/* Hamburger button in the mobile version of the NavBar,
              when clicked isOpen = !isOpen*/}

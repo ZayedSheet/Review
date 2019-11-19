@@ -48,7 +48,7 @@ router.route('/signin').post((req,res) => {
         }
         // Otherwise correct user
         const userSession = new UserSession();
-        userSession.userId = user._id;
+        userSession.username = user.username;
         userSession.save((err, doc) => {
             if (err) {
                 console.log(err);
@@ -64,6 +64,12 @@ router.route('/signin').post((req,res) => {
             });
         });
     });
+});
+
+router.route('/getusername/:id').get((req, res) => {
+    UserSession.findById(req.params.id)
+        .then(usersession => res.json(usersession.username))
+        .catch(err => res.status(400).json('Error: ' + err));
 });
 
 router.route('/logout').get((req,res) => {
@@ -98,29 +104,31 @@ router.route('/verify').get((req,res) => {
     // Get the token
     const { query } = req;
     const { token } = query;
+    console.log(token);
     // ?token=test
     // Verify the token is one of a kind and it's not deleted.
     UserSession.find({
         _id: token,
         isDeleted: false
     }, (err, sessions) => {
-        if (err) {
+        if (err) { //the token either doesn't exist or has been deleted
             console.log(err);
-            return res.send({
+            return res.send({//returns this object as a result
                 success: false,
-                message: 'Error: Server error'
+                message: 'Error: Invalid Token'
             });
         }
-        if (sessions.length !== 1) {
+        if (sessions.length !== 1) { //if the session is not unique
             return res.send({
                 success: false,
-                message: 'Error: Invalid'
+                message: 'Error: Session not Unique'
             });
-        } else {
-            // DO ACTION
+        } else { //the session exists, is unique and has not been deleted
+            //TODO find the user here
             return res.send({
                 success: true,
-                message: 'Good'
+                message: 'Success: Token Found'
+                //TODO add the user
             });
         }
     });

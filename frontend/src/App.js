@@ -1,6 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import './style.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 //Component for every page on the website
 import Home from './components/Home';
@@ -11,7 +12,6 @@ import Area from './components/Area';
 //Components for NavBar/Footer (Components that appear on all pages)
 import NavBar from './components/Nav/Navbar';
 import Footer from './components/Footer/Footer';
-import { useState } from 'react';
 
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
@@ -23,11 +23,11 @@ import LoginForm from "./components/Forms/LoginForm";
  */
 const App = () => {
 
+    const[user,setUser] = useState(null);
     const [signup, setSignup] = useState(false);
     const [login, setLogin] = useState(false);
 
     let form;
-
     if(signup){form =
             <div id="signup" className="signup">
                 <SignupForm setLogin={setLogin} setSignup={setSignup}/>
@@ -40,15 +40,24 @@ const App = () => {
     }
 
     useEffect(() => {
-        let key = localStorage.getItem('review_app_key');
-        alert(key);
+        let key = JSON.parse(localStorage.getItem('review_app_key'));
+
+        axios.get('http://localhost:5000/signin/verify?token=' + key) //checks if the key is a valid key (unique and not deleted)
+            .then(res => {
+                if(res.data.success){
+                    axios.get('http://localhost:5000/signin/getusername/' + key)
+                        .then(res => setUser(res.data))
+                        .catch(() => setUser(null));
+                }
+                console.log(res.data.message);
+            });
     });
 
     return (
       // BrowseRouter Enables switching between components via NavLink Components
       <BrowserRouter>
         <div>
-          <NavBar setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
+          <NavBar username={user} setUser={setUser} setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
 
             {/*Switch Component contains all possible components that
             may be rendered between the NavBar and the Footer*/}

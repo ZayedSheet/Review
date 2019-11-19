@@ -19,8 +19,6 @@ const LoginForm = (props) => {
                     if (res.data.success) {
                         try {
                             localStorage.setItem('review_app_key', JSON.stringify(res.data.token));
-                            let key = localStorage.getItem('review_app_key');
-                            console.log(key);
                         } catch (err) {
                             console.error(err);
                         }

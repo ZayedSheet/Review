@@ -10,10 +10,22 @@ import axios from "axios";
 const LoginForm = (props) => {
     const {inputs, fieldNames, handleInputChange, checkSubmit} = useForm(); //retreives functions and state variables from form hook
 
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
         if(checkSubmit()){
-            axios.post('http://localhost:5000/users/signin', inputs)
-                .then(res => console.log(res.data));
+            axios.post('http://localhost:5000/signin/signin', inputs)
+                .then(res => {
+                    console.log('res', res.data);
+                    if (res.data.success) {
+                        try {
+                            localStorage.setItem('review_app_key', JSON.stringify(res.data.token));
+                            let key = localStorage.getItem('review_app_key');
+                            console.log(key);
+                        } catch (err) {
+                            console.error(err);
+                        }
+                    }
+                })
         }
     };
 

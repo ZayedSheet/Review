@@ -30,7 +30,9 @@ const userSchema = new Schema({
 userSchema.methods.generateHash = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
-userSchema.methods.validPassword = (password) => {
+
+//TODO - Use Arrow Functions?
+userSchema.methods.validPassword = function(password){
     return bcrypt.compareSync(password, this.password);
 };
 

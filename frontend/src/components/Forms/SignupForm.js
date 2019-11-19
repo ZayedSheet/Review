@@ -10,7 +10,6 @@ import useForm from './FormHook';
 const SignupForm = (props) => {
 
     const {inputs, handleInputChange, fieldNames, checkSubmit, displayError, errorMessage} = useForm(); //retrieves the following functions and state variables from the form hook
-    console.log(inputs);
 
     const handleSubmit = (event) => {
         event.preventDefault();

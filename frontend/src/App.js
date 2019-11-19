@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './style.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -38,6 +38,11 @@ const App = () => {
             <LoginForm setLogin={setLogin}/>
         </div>
     }
+
+    useEffect(() => {
+        let key = localStorage.getItem('review_app_key');
+        alert(key);
+    });
 
     return (
       // BrowseRouter Enables switching between components via NavLink Components

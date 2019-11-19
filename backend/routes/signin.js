@@ -1,4 +1,5 @@
 const router = require('express').Router();
+let User = require('../models/users.model');
 const UserSession = require('../models/userSession.model');
 
 router.route('/signin').post((req,res) => {
@@ -37,6 +38,7 @@ router.route('/signin').post((req,res) => {
                 message: 'Error: Invalid'
             });
         }
+
         const user = users[0];
         if (!user.validPassword(password)) {
             return res.send({

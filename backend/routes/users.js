@@ -34,8 +34,9 @@ router.route('/add').post((req, res) => {
     newUser.password = newUser.generateHash(password);
 
     newUser.save()
-        .then(() => res.json('User added!'))
+        .then(() => res.json("User Added!"))//just returns the string user added
         .catch(err => res.status(400).json('Error: ' + err));
+
 });
 
 // router.route('/signin').post((req,res) => {

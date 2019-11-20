@@ -9,13 +9,6 @@ import './SigninLoginButton.css' //Styling specific to the buttons
  */
 const SigninLoginButton = (props) => {
 
-    /**
-     * Toggles visibility of the corresponding form (sign in or login form)
-     */
-    // const toggleForm = () => {
-    //     document.getElementById(props.formName).classList.toggle(props.formName);
-    // }
-
     return(
       //  When the button is clicked, the corresponding form appears on screen
       <button onClick={()=>props.setLoginSignup(true)} className={`button-style`}>

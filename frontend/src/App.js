@@ -23,7 +23,7 @@ import LoginForm from "./components/Forms/LoginForm";
  */
 const App = () => {
 
-    const[user,setUser] = useState(null);
+    const[user,setUser] = useState(false);
     const [signup, setSignup] = useState(false);
     const [login, setLogin] = useState(false);
 
@@ -47,7 +47,7 @@ const App = () => {
                 if(res.data.success){
                     axios.get('http://localhost:5000/signin/getusername/' + key)
                         .then(res => setUser(res.data))
-                        .catch(() => setUser(null));
+                        .catch(() => setUser(false));
                 }
                 console.log(res.data.message);
             });

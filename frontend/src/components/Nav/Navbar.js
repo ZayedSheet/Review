@@ -16,16 +16,20 @@ const Navbar = (props) => {
     const [isOpen, toggleLinks] = useState(false);
     let location = useLocation();
 
-    let navButtons = (
+    let navButtons;
+    if(props.username){navButtons =
+        <div className="buttons-nav">
+            <div>Hey, {props.username}</div>
+            <button className={`button-style`} onClick={()=>{
+                localStorage.removeItem('review_app_key');
+                props.setUser(false);
+            }}>Logout</button>
+        </div>
+    }
+    else{navButtons =
         <div className="buttons-nav">
             <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}> Login </SigninLoginButton>
             <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}> Sign Up </SigninLoginButton>
-        </div>
-    );
-    console.log("User", props.username);
-    if(props.username){navButtons =
-        <div className="buttons-nav">
-            <button>{props.username}</button>
         </div>
     }
 

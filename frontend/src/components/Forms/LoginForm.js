@@ -19,6 +19,7 @@ const LoginForm = (props) => {
                     if (res.data.success) {
                         try {
                             localStorage.setItem('review_app_key', JSON.stringify(res.data.token));
+                            props.setLogin(false);
                         } catch (err) {
                             console.error(err);
                         }

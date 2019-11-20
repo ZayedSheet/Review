@@ -14,7 +14,7 @@ import "./Navbar.css"; //Styling specific to the NavBar
 const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [isOpen, toggleLinks] = useState(false);
-    let location = useLocation();
+    const location = useLocation();
 
     let navButtons;
     if(props.username){navButtons =

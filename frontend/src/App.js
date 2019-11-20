@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 //Component for every page on the website
@@ -26,6 +26,7 @@ const App = () => {
     const[user,setUser] = useState(false);
     const [signup, setSignup] = useState(false);
     const [login, setLogin] = useState(false);
+    let location = useLocation();
 
     let form;
     if(signup){form =
@@ -33,6 +34,7 @@ const App = () => {
                 <SignupForm setLogin={setLogin} setSignup={setSignup}/>
             </div>
     }
+
     if(login){form =
         <div id="login" className="login">
             <LoginForm setLogin={setLogin}/>
@@ -53,9 +55,14 @@ const App = () => {
             });
     });
 
+    useEffect(() => {
+        if(!user && location.pathname.match(/\/Submission.*/)){
+            setLogin(true);
+        }
+    },[location.pathname]);
+
     return (
       // BrowseRouter Enables switching between components via NavLink Components
-      <BrowserRouter>
         <div>
           <NavBar username={user} setUser={setUser} setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
 
@@ -76,7 +83,6 @@ const App = () => {
 
             <Footer/>
         </div>
-      </BrowserRouter>
   )
 };
 

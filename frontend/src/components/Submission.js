@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import axios from 'axios';
 import useForm from './Forms/FormHook';
+import UserContext from '../UserContext';
 
 /**
  * Submission page where users can add an area (a object) to the website
@@ -9,10 +10,17 @@ import useForm from './Forms/FormHook';
 const Submission = () => {
 
     const {inputs, handleInputChange} = useForm(); //retrieves the following functions and state variables from the form hook
+    const {user, setUser} = useContext(UserContext);
 
-    const handleSubmit = () => {
-        axios.post('http://localhost:5000/objects/add', inputs)
-            .then(res => console.log(res.data));
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (user) {
+            axios.post('http://localhost:5000/objects/add', inputs)
+                .then(res => console.log(res.data));
+        }
+        else {
+            alert("no user");
+        }
     };
     /*
     Coordinates (longitude and latitude) of the user,

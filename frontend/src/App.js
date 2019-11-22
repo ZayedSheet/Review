@@ -16,6 +16,8 @@ import Footer from './components/Footer/Footer';
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
 
+import UserContext from "./UserContext";
+
 /**
  * This component represents every page on the website.
  * It contains the logic needed to switch between the pages.
@@ -70,10 +72,12 @@ const App = () => {
             may be rendered between the NavBar and the Footer*/}
             <Switch>
               {/*<Route path="/" setLogin={setLogin} setSignup={setSignup} component={Home} exact/>*/}
-              <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
-              <Route path="/Submission" component={Submission}/>
-              <Route path="/Results" component={Results}/>
-              <Route path="/Area" component={Area}/>
+              <UserContext.Provider value={{user, setUser}}>
+                  <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
+                  <Route path="/Submission" component={Submission}/>
+                  <Route path="/Results" component={Results}/>
+                  <Route path="/Area" component={Area}/>
+              </UserContext.Provider>
             </Switch>
 
             {/*Content on all pages below*/}

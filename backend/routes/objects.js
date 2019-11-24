@@ -15,13 +15,15 @@ router.route('/add').post((req,res) =>{
     const country = req.body.country;
     const overview = req.body.overview;
     const coordinates = req.body.coordinates;
+    const username = req.body.username;
 
     const newObject = new Object({
         name,
         city,
         country,
         overview,
-        coordinates
+        coordinates,
+        username
     });
 
     newObject.save()

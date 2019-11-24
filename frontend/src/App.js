@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
+import UserContext from "./UserContext";
 import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
@@ -16,7 +17,6 @@ import Footer from './components/Footer/Footer';
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
 
-import UserContext from "./UserContext";
 
 /**
  * This component represents every page on the website.
@@ -47,7 +47,7 @@ const App = () => {
         let key = JSON.parse(localStorage.getItem('review_app_key'));
 
         axios.get('http://localhost:5000/signin/verify?token=' + key) //checks if the key is a valid key (unique and not deleted)
-            .then(res => {
+            .then( res => {
                 if(res.data.success){
                     axios.get('http://localhost:5000/signin/getusername/' + key)
                         .then(res => setUser(res.data))
@@ -57,11 +57,12 @@ const App = () => {
             });
     });
 
+    //TODO run asychronously
     useEffect(() => {
         if(!user && location.pathname.match(/\/Submission.*/)){
             setLogin(true);
         }
-    },[location.pathname]);
+    },[location.pathname, user]);
 
     return (
       // BrowseRouter Enables switching between components via NavLink Components

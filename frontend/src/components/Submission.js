@@ -15,8 +15,9 @@ const Submission = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (user) {
-            axios.post('http://localhost:5000/objects/add', inputs)
-                .then(res => console.log(res.data));
+            axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
+                .then(res => console.log(res.data))
+                .catch(() => console.log("error"));
         }
         else {
             alert("no user");
@@ -48,7 +49,7 @@ const Submission = () => {
     function getPosition(position) {
         coords = {longitude: position.coords.longitude, latitude: position.coords.latitude};
         document.querySelector("input[name='longitude']").value = coords.longitude;
-        document.querySelector("input[name='coordinates']").value = coords.latitude;
+        document.querySelector("input[name='latitude']").value = coords.latitude;
     }
 
     return(
@@ -337,8 +338,8 @@ const Submission = () => {
             can be autofilled via geolocation api*/}
             <div>
                 <label htmlFor="areaCords">Co-ordinates</label>
-                <input onChange={handleInputChange} type="number" id="areaCords" name="coordinates" placeholder='Latitude...'/>
-                <input onChange={handleInputChange} type="number" id="areaCords" name="longitude" placeholder="Longitude.."/><br/>
+                <input onChange={handleInputChange} type="number"  step="0.0000001" name="latitude" placeholder='Latitude...'/>
+                <input onChange={handleInputChange} type="number"  step="0.0000001" name="longitude" placeholder="Longitude.."/><br/>
                 {/*Button the allow user to autofill coordinates based on location*/}
                 <button type={"button"} onClick={getLocation}>Enter my current coordinates</button>
             </div>

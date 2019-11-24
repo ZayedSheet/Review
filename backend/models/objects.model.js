@@ -10,10 +10,12 @@ const objectsSchema = new Schema({
     username: {type: String, required: true},
     coordinates: {
             latitude: {
-                type: Number
+                type: Number,
+                required: true
             },
             longitude: {
-                type: Number
+                type: Number,
+                required: true
             }
     }
 });

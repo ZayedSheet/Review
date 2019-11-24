@@ -137,6 +137,7 @@ const useForm = () => {
         handleInputChange,
         displayError,
         inputs,
+        setInputs,
         validationErrors,
         errorMessage,
         fieldNames

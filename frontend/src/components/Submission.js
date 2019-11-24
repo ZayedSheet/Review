@@ -9,7 +9,7 @@ import UserContext from '../UserContext';
  */
 const Submission = () => {
 
-    const {inputs, handleInputChange} = useForm(); //retrieves the following functions and state variables from the form hook
+    const {inputs, handleInputChange, setInputs} = useForm(); //retrieves the following functions and state variables from the form hook
     const {user, setUser} = useContext(UserContext);
 
     const handleSubmit = (event) => {
@@ -50,6 +50,9 @@ const Submission = () => {
         coords = {longitude: position.coords.longitude, latitude: position.coords.latitude};
         document.querySelector("input[name='longitude']").value = coords.longitude;
         document.querySelector("input[name='latitude']").value = coords.latitude;
+        setInputs(
+            inputs => ({...inputs, latitude: coords.latitude, longitude: coords.longitude})
+        );
     }
 
     return(

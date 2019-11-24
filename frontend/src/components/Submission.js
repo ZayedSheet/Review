@@ -17,7 +17,7 @@ const Submission = () => {
         if (user) {
             axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
                 .then(res => console.log(res.data))
-                .catch(() => console.log("error"));
+                .catch(res => console.log(res.message));
         }
         else {
             alert("no user");

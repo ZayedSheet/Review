@@ -124,11 +124,9 @@ router.route('/verify').get((req,res) => {
                 message: 'Error: Session not Unique'
             });
         } else { //the session exists, is unique and has not been deleted
-            //TODO find the user here
             return res.send({
                 success: true,
                 message: 'Success: Token Found'
-                //TODO add the user
             });
         }
     });

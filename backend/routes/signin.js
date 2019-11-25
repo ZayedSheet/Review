@@ -2,7 +2,7 @@ const router = require('express').Router();
 let User = require('../models/users.model');
 const UserSession = require('../models/userSession.model');
 
-router.route('/signin').post((req,res) => {
+router.route('/signin').get((req,res) => {
     const password = req.body.password;
     let username = req.body.username;
 

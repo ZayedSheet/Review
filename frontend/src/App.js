@@ -77,7 +77,7 @@ const App = () => {
                   <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
                   <Route path="/Submission" component={Submission}/>
                   <Route path="/Results" component={Results}/>
-                  <Route path="/Area" component={Area}/>
+                  <Route path="/Area/:name" component={Area}/>
               </UserContext.Provider>
             </Switch>
 

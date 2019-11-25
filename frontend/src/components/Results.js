@@ -24,16 +24,16 @@ const toggleMap = () => {
 const Results = (props) => {
     const location = useLocation();
     const [results] = useState([
-        {to: "../Area", id:"item1", stars: 5, title:"Niagara Region",
+        {to: "../Area/niagara", id:"item1", stars: 5, title:"Niagara Region",
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, optio!"},
-        {to: "../Area", id:"item2", stars: 3, title:"Hamilton",
+        {to: "../Area/hamilton", id:"item2", stars: 3, title:"Hamilton",
             description: "Hamilton features many types of factories: " +
                 "Big factories, small factories, and even medium factories."},
-        {to: "../Area", id:"item3", stars: 4, title:"Barrie",
+        {to: "../Area/barrie", id:"item3", stars: 4, title:"Barrie",
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."},
-        {to: "../Area", id:"item3", stars: 4, title:"Barrie",
+        {to: "../Area/barrie", id:"item3", stars: 4, title:"Barrie",
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."},
-        {to: "../Area", id:"item3", stars: 1, title:"Barrie",
+        {to: "../Area/barrie", id:"item3", stars: 1, title:"Barrie",
             description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."}
     ]);
 

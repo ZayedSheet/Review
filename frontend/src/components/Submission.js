@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import axios from 'axios';
 import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
@@ -11,6 +11,11 @@ const Submission = () => {
 
     const {inputs, handleInputChange, setInputs} = useForm(); //retrieves the following functions and state variables from the form hook
     const {user, setUser} = useContext(UserContext);
+
+    useEffect(() => {
+        setInputs({country: "CA"})
+    }, []);
+
 
     const handleSubmit = (event) => {
         event.preventDefault();

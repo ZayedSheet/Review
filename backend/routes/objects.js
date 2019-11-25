@@ -9,7 +9,7 @@ router.route('/').get((req,res) => {
 );
 
 router.route('/add').post((req,res) =>{
-
+    console.log(req.body);
     const name = req.body.name;
     const city = req.body.city;
     const country = req.body.country;
@@ -25,6 +25,13 @@ router.route('/add').post((req,res) =>{
         coordinates,
         username
     });
+
+    if(!country){
+        return res.send({
+            success: false,
+            message: 'Country is not provided'
+        });
+    }
 
     newObject.save()
         .then(() => res.json('User added!'))

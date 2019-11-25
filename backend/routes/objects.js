@@ -17,6 +17,33 @@ router.route('/add').post((req,res) =>{
     const coordinates = req.body.coordinates;
     const username = req.body.username;
 
+    if (!username)
+    if (!name || !name.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/)){
+        return res.send({
+            success: false,
+            message: 'invalid name format'
+        });
+    }
+    if (!city || !city.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/)){
+        return res.send({
+            success: false,
+            message: 'invalid city format'
+        });
+    }
+    if (!country || !country.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/)){
+        return res.send({
+            success: false,
+            message: 'invalid name format or length'
+        });
+    }
+    if (isNaN(coordinates.latitude) || isNaN(coordinates.longitude)){
+        return res.send({
+            success: false,
+            message: 'coordinates needs to be a number'
+        });
+    }
+
+
     const newObject = new Object({
         name,
         city,

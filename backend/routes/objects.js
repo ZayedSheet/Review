@@ -18,7 +18,12 @@ router.route('/add').post((req,res) =>{
     const coordinates = req.body.coordinates;
     const username = req.body.username;
 
-    if (!username)
+    if (!username){
+        return res.send({
+            success: false,
+            message: 'username required'
+        });
+    }
     if (!name || !name.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/)){
         return res.send({
             success: false,

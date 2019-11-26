@@ -1,4 +1,4 @@
-import React, {useContext, useEffect,useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import axios from 'axios';
 import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
@@ -20,6 +20,7 @@ const Submission = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log(inputs);
         if (user) {
             axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
                 .then(res => console.log(res.data))
@@ -54,6 +55,7 @@ const Submission = () => {
      */
     function getPosition(position) {
         coords = {longitude: position.coords.longitude, latitude: position.coords.latitude};
+
         document.querySelector("input[name='longitude']").value = coords.longitude;
         document.querySelector("input[name='latitude']").value = coords.latitude;
         setInputs(

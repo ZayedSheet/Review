@@ -13,7 +13,7 @@ const Home = (props) => {
             axios.post("http://localhost:5000/objects", {name: props.match.params.name})
                 .then(res => {
                     setArea(res.data[0]);
-                }).catch(error => {
+                }).catch(() => {
                     setArea({});
                 });
         }, []
@@ -93,7 +93,7 @@ const Home = (props) => {
                                 <h3><i className="fa fa-globe" aria-hidden="true"/> Location: <br/> {area.country}, {area.city}</h3>
                                 <h3><i className="fas fa-map"/> Area: <br/> {area.name}</h3>
                                 <h3><i className="fa fa-map-marker" aria-hidden="true"/> Latitute,
-                                    Longitude: <br/> {area.coordinates.latitude} N, {area.coordinates.longitude} W</h3>
+                                    Longitude: <br/> {area.coordinates.latitude.toFixed(6)} N, {area.coordinates.longitude.toFixed(6)} W</h3>
                             </div>
                         </div>
                         <div className="overview-map">

@@ -36,12 +36,12 @@ const LocationSearchInput = (props) => {
             inputs => ({...inputs, city: addressComponents.locality.long_name,
                 country: addressComponents.country.short_name})
         );
-    }
+    };
 
     const setCoordinates = (latLng) => {
 
-        document.querySelector("input[name='longitude']").value = latLng.lng;
-        document.querySelector("input[name='latitude']").value = latLng.lat;
+        document.querySelector("input[name='longitude']").value = latLng.lng.toFixed(7);
+        document.querySelector("input[name='latitude']").value = latLng.lat.toFixed(7);
         props.setInputs(
             inputs => ({...inputs, latitude: latLng.lat, longitude: latLng.lng})
         );

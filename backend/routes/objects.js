@@ -67,7 +67,7 @@ router.route('/add').post((req,res) =>{
     }
 
     newObject.save()
-        .then(() => res.json('User added!'))
+        .then(() => res.json('Object Added!'))
         .catch(err => res.status(400).json('Error: ' + err));
     }
 );

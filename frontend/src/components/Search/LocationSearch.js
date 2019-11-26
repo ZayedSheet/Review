@@ -5,12 +5,9 @@ import PlacesAutocomplete, {
     getLatLng,
 } from 'react-places-autocomplete';
 
-let lookup = require('country-code-lookup');
-
 const LocationSearchInput = (props) => {
 
     const [address, setAddress] = useState('');
-    let selectedAddress;
 
     const handleChange = address => {
         setAddress( address );
@@ -20,21 +17,33 @@ const LocationSearchInput = (props) => {
         document.querySelector("input[name='address']").value = address;
         setAddress(address);
         geocodeByAddress(address)
-            .then(results => getLatLng(results[0]))
-            .then(latLng => console.log('Success', setValues(address, latLng)))
+            .then(results => {
+                let addressComponents = {};
+                results[0].address_components.map(item => {
+                    addressComponents[item.types[0]] = {long_name: item.long_name, short_name: item.short_name};
+                    return item;
+                });
+                setValues(addressComponents);
+                return getLatLng(results[0])})
+            .then(latLng => console.log('Success', setCoordinates(latLng)))
             .catch(error => console.error('Error', error));
     };
 
-    const setValues = (address, latLng) => {
-        selectedAddress = address.split(/\s*[-,]\s*/);
-        selectedAddress[selectedAddress.length - 1] = lookup.byCountry(selectedAddress[selectedAddress.length - 1]).iso2;
+    const setValues = (addressComponents) => {
+        document.querySelector("input[name='city']").value = addressComponents.locality.long_name;
+        document.querySelector("select[name='country']").value = addressComponents.country.short_name;
+        props.setInputs(
+            inputs => ({...inputs, city: addressComponents.locality.long_name,
+                country: addressComponents.country.short_name})
+        );
+    }
+
+    const setCoordinates = (latLng) => {
+
         document.querySelector("input[name='longitude']").value = latLng.lng;
         document.querySelector("input[name='latitude']").value = latLng.lat;
-        document.querySelector("input[name='city']").value = selectedAddress[0];
-        document.querySelector("select[name='country']").value = selectedAddress[selectedAddress.length - 1];
         props.setInputs(
-            inputs => ({...inputs, city: selectedAddress[0], country: selectedAddress[2],
-                latitude: latLng.lat, longitude: latLng.lng})
+            inputs => ({...inputs, latitude: latLng.lat, longitude: latLng.lng})
         );
     };
 

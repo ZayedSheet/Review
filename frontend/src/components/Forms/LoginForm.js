@@ -15,11 +15,6 @@ const LoginForm = (props) => {
 
 
     const handleSubmit = (event) => {
-        const loginUser = async () => {
-            const getUser = await checkLogin();
-            console.log("app data ", getUser);
-            setUser(getUser);
-        };
 
         event.preventDefault();
         if(checkSubmit()){//uses formhook to check for errors in form
@@ -30,7 +25,7 @@ const LoginForm = (props) => {
                         try {
                             localStorage.setItem('review_app_key', JSON.stringify(res.data.token)); //sets the usersession token received from backend to localstorage
                             props.setLogin(false);//closes login form
-                            loginUser();
+                            checkLogin(setUser);
                             setUser(true);
                         } catch (err) {
                             console.error(err);

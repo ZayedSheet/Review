@@ -45,11 +45,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        const loginUser = async () => {
-            const getUser = await checkLogin();
-            setUser(getUser);
-        };
-        loginUser();
+            const getUser = checkLogin(setUser);
     },[]);
 
     //TODO run asychronously

@@ -3,24 +3,22 @@ let User = require('../models/users.model');
 const UserSession = require('../models/userSession.model');
 
 router.route('/signin').post((req,res) => {
-    const password = req.body.password;
-    let username = req.body.username;
+    const password = req.body.password; //password from login form
+    let username = req.body.username; //username from login form
 
-    if (!username) {
+    if (!username) { //if username field is empty
         return res.send({
             success: false,
             message: 'Error: username cannot be blank.'
         });
     }
 
-    if (!password) {
+    if (!password) { //if password field is empty
         return res.send({
             success: false,
             message: 'Error: Password cannot be blank.'
         });
     }
-
-    username = username.trim();
 
     User.find({ //find field username from username field in user collection
         username: username
@@ -48,7 +46,7 @@ router.route('/signin').post((req,res) => {
         }
         // Otherwise correct user
         const userSession = new UserSession();
-        userSession.username = user.username;
+        userSession.userid = user._id;
         userSession.save((err, doc) => {
             if (err) {
                 console.log(err);
@@ -66,9 +64,9 @@ router.route('/signin').post((req,res) => {
     });
 });
 
-router.route('/getusername/:id').get((req, res) => {
+router.route('/getuserid/:id').get((req, res) => {
     UserSession.findById(req.params.id)
-        .then(usersession => res.json(usersession.username))
+        .then(usersession => res.json(usersession.userid))
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

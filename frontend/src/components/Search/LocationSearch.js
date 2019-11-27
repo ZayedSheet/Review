@@ -53,8 +53,7 @@ const LocationSearchInput = (props) => {
                 <div>
                     <input name={'address'}
                         {...getInputProps({
-                            placeholder: 'Search Places ...',
-                            className: 'location-search-input',
+                             className: 'location-search-input',
                         })}/>
                     <div className="autocomplete-dropdown-container">
                         {loading && <div>Loading...</div>}

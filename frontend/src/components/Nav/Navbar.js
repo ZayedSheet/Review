@@ -1,8 +1,8 @@
-import React, {useState} from 'react'; //React hooks, allows state to be used in functional components
+import React, {useState, useContext} from 'react'; //React hooks, allows state to be used in functional components
 
 import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
-
+import UserContext from '../../UserContext';
 import { NavLink, useLocation } from 'react-router-dom'; //Component to switch between pages via ReactRouter
 
 import "./Navbar.css"; //Styling specific to the NavBar
@@ -15,14 +15,15 @@ const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [isOpen, toggleLinks] = useState(false);
     const location = useLocation();
+    const {user, setUser} = useContext(UserContext);
 
     let navButtons;
-    if(props.username){navButtons =
+    if(user){navButtons =
         <div className="buttons-nav">
-            <div>Hey, {props.username}</div>
+            <div>Hey, {user.name}</div>
             <button className={`button-style`} onClick={()=>{
                 localStorage.removeItem('review_app_key');
-                props.setUser(false);
+                setUser(false);
             }}>Logout</button>
         </div>
     }

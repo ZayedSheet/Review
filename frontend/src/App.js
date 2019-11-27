@@ -16,6 +16,7 @@ import Footer from './components/Footer/Footer';
 
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
+import {checkLogin} from "./checkLogin";
 
 
 /**
@@ -44,18 +45,12 @@ const App = () => {
     }
 
     useEffect(() => {
-        let key = JSON.parse(localStorage.getItem('review_app_key'));
-
-        axios.get('http://localhost:5000/signin/verify?token=' + key) //checks if the key is a valid key (unique and not deleted)
-            .then( res => {
-                if(res.data.success){
-                    axios.get('http://localhost:5000/signin/getusername/' + key)
-                        .then(res => setUser(res.data))
-                        .catch(() => setUser(false));
-                }
-                console.log(res.data.message);
-            });
-    });
+        const loginUser = async () => {
+            const getUser = await checkLogin();
+            setUser(getUser);
+        };
+        loginUser();
+    },[]);
 
     //TODO run asychronously
     useEffect(() => {
@@ -67,26 +62,26 @@ const App = () => {
     return (
       // BrowseRouter Enables switching between components via NavLink Components
         <div>
-          <NavBar username={user} setUser={setUser} setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
+            <UserContext.Provider value={{user, setUser}}>
+                <NavBar setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
 
-            {/*Switch Component contains all possible components that
-            may be rendered between the NavBar and the Footer*/}
-            <Switch>
-              {/*<Route path="/" setLogin={setLogin} setSignup={setSignup} component={Home} exact/>*/}
-              <UserContext.Provider value={{user, setUser}}>
-                  <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
-                  <Route path="/Submission" component={Submission}/>
-                  <Route path="/Results" component={Results}/>
-                  <Route path="/Area/:name" component={Area}/>
-              </UserContext.Provider>
-            </Switch>
+                {/*Switch Component contains all possible components that
+                may be rendered between the NavBar and the Footer*/}
+                <Switch>
+                  {/*<Route path="/" setLogin={setLogin} setSignup={setSignup} component={Home} exact/>*/}
+                      <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
+                      <Route path="/Submission" component={Submission}/>
+                      <Route path="/Results" component={Results}/>
+                      <Route path="/Area/:name" component={Area}/>
+                </Switch>
 
-            {/*Content on all pages below*/}
-            {/*Container for Sign Up Form*/}
-            {/*Container for Log in Form*/}
-            {form}
+                {/*Content on all pages below*/}
+                {/*Container for Sign Up Form*/}
+                {/*Container for Log in Form*/}
+                {form}
 
-            <Footer/>
+                <Footer/>
+            </UserContext.Provider>
         </div>
   )
 };

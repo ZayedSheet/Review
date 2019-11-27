@@ -17,6 +17,8 @@ router.route('/add').post((req,res) =>{
     const overview = req.body.overview;
     const coordinates = req.body.coordinates;
     const username = req.body.username;
+    // const usersession = req.body.usersession;
+    //TODO
 
     if (!username){
         return res.send({
@@ -73,5 +75,3 @@ router.route('/add').post((req,res) =>{
 );
 
 module.exports = router;
-
-//TODO add full form validation

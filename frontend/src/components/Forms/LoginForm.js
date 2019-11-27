@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import useForm from './FormHook';
 import './Form.css'
 import axios from "axios";
+import UserContext from "../../UserContext";
+import {checkLogin} from "../../checkLogin";
 
 /**
  * Login Form Component
@@ -9,17 +11,27 @@ import axios from "axios";
  */
 const LoginForm = (props) => {
     const {inputs, fieldNames, handleInputChange, checkSubmit} = useForm(); //retreives functions and state variables from form hook
+    const {setUser} = useContext(UserContext);
+
 
     const handleSubmit = (event) => {
+        const loginUser = async () => {
+            const getUser = await checkLogin();
+            console.log("app data ", getUser);
+            setUser(getUser);
+        };
+
         event.preventDefault();
-        if(checkSubmit()){
-            axios.post('http://localhost:5000/signin/signin', inputs)
+        if(checkSubmit()){//uses formhook to check for errors in form
+            axios.post('http://localhost:5000/signin/signin', inputs)//sends the form inputs to backend
                 .then(res => {
                     console.log('res', res.data);
-                    if (res.data.success) {
+                    if (res.data.success) { //if successful (username and password match)
                         try {
-                            localStorage.setItem('review_app_key', JSON.stringify(res.data.token));
-                            props.setLogin(false);
+                            localStorage.setItem('review_app_key', JSON.stringify(res.data.token)); //sets the usersession token received from backend to localstorage
+                            props.setLogin(false);//closes login form
+                            loginUser();
+                            setUser(true);
                         } catch (err) {
                             console.error(err);
                         }

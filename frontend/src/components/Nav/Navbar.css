@@ -1,18 +1,21 @@
 nav {
     height: 80px;
+    max-height:80px;
     width: 100%;
     min-height: 50px;
     background: rgb(53, 181, 255);
     display: grid;
     grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-rows: 80px;
     grid-gap: 0.5%;
     top: 0;
     z-index: 99;
     position: fixed;
     align-items: center;
 }
-
+.results{
+    overflow:visible;
+}
 nav.transparent{
     background: rgba(21, 161, 220, 0);
 }
@@ -26,7 +29,6 @@ nav.transparent{
     list-style: none;
     align-items: center;
     text-align: center;
-    height: 100%;
 }
 
 .nav-links > *{

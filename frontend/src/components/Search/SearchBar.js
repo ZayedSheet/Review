@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import "./SearchBar.css";
+import axios from 'axios';
 
 /*
 Nav Link Component allows links to be added to change the current page.
@@ -12,13 +13,16 @@ import {NavLink} from "react-router-dom";
  * @returns SearchBar component
  */
 const SearchBar = () => {
+
     /*
     Variables for geolocation functionality,
     coordinates set to false until user searches by location
      */
-    let [locationToggled, updateToggle] = useState(false);
-    let [centerCoords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
-    let [style, locationEnabled] = useState({color: "#cccccc"});
+    const [locationToggled, updateToggle] = useState(false);
+    const [centerCoords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
+    const [style, locationEnabled] = useState({color: "#cccccc"});
+    const [results, setResults] = useState(null);
+
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -31,14 +35,24 @@ const SearchBar = () => {
         }
         else{ //if search by location is already toggled or geolocation doesn't work on this browser
             let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
-            // for (let i = 0; i < searchByGeoElement.length; i++){
-            //     searchByGeoElement[i].style.color = "#cccccc"; //sets search by location icon back to grey
-            // }
             locationEnabled({color :"#cccccc"});
             updateToggle(false);
             updateLongitude( { lat: 43.0896, lng: -79.0849}); //sets location back to niagara
         }
     };
+
+    const searchResults = async (event) => {
+        let res;
+        try{
+            res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$'}});
+            setResults(res.data.map((object) => <div>{object.name}</div>));
+            // setResults(res.data);
+        }
+        catch{
+            setResults([]);
+        }
+    };
+    console.log(results);
 
     /**
      * Initializes the coordinates of the user, and displays them to the user
@@ -47,11 +61,6 @@ const SearchBar = () => {
      */
     function getPosition(position) {
         updateLongitude( {lat:position.coords.latitude, lng:position.coords.longitude});
-        let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
-        // for (let i = 0; i < searchByGeoElement.length; i++){
-        //     searchByGeoElement[i].style.color = "#0b7dda"; //sets get location button to blue
-        // }
-        // searchByGeoElement[0].style.color = "#0b7dda";
         locationEnabled({color :"#0b7dda"});
         updateToggle(true);
     }
@@ -60,7 +69,7 @@ const SearchBar = () => {
         //Container for the entire search bar
         <form className={"search"}>
             {/*Input text field*/}
-            <input type="text" placeholder="Search.." name="search" />
+            <input onChange={searchResults} type="text" placeholder="Search.." name="search" />
             {/*Container for the search by location button,
             when clicked it toggles search by location and sets the coords*/}
             <div onClick={isToggled} title="Click me to toggle search by location!" className={"search-location-button"}>
@@ -75,6 +84,7 @@ const SearchBar = () => {
             }} type="button">
                 <i className="fa fa-search"/>
             </NavLink>
+            <div className={"results"}>{results}</div>
         </form>
     );
 };

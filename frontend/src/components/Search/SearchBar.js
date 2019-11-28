@@ -73,7 +73,7 @@ const SearchBar = () => {
         //Container for the entire search bar
         <form className={"search"}>
             {/*Input text field*/}
-            <input onChange={searchResults} type="text" placeholder="Search.." name="search" />
+            <input autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
             {/*Container for the search by location button,
             when clicked it toggles search by location and sets the coords*/}
             <div onClick={isToggled} title="Click me to toggle search by location!" className={"search-location-button"}>

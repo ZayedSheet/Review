@@ -42,11 +42,11 @@ const LoginForm = (props) => {
                 <h1>Login</h1>
                 <div>
                     <label>Username</label>
-                    <input type="text" name={fieldNames.username} onChange={handleInputChange} value={inputs.username} required/><br/>{/*Runs the handleInputChange function in form hook on input change*/}
+                    <input autoComplete={"username"} type="text" name={fieldNames.username} onChange={handleInputChange} value={inputs.username} required/><br/>{/*Runs the handleInputChange function in form hook on input change*/}
                 </div>
                 <div>
                     <label>Password</label>
-                    <input type="password" name={fieldNames.password} onChange={handleInputChange} value={inputs.password} required/><br/>
+                    <input autoComplete={"password"} type="password" name={fieldNames.password} onChange={handleInputChange} value={inputs.password} required/><br/>
                 </div>
                 <input type="submit" value="Login"/>
             </form>

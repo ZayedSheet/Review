@@ -6,7 +6,7 @@ import MapContainer from "./MapContainer";
 import axios from 'axios';
 import AddReviewForm from "./Forms/AddReviewForm";
 
-const Home = (props) => {
+const Area = (props) => {
 
     const [area, setArea] = useState({});
     const [reviews, setReviews] = useState(false);
@@ -22,7 +22,7 @@ const Home = (props) => {
                 </Review>)))
     };
 
-    useEffect( async () => {
+    useEffect(  () => {
         axios.post("http://localhost:5000/objects", {name: props.match.params.name})
                 .then(res => {
                     setArea(res.data[0]);
@@ -30,7 +30,7 @@ const Home = (props) => {
                 }).catch(() => {
                     setArea({});
                 });
-        }, []
+        }, [props.match.params.name]
     );
 
     //TODO - Page when area not found
@@ -151,4 +151,4 @@ const Home = (props) => {
     );
 };
 
-export default Home;
+export default Area;

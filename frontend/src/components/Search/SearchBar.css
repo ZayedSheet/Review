@@ -13,6 +13,7 @@
 }
 
 form.search input[type=text] {
+    top: 20px;
     padding: 10px;
     font-size: 17px;
     border: 1px solid #0277d7;

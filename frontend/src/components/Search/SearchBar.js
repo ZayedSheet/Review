@@ -43,14 +43,18 @@ const SearchBar = () => {
 
     const searchResults = async (event) => {
         let res;
-        try{
-            res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$'}});
-            setResults(res.data.map((object) => <div>{object.name}</div>));
-            // setResults(res.data);
-        }
-        catch{
-            setResults([]);
-        }
+        console.log(event.target.value);
+        if(event.target.value !== ""){
+            try{
+                res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$'}});
+                setResults(res.data.map((object) =>
+                    <div onClick={() => setResults()}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>));
+                // setResults(res.data);
+            }
+            catch{
+                setResults([]);
+            }
+        }else{setResults()}
     };
     console.log(results);
 

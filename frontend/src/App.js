@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
 import UserContext from "./UserContext";
-import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
-import axios from 'axios';
+import {Route, Switch, useLocation } from 'react-router-dom';
+
 
 //Component for every page on the website
 import Home from './components/Home';
@@ -45,7 +45,7 @@ const App = () => {
     }
 
     useEffect(() => {
-            const getUser = checkLogin(setUser);
+            checkLogin(setUser);
     },[]);
 
     //TODO run asychronously
@@ -64,7 +64,6 @@ const App = () => {
                 {/*Switch Component contains all possible components that
                 may be rendered between the NavBar and the Footer*/}
                 <Switch>
-                  {/*<Route path="/" setLogin={setLogin} setSignup={setSignup} component={Home} exact/>*/}
                       <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
                       <Route path="/Submission" component={Submission}/>
                       <Route path="/Results" component={Results}/>

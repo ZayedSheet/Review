@@ -7,6 +7,12 @@ router.route('/').get((req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/find/byObjectName/:object_name').get((req, res) => {
+    Reviews.find({object_name: req.params.object_name})
+        .then(review => res.json(review))
+        .catch(err => res.status(400).json('Error: ' + err));
+});
+
 // Returns a review given the id
 router.route('/:id').get((req, res) => {
     Reviews.findById(req.params.id)
@@ -17,12 +23,14 @@ router.route('/:id').get((req, res) => {
 router.route('/add').post((req, res) => {
     const username = req.body.username;
     const description = req.body.description;
-    const date = Date.parse(req.body.date);
+    const stars = req.body.stars;
+    const object_name = req.body.object_name;
 
     const newReviews = new Reviews({
         username,
         description,
-        date,
+        stars,
+        object_name
     });
 
     newReviews.save()

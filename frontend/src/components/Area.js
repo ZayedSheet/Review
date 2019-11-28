@@ -1,18 +1,32 @@
 import React, {useState, useEffect} from 'react';
 import './area.css'
 import Star from "./Submission/Star";
+import Review from "./Submission/Review"
 import MapContainer from "./MapContainer";
 import axios from 'axios';
+import AddReviewForm from "./Forms/AddReviewForm";
 
 const Home = (props) => {
 
     const [area, setArea] = useState({});
-    let page;
+    const [reviews, setReviews] = useState(false);
+    const test = [
+        {username: "dom12345", stars : 5, object_name: "DomCity", description: "Such a great city"},
+        {username: "dom12345", stars : 5, object_name: "DomCity", description: "Such a great city"}];
 
-    useEffect( () => {
-            axios.post("http://localhost:5000/objects", {name: props.match.params.name})
+    const getReviews = () => {
+        axios.get("http://localhost:5000/reviews/find/byObjectName/" + props.match.params.name)
+            .then(res =>
+                setReviews(res.data.map(review => <Review username={review.username} stars={review.stars}>
+                    {review.description}
+                </Review>)))
+    };
+
+    useEffect( async () => {
+        axios.post("http://localhost:5000/objects", {name: props.match.params.name})
                 .then(res => {
                     setArea(res.data[0]);
+                    getReviews();
                 }).catch(() => {
                     setArea({});
                 });
@@ -20,6 +34,8 @@ const Home = (props) => {
     );
 
     //TODO - Page when area not found
+
+    let page;
 
     if(area && area.coordinates){
         page = (
@@ -112,53 +128,12 @@ const Home = (props) => {
                 </div>
 
                 <div className="obj-reviews">
-                    <div className="submit-review-form">
-                        <div className="submit-review-border">
-                            <h1>Submit Your Own Review!</h1>
-                            <form className="review-form" action="">
-                                <div className="review-form-item">
-                                    <label>Rating</label>
-                                    <Star value={5}/>
-                                </div>
-                                <div className="review-form-item">
-                                    <label htmlFor="review-title">Title</label>
-                                    <input type="text" id="review-title" name="Title" placeholder=""/>
-                                </div>
-                                <div className="review-form-item">
-                                    <label htmlFor="review-description">Description</label>
-                                    <textarea id="review-description" name="message" rows="100" cols="100"/>
-                                </div>
-                                <div className="review-form-item">
-                                    <input type="submit" value="Submit"/>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+
+                    <AddReviewForm setReviews={setReviews} reviews={reviews}/>
+
                     <div id="reviews" className="obj-review">
                         <div className="obj-review-list">
-                            <li>
-                                <span>Username1</span>
-                                <Star value={5}/>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, pariatur?</p>
-                            </li>
-                            <li>
-                                <span>Username2</span>
-                                <Star value={5}/>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad blanditiis, ipsa culpa
-                                    reprehenderit animi voluptatibus.</p>
-                            </li>
-                            <li>
-                                <span>Username3</span>
-                                <Star value={5}/>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi neque accusamus
-                                    aspernatur optio blanditiis dicta tempore excepturi quibusdam qui incidunt!</p>
-                            </li>
-                            <li>
-                                <span>Username4</span>
-                                <Star value={5}/>
-                                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero quidem sed
-                                    pariatur!</p>
-                            </li>
+                            {reviews}
                         </div>
                     </div>
                 </div>

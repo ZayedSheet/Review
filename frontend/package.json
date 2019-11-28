@@ -13,6 +13,7 @@
     "mongodb-core": "^3.2.7",
     "mongoose-encryption": "^2.0.2",
     "react": "^16.10.2",
+    "react-devtools": "^4.2.0",
     "react-dom": "^16.10.2",
     "react-geolocated": "^3.0.1",
     "react-places-autocomplete": "^7.2.1",

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const reviewsSchema = new Schema({
-    username: { type: String, required: true, unique: true},
+    username: { type: String, required: true}, //TODO make unique
     title: {type:String, required: true},
     description: { type: String, required: true },
     stars: {type: Number, required: true},

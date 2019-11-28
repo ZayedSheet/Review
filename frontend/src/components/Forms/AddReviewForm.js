@@ -11,18 +11,27 @@ const AddReviewForm = (props) => {
     const {user} = useContext(UserContext);
     const {visible, setVisible} = useState(true);
     const {inputs, setInputs, handleInputChange} = useForm(); //retreives functions and state variables from form hook
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (user){
-            axios.post("http://localhost:5000/reviews/add", inputs)
-                .then(() => {
-                    props.setReviews([...props.review,
-                        <Review username={inputs.username} stars={inputs.stars}>
-                            {inputs.description}
-                        </Review>]);
-                    setVisible(false);
-                })
-                .catch(() => alert("Duplicate Review or Improper Format"))
+            try{
+                await axios.post("http://localhost:5000/reviews/add", inputs);
+                props.setReviews([...props.reviews,
+                    <Review username={inputs.username} stars={inputs.stars}>
+                        {inputs.description}
+                    </Review>]);
+            }catch {
+                alert("Duplicate Review or Improper Format")
+            }
+            // axios.post("http://localhost:5000/reviews/add", inputs)
+            //     .then(() => {
+            //         props.setReviews([...props.review,
+            //             <Review username={inputs.username} stars={inputs.stars}>
+            //                 {inputs.description}
+            //             </Review>]);
+            //         setVisible(false);
+            //     })
+            //     .catch(() => alert("Duplicate Review or Improper Format"))
         }else{alert("Not signed in");}
     };
     useEffect(() => {

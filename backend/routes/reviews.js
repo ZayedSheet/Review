@@ -23,11 +23,13 @@ router.route('/:id').get((req, res) => {
 router.route('/add').post((req, res) => {
     const username = req.body.username;
     const description = req.body.description;
+    const title = req.body.title;
     const stars = req.body.stars;
     const object_name = req.body.object_name;
 
     const newReviews = new Reviews({
         username,
+        title,
         description,
         stars,
         object_name

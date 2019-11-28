@@ -3,6 +3,7 @@ import axios from 'axios';
 import useForm from './FormHook';
 import UserContext from "../../UserContext";
 import Star from "../Submission/Star";
+import Review from "../Submission/Review";
 
 
 const AddReviewForm = (props) => {
@@ -11,11 +12,14 @@ const AddReviewForm = (props) => {
     const {visible, setVisible} = useState(true);
     const {inputs, setInputs, handleInputChange} = useForm(); //retreives functions and state variables from form hook
     const handleSubmit = (event) => {
-        event.persist();
+        event.preventDefault();
         if (user){
             axios.post("http://localhost:5000/reviews/add", inputs)
                 .then(() => {
-                    props.setReviews({...props.reviews, inputs});
+                    props.setReviews([...props.review,
+                        <Review username={inputs.username} stars={inputs.stars}>
+                            {inputs.description}
+                        </Review>]);
                     setVisible(false);
                 })
                 .catch(() => alert("Duplicate Review or Improper Format"))
@@ -23,8 +27,10 @@ const AddReviewForm = (props) => {
     };
     useEffect(() => {
         let username = user.username ? user.username : false;
-        setInputs({...inputs, username: username, stars:5});
+        setInputs({...inputs, username: username, stars:5, object_name: props.objectname});
     },[user]);
+
+    console.log(inputs);
 
     let reviewForm = (
         <div className="submit-review-border">

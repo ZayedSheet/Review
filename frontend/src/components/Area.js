@@ -129,7 +129,7 @@ const Home = (props) => {
 
                 <div className="obj-reviews">
 
-                    <AddReviewForm setReviews={setReviews} reviews={reviews}/>
+                    <AddReviewForm objectname={area.name} setReviews={setReviews} reviews={reviews}/>
 
                     <div id="reviews" className="obj-review">
                         <div className="obj-review-list">

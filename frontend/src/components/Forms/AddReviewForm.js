@@ -9,13 +9,14 @@ import Review from "../Submission/Review";
 const AddReviewForm = (props) => {
 
     const {user} = useContext(UserContext);
-    const {visible, setVisible} = useState(true);
+    const [visibility, setVisible] = useState(true);
     const {inputs, setInputs, handleInputChange} = useForm(); //retreives functions and state variables from form hook
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (user){
             try{
                 await axios.post("http://localhost:5000/reviews/add", inputs);
+                setVisible(false);
                 props.setReviews([...props.reviews,
                     <Review username={inputs.username} stars={inputs.stars}>
                         {inputs.description}
@@ -64,7 +65,7 @@ const AddReviewForm = (props) => {
         </div>
     );
 
-    if (visible) {
+    if (!visibility) {
         reviewForm = (
             <div className="submit-review-border">
                 <h1>Review Submitted</h1>

@@ -20,7 +20,7 @@ const SearchBar = () => {
     coordinates set to false until user searches by location
      */
     const [locationToggled, updateToggle] = useState(false);
-    const [centerCoords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
+    const [centerCoords, updateLongitude] = useState(false);
     const [style, locationEnabled] = useState({color: "#cccccc"});
     const [results, setResults] = useState([]); //variable for storing search results
     const [resultVisible, setVisible] = useState(false); //variable for if search results are visible or not
@@ -38,7 +38,7 @@ const SearchBar = () => {
         else{ //if search by location is already toggled or geolocation doesn't work on this browser
             locationEnabled({color :"#cccccc"});
             updateToggle(false);
-            updateLongitude( { lat: 43.0896, lng: -79.0849}); //sets location back to niagara
+            updateLongitude(false); //sets location back to niagara
         }
     };
 

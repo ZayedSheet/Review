@@ -22,39 +22,29 @@ export const MapContainer = (props) => {
      * Highlights a list-item on the search results page when a Marker is clicked
      * @param item the id of the list-item to be highlighted
      */
-    const handleClick = (item) =>{
-        const listItems = document.getElementsByClassName("list-item");
-        /*
-        Traverses through all list item,
-         the list-item with id = item is highlighted, the rest are given another colour
-         */
-        for(let i = 0; i < listItems.length; i++){
-            if(listItems.item(i).id === item) listItems.item(i).style.backgroundColor = "white";
-            else listItems.item(i).style.backgroundColor = "#547ec2";
-        }
-    };
-        return (
-            //Google Maps Component centered at the passed in property of center
-            <Map google={props.google} zoom={10} style={mapStyles} initialCenter={props.center}>
+    // const handleClick = (item) =>{
+    //     const listItems = document.getElementsByClassName("list-item");
+    //     /*
+    //     Traverses through all list item,
+    //      the list-item with id = item is highlighted, the rest are given another colour
+    //      */
+    //     for(let i = 0; i < listItems.length; i++){
+    //         if(listItems.item(i).id === item) listItems.item(i).style.backgroundColor = "white";
+    //         else listItems.item(i).style.backgroundColor = "#547ec2";
+    //     }
+    // };
 
-                {/*Markers on the map on specific coordinates,
-                onClick will highlight a specific item id in the list-view (only applicable of search results page*/}
-                {/*<Marker*/}
-                {/*    position={{ lat: 43.256531, lng: -79.874420}}*/}
-                {/*    onClick={() => handleClick("item2")}/>*/}
-                {/*<Marker*/}
-                {/*    position={{ lat: 43.0896, lng: -79.0849}}*/}
-                {/*    onClick={() => handleClick("item1")}/>*/}
-                {/*<Marker*/}
-                {/*    position={{ lat: 44.3894, lng: -79.6903}}*/}
-                {/*    onClick={() => handleClick("item3")}/>*/}
-                {props.marker && props.marker.map(item => {
-                    return <Marker position={{lat: item.coordinates.latitude, lng: item.coordinates.longitude}}/>
-                })}
 
-            </Map>
+    return (
+        //Google Maps Component centered at the passed in property of center
+        <Map google={props.google} zoom={10} style={mapStyles} center={props.center} initialCenter={props.center}>
+            {props.marker && props.marker.map(item => {
+                return <Marker position={{lat: item.coordinates.latitude, lng: item.coordinates.longitude}}/>
+            })}
 
-        );
+        </Map>
+
+    );
 };
 
 export default GoogleApiWrapper({

@@ -32,8 +32,6 @@ const Results = (props) => {
         }
     },[location.state.searchResults]);
 
-    if(results){console.log(results[0].coordinates.longitude)};
-
 
 
 
@@ -57,7 +55,7 @@ const Results = (props) => {
             The map is centered at the users location if they search by location, or a default location otherwise*/}
             <div className="map-view">
                 <MapContainer
-                    center={location.state.centerCoords ? location.state.centerCoords : (results[0] ? {lat: results[0].coordinates.latitude, lng:results[0].coordinates.longitude} : {lat: 43.0896, lng: -79.0849})}
+                    center={location.state.centerCoords ? location.state.centerCoords : (results && results[0] ? {lat: results[0].coordinates.latitude, lng:results[0].coordinates.longitude} : {lat: 43.0896, lng: -79.0849})}
                     marker={results ? results : null}
                 />
             </div>

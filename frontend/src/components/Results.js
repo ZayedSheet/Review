@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {useLocation} from 'react-router-dom';
 import './results.css'
 
@@ -23,19 +23,16 @@ const toggleMap = () => {
  */
 const Results = (props) => {
     const location = useLocation();
-    const [results] = useState([
-        {to: "../Area/niagara", id:"item1", stars: 5, title:"Niagara Region",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, optio!"},
-        {to: "../Area/hamilton", id:"item2", stars: 3, title:"Hamilton",
-            description: "Hamilton features many types of factories: " +
-                "Big factories, small factories, and even medium factories."},
-        {to: "../Area/barrie", id:"item3", stars: 4, title:"Barrie",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."},
-        {to: "../Area/barrie", id:"item3", stars: 4, title:"Barrie",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."},
-        {to: "../Area/barrie", id:"item3", stars: 1, title:"Barrie",
-            description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque esse placeat suscipit."}
-    ]);
+    const [results, setResults] = useState(null);
+
+    useEffect(() => {
+        if(location.state.searchResults){
+            console.log("Results", location.state.searchResults);
+            setResults(location.state.searchResults);
+        }
+    },[location.state.searchResults]);
+
+
 
 
     return (
@@ -46,9 +43,9 @@ const Results = (props) => {
 
                 {/* Each element in the list is a search result displayed as a ListItem Component*/}
                 <ul>
-                    {results.map(item => {
-                        return <ListItem to={item.to} id={item.id} stars={item.stars} title={item.title}>
-                            {item.description}
+                    {results && results.map(item => {
+                        return <ListItem to={"../Area/" + item.name} stars={5} title={item.name}>
+                            {item.overview}
                         </ListItem>
                     })}
                 </ul>

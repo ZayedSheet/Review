@@ -14,7 +14,7 @@ const mapStyles = {
  * @returns A map component
  */
 export const MapContainer = (props) => {
-    console.log(props);
+    // console.log(props);
 
     /**
      * Highlights a list-item on the search results page when a Marker is clicked

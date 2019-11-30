@@ -7,6 +7,7 @@ Nav Link Component allows links to be added to change the current page.
 In other words, change the component in the App.js switch statement
  */
 import {NavLink} from "react-router-dom";
+import ListItem from "../Submission/ListItem";
 
 /**
  * General search bar to search the website for objects
@@ -47,16 +48,16 @@ const SearchBar = () => {
         if(event.target.value !== ""){
             try{
                 res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$'}});
-                setResults(res.data.map((object) =>
-                    <div onClick={() => setResults()}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>));
-                // setResults(res.data);
+                // setResults(res.data.map((object) =>
+                //     <div onClick={() => setResults()}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>));
+                setResults(res.data);
             }
             catch{
                 setResults([]);
             }
         }else{setResults()}
     };
-    console.log(results);
+    // console.log(results);
 
     /**
      * Initializes the coordinates of the user, and displays them to the user
@@ -83,12 +84,16 @@ const SearchBar = () => {
             <NavLink className="search-button" to={{
                 pathname: '/Results',
                 state: { //props for the results page. This tells the page where to initially center the map
-                    centerCoords: centerCoords
+                    centerCoords: centerCoords,
+                    searchResults: results
                 }
             }} type="button">
                 <i className="fa fa-search"/>
             </NavLink>
-            <div className={"results"}>{results}</div>
+            <div className={"results"}>
+                {results && results.map(object => {
+                    return <div onClick={() => setResults()}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>})}
+            </div>
         </form>
     );
 };

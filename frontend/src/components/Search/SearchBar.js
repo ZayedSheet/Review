@@ -81,7 +81,7 @@ const SearchBar = () => {
                 <i style={style} className="fas fa-location-arrow"/>
             </div>
             {/*Search button*/}
-            <NavLink className="search-button" to={{
+            <NavLink onClick={()=> setResults()} className="search-button" to={{
                 pathname: '/Results',
                 state: { //props for the results page. This tells the page where to initially center the map
                     centerCoords: centerCoords,

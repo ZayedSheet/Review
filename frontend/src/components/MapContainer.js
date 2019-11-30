@@ -1,5 +1,6 @@
 import React from 'react';
-import { Map, GoogleApiWrapper, Marker} from 'google-maps-react'; //Google Maps API imports
+import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
+import ListItem from "./Submission/ListItem"; //Google Maps API imports
 
 // Style for a map, map will always take the entire container
 const mapStyles = {
@@ -14,7 +15,8 @@ const mapStyles = {
  * @returns A map component
  */
 export const MapContainer = (props) => {
-    // console.log(props);
+    console.log("center", props.center);
+
 
     /**
      * Highlights a list-item on the search results page when a Marker is clicked
@@ -37,15 +39,19 @@ export const MapContainer = (props) => {
 
                 {/*Markers on the map on specific coordinates,
                 onClick will highlight a specific item id in the list-view (only applicable of search results page*/}
-                <Marker
-                    position={{ lat: 43.256531, lng: -79.874420}}
-                    onClick={() => handleClick("item2")}/>
-                <Marker
-                    position={{ lat: 43.0896, lng: -79.0849}}
-                    onClick={() => handleClick("item1")}/>
-                <Marker
-                    position={{ lat: 44.3894, lng: -79.6903}}
-                    onClick={() => handleClick("item3")}/>
+                {/*<Marker*/}
+                {/*    position={{ lat: 43.256531, lng: -79.874420}}*/}
+                {/*    onClick={() => handleClick("item2")}/>*/}
+                {/*<Marker*/}
+                {/*    position={{ lat: 43.0896, lng: -79.0849}}*/}
+                {/*    onClick={() => handleClick("item1")}/>*/}
+                {/*<Marker*/}
+                {/*    position={{ lat: 44.3894, lng: -79.6903}}*/}
+                {/*    onClick={() => handleClick("item3")}/>*/}
+                {props.marker && props.marker.map(item => {
+                    return <Marker position={{lat: item.coordinates.latitude, lng: item.coordinates.longitude}}/>
+                })}
+
             </Map>
 
         );

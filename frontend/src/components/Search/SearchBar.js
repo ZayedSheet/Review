@@ -22,7 +22,8 @@ const SearchBar = () => {
     const [locationToggled, updateToggle] = useState(false);
     const [centerCoords, updateLongitude] = useState({ lat: 43.0896, lng: -79.0849}); //set initial location to niagara falls
     const [style, locationEnabled] = useState({color: "#cccccc"});
-    const [results, setResults] = useState(null);
+    const [results, setResults] = useState([]); //variable for storing search results
+    const [resultVisible, setVisible] = useState(false); //variable for if search results are visible or not
 
 
     /**
@@ -35,29 +36,28 @@ const SearchBar = () => {
             navigator.geolocation.getCurrentPosition(getPosition);
         }
         else{ //if search by location is already toggled or geolocation doesn't work on this browser
-            let searchByGeoElement = document.querySelectorAll(".search .fa-location-arrow"); //sets search by location icon back to grey
             locationEnabled({color :"#cccccc"});
             updateToggle(false);
             updateLongitude( { lat: 43.0896, lng: -79.0849}); //sets location back to niagara
         }
     };
 
+    /**
+     * function for setting the state of search results
+     */
     const searchResults = async (event) => {
         let res;
-        console.log(event.target.value);
-        if(event.target.value !== ""){
-            try{
+        setVisible(true); //search results become visible
+        if(event.target.value !== ""){ //if search field is not empty (regex matches empty string to everything)
+            try{//sends request to server to retrieve objects that match the search
                 res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$'}});
-                // setResults(res.data.map((object) =>
-                //     <div onClick={() => setResults()}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>));
                 setResults(res.data);
             }
             catch{
                 setResults([]);
             }
-        }else{setResults()}
+        }else{setResults()} //if search field is empty set results to nothing
     };
-    // console.log(results);
 
     /**
      * Initializes the coordinates of the user, and displays them to the user
@@ -81,7 +81,7 @@ const SearchBar = () => {
                 <i style={style} className="fas fa-location-arrow"/>
             </div>
             {/*Search button*/}
-            <NavLink onClick={()=> setResults()} className="search-button" to={{
+            <NavLink onClick={()=> setVisible(false)} className="search-button" to={{
                 pathname: '/Results',
                 state: { //props for the results page. This tells the page where to initially center the map
                     centerCoords: centerCoords,
@@ -91,8 +91,9 @@ const SearchBar = () => {
                 <i className="fa fa-search"/>
             </NavLink>
             <div className={"results"}>
-                {results && results.map(object => {
-                    return <div onClick={() => setResults()}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>})}
+                {/*if resultVisible is true and results is not empty, then map each object in results to be a div*/}
+                {resultVisible && results && results.map(object => {
+                    return <div onClick={() => setVisible(false)}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>})}
             </div>
         </form>
     );

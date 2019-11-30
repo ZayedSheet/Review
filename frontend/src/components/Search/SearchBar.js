@@ -19,8 +19,7 @@ const SearchBar = () => {
     Variables for geolocation functionality,
     coordinates set to false until user searches by location
      */
-    const [locationToggled, updateToggle] = useState(false);
-    const [centerCoords, updateLongitude] = useState(false);
+    const [centerCoords, updateCoords] = useState(false);
     const [style, locationEnabled] = useState({color: "#cccccc"});
     const [results, setResults] = useState([]); //variable for storing search results
     const [resultVisible, setVisible] = useState(false); //variable for if search results are visible or not
@@ -29,18 +28,28 @@ const SearchBar = () => {
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
      * Sets locationToggled to true if the option is enabled
-     * Initializes the coordinates of the user via the getPosition function
+     * Initializes the coordinates of
+     * the user via the getPosition function
      */
     const isToggled = () => {
-        if (navigator.geolocation && !locationToggled){
+        if (navigator.geolocation && !centerCoords){
             navigator.geolocation.getCurrentPosition(getPosition);
         }
         else{ //if search by location is already toggled or geolocation doesn't work on this browser
             locationEnabled({color :"#cccccc"});
-            updateToggle(false);
-            updateLongitude(false); //sets location back to niagara
+            updateCoords(false); //sets location back to niagara
         }
     };
+
+    /**
+     * Initializes the coordinates of the user, and displays them to the user
+     * @param position The longitude and latitude of the user,
+     * obtained from the geoLoaction api.
+     */
+    function getPosition(position) {
+        updateCoords( {lat:position.coords.latitude, lng:position.coords.longitude});
+        locationEnabled({color :"#0b7dda"});
+    }
 
     /**
      * function for setting the state of search results
@@ -59,16 +68,6 @@ const SearchBar = () => {
         }else{setResults()} //if search field is empty set results to nothing
     };
 
-    /**
-     * Initializes the coordinates of the user, and displays them to the user
-     * @param position The longitude and latitude of the user,
-     * obtained from the geoLoaction api.
-     */
-    function getPosition(position) {
-        updateLongitude( {lat:position.coords.latitude, lng:position.coords.longitude});
-        locationEnabled({color :"#0b7dda"});
-        updateToggle(true);
-    }
 
     return(
         //Container for the entire search bar

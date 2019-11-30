@@ -7,7 +7,6 @@ Nav Link Component allows links to be added to change the current page.
 In other words, change the component in the App.js switch statement
  */
 import {NavLink} from "react-router-dom";
-import ListItem from "../Submission/ListItem";
 
 /**
  * General search bar to search the website for objects
@@ -59,7 +58,7 @@ const SearchBar = () => {
         setVisible(true); //search results become visible
         if(event.target.value !== ""){ //if search field is not empty (regex matches empty string to everything)
             try{//sends request to server to retrieve objects that match the search
-                res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$'}});
+                res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$', $options: "i"}});
                 setResults(res.data);
             }
             catch{

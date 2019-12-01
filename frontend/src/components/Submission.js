@@ -3,36 +3,56 @@ import axios from 'axios';
 import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
 import LocationSearch from './Search/LocationSearch'
+import {uploadFile} from 'react-s3'
+
+
+const config = {
+    bucketName: 'review-bucket-react',
+    dirName: 'objects',
+    region: 'us-east-2',
+    accessKeyId: 'AKIAIV2EZR6A7O32HP4Q',
+    secretAccessKey: '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',
+};
 
 /**
  * Submission page where users can add an area (a object) to the website
  * @returns A Submission Page Component
  */
 const Submission = () => {
-
     const {inputs, handleInputChange, setInputs} = useForm(); //retrieves the following functions and state variables from the form hook
     const {user} = useContext(UserContext);
+    let file;
 
     useEffect(() => {
         setInputs({country: "CA"})
     }, []);
 
+    const upload = () => {
+        let upFile = new File(file, inputs.name + ".png");
+        uploadFile(upFile, config).then(data => console.log(data)).catch(err => console.error(err));
+    };
+    const getFile = (event) => {
+        file = event.target.files;
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(inputs);
         if (user) {
             axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
-                .then(res => console.log(res.data))
+                .then(res => {
+                    console.log(res.data)
+                    upload();
+                })
                 .catch(res => console.log(res.message));
         }
         else {
             alert("no user");
         }
     };
+
     /*
-    Coordinates (longitude and latitude) of the user,
-    set the false until the button is clicked to retrieve them
+    Coordinates (longitude and latitude) of the user, set the false until the button is clicked to retrieve them
      */
     let coords = {longitude: false, latitude:false};
 
@@ -62,7 +82,6 @@ const Submission = () => {
             inputs => ({...inputs, latitude: coords.latitude, longitude: coords.longitude})
         );
     }
-
     const addressComplete = (
         <>
             <div>
@@ -371,7 +390,8 @@ const Submission = () => {
             {/*Input for a picture upload section for the form*/}
             <div>
                 <label htmlFor="pic">Picture</label>
-                <input type="file" id="pic" name="pic" accept="image/*"/>
+                {/*{picForm}*/}
+                <input onChange={getFile} type="file" id="pic" name="pic" accept="image/*"/>
             </div>
             <input type="submit" value="Submit"/>
         </form>

@@ -34,7 +34,7 @@ const Results = (props) => {
 
 
 
-
+    console.log(location.state.centerCoords)
     return (
         //Empty container for all elements as JSX does not allow adjacent elements
         <>

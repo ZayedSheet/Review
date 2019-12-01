@@ -38,7 +38,7 @@ export const MapContainer = (props) => {
     return (
         //Google Maps Component centered at the passed in property of center
         <Map google={props.google} zoom={10} style={mapStyles} center={props.center} initialCenter={props.center}>
-            {props.marker && props.marker.map(item => {
+            {props.marker && props.marker.map(item => {//takes the marker prop (list of area objects) and creates a marker from every lat and longitude
                 return <Marker position={{lat: item.coordinates.latitude, lng: item.coordinates.longitude}}/>
             })}
 

@@ -13,9 +13,6 @@ const Area = (props) => {
 
     const [area, setArea] = useState({});
     const [reviews, setReviews] = useState(false);
-    const test = [
-        {username: "dom12345", stars : 5, object_name: "DomCity", description: "Such a great city"},
-        {username: "dom12345", stars : 5, object_name: "DomCity", description: "Such a great city"}];
 
     const getReviews = () => {
         axios.get("http://localhost:5000/reviews/find/byObjectName/" + props.match.params.name)

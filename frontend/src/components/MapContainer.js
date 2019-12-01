@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
-import ListItem from "./Submission/ListItem"; //Google Maps API imports
+import config from '../../config'
 
 // Style for a map, map will always take the entire container
 const mapStyles = {
@@ -48,5 +48,5 @@ export const MapContainer = (props) => {
 };
 
 export default GoogleApiWrapper({
-    apiKey: 'AIzaSyDZ-7P4_Z6trtzAZgL3s_Oq3SEY_Q8TKzw'
+    apiKey: config.GOOGLE.API_KEY
 })(MapContainer);

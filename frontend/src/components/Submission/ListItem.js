@@ -18,6 +18,9 @@ const linkStyle = {
  * @returns A list Item component
  */
 const ListItem = (props) => {
+
+    let photoUrl = "https://review-bucket-react.s3.us-east-2.amazonaws.com/objects/" + props.title + ".png";
+
     return(
         //Entire list item is contained in a NavLink to make the entire component clickable to change pages
         <NavLink to={props.to} style={linkStyle}>
@@ -26,7 +29,7 @@ const ListItem = (props) => {
             <li id={props.id} className="list-item">
 
                 {/*The image is contained in this div*/}
-                <div className="item-image"/>
+                <div style={{backgroundImage: "url(" + photoUrl + ")"}} className="item-image"/>
 
                 {/*Container for description, rating, and description*/}
                 <div>

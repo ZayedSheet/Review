@@ -17,11 +17,9 @@ const toggleMap = () => {
 
 /**
  * Page that displays search results
- * @param props properties of the component
- *              props.location.locationProps is used by the searchBar to center the map if searched by location
  * @returns A Results Component
  */
-const Results = (props) => {
+const Results = () => {
     const location = useLocation();
     const [results, setResults] = useState(null); //state for storing results from searchbar
 

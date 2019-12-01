@@ -34,16 +34,18 @@ const Submission = () => {
         file = event.target.files;
     };
 
+    /**
+     * Function that handles the form's submit
+     * @param event submit event
+     */
     const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(inputs);
-        if (user) {
+        event.preventDefault(); //prevents default form submit action
+        if (user) { //if user is logged in, sends post request to server with inputs from form hook as input, and coordinates object appended to it
             axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
                 .then(res => {
-                    console.log(res.data)
                     upload();
                 })
-                .catch(res => console.log(res.message));
+                .catch(res => console.log(res.message)); //if an issue with posting occurs, log the message
         }
         else {
             alert("no user");

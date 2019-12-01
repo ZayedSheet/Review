@@ -27,13 +27,13 @@ router.route('/signin').post((req,res) => {
             console.log('err 2:', err);
             return res.send({
                 success: false,
-                message: 'Error: server error'
+                message: 'Error: Server Error, User May Not Exist'
             });
         }
         if (users.length !== 1) {//if there is more than one person with that username
             return res.send({
                 success: false,
-                message: 'Error: Invalid'
+                message: 'Error: Server Error'
             });
         }
 
@@ -41,7 +41,7 @@ router.route('/signin').post((req,res) => {
         if (!user.validPassword(password)) {
             return res.send({
                 success: false,
-                message: 'Error: Invalid'
+                message: 'Error: Invalid Password'
             });
         }
         // Otherwise correct user

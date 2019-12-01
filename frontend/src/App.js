@@ -26,34 +26,34 @@ import {checkLogin} from "./checkLogin";
  */
 const App = () => {
 
-    const[user,setUser] = useState(false);
-    const [signup, setSignup] = useState(false);
-    const [login, setLogin] = useState(false);
-    let location = useLocation();
+    const[user,setUser] = useState(false); //state to set the user if user is logged in
+    const [signup, setSignup] = useState(false); //state for signup form visiblity
+    const [login, setLogin] = useState(false);//state for login form visibility
+    let location = useLocation(); //location variable for website location information
 
     let form;
-    if(signup){form =
+    if(signup){form = // if signup state is true, set up signup form for render
             <div id="signup" className="signup">
                 <SignupForm setLogin={setLogin} setSignup={setSignup}/>
             </div>
     }
 
-    if(login){form =
+    if(login){form = //if login state is true, set up login form for render
         <div id="login" className="login">
             <LoginForm setLogin={setLogin}/>
         </div>
     }
 
     useEffect(() => {
-            checkLogin(setUser);
+            checkLogin(setUser); // runs the checklogin function and passes the user state as a parameter
     },[]);
 
     //TODO run asychronously
     useEffect(() => {
-        if(!user && location.pathname.match(/\/Submission.*/)){
-            setLogin(true);
+        if(!user && location.pathname.match(/\/Submission.*/)){ //checks if user is not signed in and is viewing submission page
+            setLogin(true); //displays login form
         }
-    },[location.pathname, user]);
+    },[location.pathname, user]); //effect runs when user logs in or logs out or changes pages
 
     return (
       // BrowseRouter Enables switching between components via NavLink Components

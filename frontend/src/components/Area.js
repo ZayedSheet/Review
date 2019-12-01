@@ -22,14 +22,21 @@ const Area = (props) => {
                 </Review>)))
     };
 
-    useEffect(  () => {
+    const getObject = () => {
         axios.post("http://localhost:5000/objects", {name: props.match.params.name})
-                .then(res => {
-                    setArea(res.data[0]);
-                    getReviews();
-                }).catch(() => {
-                    setArea({});
-                });
+            .then(res => {
+                setArea(res.data[0]);
+            }).catch(() => {
+            setArea({});
+        });
+    };
+
+    useEffect(  () => {
+        const getValues = async () => {
+            await getObject();
+            getReviews();
+        };
+        getValues().then();
         }, [props.match.params.name]
     );
 
@@ -45,6 +52,12 @@ const Area = (props) => {
     };
 
     if(area && area.coordinates){
+        const totalReviews = area.rating.one + area.rating.two + area.rating.three + area.rating.four + area.rating.five;
+        const oneStarPercent = Math.round(area.rating.one/totalReviews * 100) || 0;
+        const twoStarPercent = Math.round(area.rating.two/totalReviews * 100) || 0;
+        const threeStarPercent = Math.round(area.rating.three/totalReviews * 100) || 0;
+        const fourStarPercent = Math.round(area.rating.four/totalReviews * 100) || 0;
+        const fiveStarPercent = Math.round(area.rating.five/totalReviews * 100) || 0;
         page = (
             <>
                 <div className="description">
@@ -60,7 +73,7 @@ const Area = (props) => {
                 <div className="obj-overview-content">
                     <div id="remove-style" className="obj-pictures">
                         <div style={photoStyle} className="overview-main-image">
-                            <h1>Photo (22)</h1>
+                            <h1>Photo (1)</h1>
                         </div>
                         <div className="side-image overview-side-image1"/>
                         <div className="side-image overview-side-image2"/>
@@ -70,30 +83,35 @@ const Area = (props) => {
                         <h1>Review Overview</h1>
                         <div className="obj-overview-rating">
             <span>Rating
-            <Star value={5}/>
+            <Star value={Math.round(area.rating.average)}/>
             </span>
-                            <a href="#reviews" className="obj-overview-rating-allreviews"> 39 Reviews</a>
+                            <a className="obj-overview-rating-allreviews">{totalReviews}</a>
                         </div>
                         <div className="obj-overview-list">
                             <li>
                                 <div className="active-review left-style five-overview ">5 Star Reviews</div>
-                                <div className="right-style five-overview-bar">95%</div>
+                                <div style={{backgroundSize: fiveStarPercent + "% 100%"}}
+                                    className="right-style overview-bar">{fiveStarPercent}%</div>
                             </li>
                             <li>
                                 <div className="left-style four-overview">4 Star Reviews</div>
-                                <div className="right-style four-overview-bar">5%</div>
+                                <div style={{backgroundSize: fourStarPercent + "% 100%"}}
+                                    className="right-style overview-bar">{fourStarPercent}%</div>
                             </li>
                             <li>
                                 <div className="left-style three-overview">3 Star Reviews</div>
-                                <div className="right-style three-overview-bar">0%</div>
+                                <div style={{backgroundSize: threeStarPercent + "% 100%"}}
+                                    className="right-style overview-bar">{threeStarPercent}%</div>
                             </li>
                             <li>
                                 <div className="left-style two-overview">2 Star Reviews</div>
-                                <div className="right-style two-overview-bar">0%</div>
+                                <div style={{backgroundSize: twoStarPercent + "% 100%"}}
+                                     className="right-style overview-bar">{twoStarPercent}%</div>
                             </li>
                             <li>
                                 <div className="left-style one-overview">1 Star Reviews</div>
-                                <div className="right-style one-overview-bar">0%</div>
+                                <div style={{backgroundSize: oneStarPercent + "% 100%"}}
+                                     className="right-style overview-bar">{oneStarPercent}%</div>
                             </li>
                         </div>
                         <div className="obj-overview-reviews">
@@ -138,7 +156,7 @@ const Area = (props) => {
 
                 <div className="obj-reviews">
 
-                    <AddReviewForm objectname={area.name} setReviews={setReviews} reviews={reviews}/>
+                    <AddReviewForm objectname={area.name} updateObject={getObject} setReviews={setReviews} reviews={reviews}/>
 
                     <div id="reviews" className="obj-review">
                         <div className="obj-review-list">

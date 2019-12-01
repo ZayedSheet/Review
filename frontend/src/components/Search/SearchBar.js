@@ -67,12 +67,17 @@ const SearchBar = () => {
         }else{setResults()} //if search field is empty set results to nothing
     };
 
+    const pressedEnter = (event) => {
+        if(event.keyCode === 13){
+            event.preventDefault();
+        }
+    };
 
     return(
         //Container for the entire search bar
         <form className={"search"}>
             {/*Input text field*/}
-            <input autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
+            <input onKeyDown={pressedEnter} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
             {/*Container for the search by location button,
             when clicked it toggles search by location and sets the coords*/}
             <div onClick={isToggled} title="Click me to toggle search by location!" className={"search-location-button"}>

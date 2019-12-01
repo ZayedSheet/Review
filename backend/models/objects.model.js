@@ -13,12 +13,12 @@ const objectsSchema = new Schema({
             longitude: {type: Number, required: true}
     },
     rating: {
-        one: {type: Number},
-        two: {type: Number},
-        three: {type: Number},
-        four: {type: Number},
-        five: {type: Number},
-        average: {type: Number}
+        one: {type: Number, default: 0},
+        two: {type: Number, default: 0},
+        three: {type: Number, default: 0},
+        four: {type: Number, default: 0},
+        five: {type: Number, default: 0},
+        average: {type: Number, default: 0}
     }
 });
 

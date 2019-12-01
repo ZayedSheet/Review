@@ -39,7 +39,7 @@ const Results = () => {
                 {/* Each element in the list is a search result displayed as a ListItem Component*/}
                 <ul>
                     {results && results.map(item => { //maps each item in results to be a listItem
-                        return <ListItem to={"../Area/" + item.name} stars={5} title={item.name}>
+                        return <ListItem to={"../Area/" + item.name} stars={Math.round(item.rating.average)} title={item.name}>
                             {item.overview}
                         </ListItem>
                     })}

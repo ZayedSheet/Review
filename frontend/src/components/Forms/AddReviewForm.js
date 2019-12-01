@@ -2,7 +2,6 @@ import React, {useState, useContext, useEffect} from 'react'
 import axios from 'axios';
 import useForm from './FormHook';
 import UserContext from "../../UserContext";
-import Star from "../Submission/Star";
 import Review from "../Submission/Review";
 
 
@@ -23,18 +22,10 @@ const AddReviewForm = (props) => {
                     <Review username={inputs.username} stars={inputs.stars}>
                         {inputs.description}
                     </Review>]);
+                props.updateObject();
             }catch {
                 alert("Duplicate Review or Improper Format")
             }
-            // axios.post("http://localhost:5000/reviews/add", inputs)
-            //     .then(() => {
-            //         props.setReviews([...props.review,
-            //             <Review username={inputs.username} stars={inputs.stars}>
-            //                 {inputs.description}
-            //             </Review>]);
-            //         setVisible(false);
-            //     })
-            //     .catch(() => alert("Duplicate Review or Improper Format"))
         }else{alert("Not signed in");}
     };
     useEffect(() => {
@@ -42,17 +33,10 @@ const AddReviewForm = (props) => {
         setInputs({...inputs, username: username, object_name: props.objectname});
     },[user]);
 
-    console.log(inputs);
-
-    const handleClick = (event) => {
-        console.log(event.target.id);
-        setInputs({...inputs, stars: event.target.name});
-    };
-
     let starRating = [];
     for(let i = 5; i > 0 ; i--) {
         starRating.push(<i
-            onClick={(event) => {setStars(i); setInputs({...inputs, stars: i})}}
+            onClick={() => {setStars(i); setInputs({...inputs, stars: i})}}
             onMouseEnter={() => setStars(i)}
             onMouseLeave={() => setStars(inputs.stars)}
             style={{color: i < stars + 1 ? "gold" : "grey"}}

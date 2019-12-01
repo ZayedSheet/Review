@@ -42,60 +42,26 @@ router.route('/add').post((req, res) => {
     });
 
     //updates the average and number of ratings in object collection
+    console.log("reviews: updating object");
     Object.findOne({name: object_name}) //finds the object
         .then(object => {
             let numRatings = object.rating.one + object.rating.two + object.rating.three + object.rating.four + object.rating.five; //gets total number of ratings
             let curAverage = object.rating.average; //gets the average rating
-            let newAverage;
-            switch(stars) { //switch statement based off how many stars the submitted review has
-                case 1:
-                    newAverage = (curAverage * numRatings + 1)/ (numRatings + 1); //sets the new average rating
-                    Object.findOneAndUpdate( //finds the object
-                        {name: object_name},
-                        {
-                            $inc: {"rating.one": 1}, //increments rating.one by one
-                            $set: {"rating.average": newAverage} //sets the new average rating
-                        });
-                    break;
-                case 2:
-                    newAverage = (curAverage * numRatings + 2)/ (numRatings + 1);
-                    Object.update(
-                        {name: object_name},
-                        {
-                            $inc: {"rating.two": 1},
-                            $set: {"rating.average": newAverage}
-                        });
-                    break;
-                case 3:
-                    newAverage = (curAverage * numRatings + 3)/ (numRatings + 1);
-                    Object.update(
-                        {name: object_name},
-                        {
-                            $inc: {"rating.three": 1},
-                            $set: {"rating.average": newAverage}
-                        });
-                    break;
-                case 4:
-                    newAverage = (curAverage * numRatings + 4)/ (numRatings + 1);
-                    Object.update(
-                        {name: object_name},
-                        {
-                            $inc: {"rating.four": 1},
-                            $set: {"rating.average": newAverage}
-                        });
-                    break;
-                case 5:
-                    newAverage = (curAverage * numRatings + 5)/ (numRatings + 1);
-                    Object.update(
-                        {name: object_name},
-                        {
-                            $inc: {"rating.five": 1},
-                            $set: {"rating.average": newAverage}
-                        });
-                    break;
-                default:
-                    break;
+            let newAverage = (curAverage * numRatings + stars)/(numRatings + 1);
+            let newRating = "rating.zero";
+
+            switch(stars){
+                case 1: newRating = "rating.one"; break;
+                case 2: newRating = "rating.two"; break;
+                case 3: newRating = "rating.three"; break;
+                case 4: newRating = "rating.four"; break;
+                case 5: newRating = "rating.five"; break;
             }
+
+            Object.findOneAndUpdate({name: object_name},
+                {$inc: {[newRating]: 1}, $set: {"rating.average": newAverage}},
+                (error,doc) => {if(error) console.log("ERROR"); console.log(doc)}
+                );
         })
         .catch(err => res.status(400).json('Error: ' + err));
 

@@ -4,7 +4,7 @@ import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
 import LocationSearch from './Search/LocationSearch'
 import {uploadFile} from 'react-s3'
-import aws from '../../config'
+import aws from '../config'
 
 
 const config = {
@@ -43,8 +43,9 @@ const Submission = () => {
         event.preventDefault(); //prevents default form submit action
         if (user) { //if user is logged in, sends post request to server with inputs from form hook as input, and coordinates object appended to it
             axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
-                .then(res => {
+                .then(() => {
                     upload();
+                    alert("Object Added!")
                 })
                 .catch(res => console.log(res.message)); //if an issue with posting occurs, log the message
         }
@@ -378,7 +379,7 @@ const Submission = () => {
             {/*Input for a general overview/description of the object*/}
             <div>
                 <label htmlFor="areaOverview">Overview</label>
-                <input onChange={handleInputChange} type="text" name="overview" placeholder="Short overview on the area..."/><br/>
+                <input onChange={handleInputChange} type="text" name="overview" required={true} placeholder="Short overview on the area..."/><br/>
             </div>
             {/*Inputs of the coordinates of the object,
             can be autofilled via geolocation api*/}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker} from 'google-maps-react';
-import config from '../../config'
+import config from '../config'
 
 // Style for a map, map will always take the entire container
 const mapStyles = {

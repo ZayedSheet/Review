@@ -51,7 +51,7 @@ const LocationSearchInput = (props) => {
         <PlacesAutocomplete value={address} onChange={handleChange} onSelect={handleSelect}>
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                 <div>
-                    <input name={'address'}
+                    <input placeholder={"(optional) AutoFill with Google"} name={'address'}
                         {...getInputProps({
                              className: 'location-search-input',
                         })}/>

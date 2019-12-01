@@ -161,17 +161,11 @@ div.active-review {
     cursor: pointer;
 }
 
-.five-overview-bar {
-    background-image: linear-gradient(120deg, rgb(63, 179, 255)  0%, blue 100%);
-    background-repeat: no-repeat;
-    background-size: 95% 100%;
-}
-
-.four-overview-bar{
+.overview-bar{
     background-image: linear-gradient(120deg, rgb(63, 179, 255) 0%, blue 100%); /*sets a gradient as the background of the div */
     background-repeat: no-repeat; /*gradient takes full width without repeating */
-    background-size: 5% 100%;  /* background (gradient) take 5% width, 100% height */
 }
+
 
 .obj-overview-reviews {
     /* background-color: #F8F8F8; */

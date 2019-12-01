@@ -8,7 +8,6 @@ import {uploadFile} from 'react-s3'
 
 const config = {
     bucketName: 'review-bucket-react',
-    dirName: 'objects',
     region: 'us-east-2',
     accessKeyId: 'AKIAIV2EZR6A7O32HP4Q',
     secretAccessKey: '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',
@@ -28,8 +27,8 @@ const Submission = () => {
     }, []);
 
     const upload = () => {
-        let upFile = new File(file, inputs.name + ".png");
-        uploadFile(upFile, config).then(data => console.log(data)).catch(err => console.error(err));
+        let upFile = new File(file, "cover.png");
+        uploadFile(upFile, {...config, dirName: inputs.name}).then(data => console.log(data)).catch(err => console.error(err));
     };
     const getFile = (event) => {
         file = event.target.files;

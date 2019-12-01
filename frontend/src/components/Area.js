@@ -8,7 +8,7 @@ import AddReviewForm from "./Forms/AddReviewForm";
 
 const Area = (props) => {
 
-    let photoUrl = "https://review-bucket-react.s3.us-east-2.amazonaws.com/objects/" + props.match.params.name + ".png";
+    let photoUrl = "https://review-bucket-react.s3.us-east-2.amazonaws.com/" + props.match.params.name + "/cover.png";
     const [area, setArea] = useState({});
     const [reviews, setReviews] = useState(false);
     const test = [

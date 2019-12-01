@@ -18,8 +18,7 @@ const linkStyle = {
  * @returns A list Item component
  */
 const ListItem = (props) => {
-
-    let photoUrl = "https://review-bucket-react.s3.us-east-2.amazonaws.com/objects/" + props.title + ".png";
+    let photoUrl = "https://review-bucket-react.s3.us-east-2.amazonaws.com/" + props.title + "/cover.png";
 
     return(
         //Entire list item is contained in a NavLink to make the entire component clickable to change pages

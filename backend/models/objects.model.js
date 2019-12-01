@@ -11,6 +11,14 @@ const objectsSchema = new Schema({
     coordinates: {
             latitude: {type: Number, required: true},
             longitude: {type: Number, required: true}
+    },
+    rating: {
+        one: {type: Number},
+        two: {type: Number},
+        three: {type: Number},
+        four: {type: Number},
+        five: {type: Number},
+        average: {type: Number}
     }
 });
 

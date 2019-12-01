@@ -4,13 +4,14 @@ import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
 import LocationSearch from './Search/LocationSearch'
 import {uploadFile} from 'react-s3'
+import aws from '../../config'
 
 
 const config = {
     bucketName: 'review-bucket-react',
     region: 'us-east-2',
-    accessKeyId: 'AKIAIV2EZR6A7O32HP4Q',
-    secretAccessKey: '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',
+    accessKeyId: aws.AWS_S3.ACCESS_KEY_ID,
+    secretAccessKey: aws.AWS_S3.SECRET_ACCESS_KEY,
 };
 
 /**

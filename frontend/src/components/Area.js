@@ -8,6 +8,7 @@ import AddReviewForm from "./Forms/AddReviewForm";
 
 const Area = (props) => {
 
+    let photoUrl = "https://review-bucket-react.s3.us-east-2.amazonaws.com/objects/" + props.match.params.name + ".png";
     const [area, setArea] = useState({});
     const [reviews, setReviews] = useState(false);
     const test = [
@@ -37,6 +38,13 @@ const Area = (props) => {
 
     let page;
 
+    let photoStyle = {
+        backgroundImage: "url(" + photoUrl + ")",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+    };
+
     if(area && area.coordinates){
         page = (
             <>
@@ -52,7 +60,9 @@ const Area = (props) => {
 
                 <div className="obj-overview-content">
                     <div id="remove-style" className="obj-pictures">
-                        <div className="overview-main-image"><h1>Photo (22)</h1></div>
+                        <div style={photoStyle} className="overview-main-image">
+                            <h1>Photo (22)</h1>
+                        </div>
                         <div className="side-image overview-side-image1"/>
                         <div className="side-image overview-side-image2"/>
                         <div className="side-image overview-side-image3"/>

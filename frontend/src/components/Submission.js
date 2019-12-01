@@ -390,7 +390,6 @@ const Submission = () => {
             {/*Input for a picture upload section for the form*/}
             <div>
                 <label htmlFor="pic">Picture</label>
-                {/*{picForm}*/}
                 <input onChange={getFile} type="file" id="pic" name="pic" accept="image/*"/>
             </div>
             <input type="submit" value="Submit"/>

@@ -4,14 +4,13 @@ import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
 import LocationSearch from './Search/LocationSearch'
 import {uploadFile} from 'react-s3'
-import aws from '../../config'
 
 
 const config = {
     bucketName: 'review-bucket-react',
     region: 'us-east-2',
-    accessKeyId: aws.AWS_S3.ACCESS_KEY_ID,
-    secretAccessKey: aws.AWS_S3.SECRET_ACCESS_KEY,
+    accessKeyId: 'AKIAIV2EZR6A7O32HP4Q',
+    secretAccessKey: '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',
 };
 
 /**
@@ -35,16 +34,18 @@ const Submission = () => {
         file = event.target.files;
     };
 
+    /**
+     * Function that handles the form's submit
+     * @param event submit event
+     */
     const handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(inputs);
-        if (user) {
+        event.preventDefault(); //prevents default form submit action
+        if (user) { //if user is logged in, sends post request to server with inputs from form hook as input, and coordinates object appended to it
             axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
                 .then(res => {
-                    console.log(res.data);
                     upload();
                 })
-                .catch(res => console.log(res.message));
+                .catch(res => console.log(res.message)); //if an issue with posting occurs, log the message
         }
         else {
             alert("no user");

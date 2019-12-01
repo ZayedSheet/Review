@@ -9,6 +9,8 @@ router.route('/').post((req,res) => {
     }
 );
 
+
+
 router.route('/add').post((req,res) =>{
     console.log(req.body);
     const name = req.body.name;
@@ -17,13 +19,21 @@ router.route('/add').post((req,res) =>{
     const overview = req.body.overview;
     const coordinates = req.body.coordinates;
     const username = req.body.username;
-    // const usersession = req.body.usersession;
+    const rating = {one: 0, two: 0, three: 0, four: 0, five: 0, average: 0};
+    // console.log("coordinates ob", coordinates);
+
     //TODO
 
     if (!username){
         return res.send({
             success: false,
             message: 'username required'
+        });
+    }
+    if(!country){
+        return res.send({
+            success: false,
+            message: 'Country is not provided'
         });
     }
     if (!name || !name.match(/^([a-zA-Z]+\s)*[a-zA-Z]+$/)){
@@ -58,15 +68,10 @@ router.route('/add').post((req,res) =>{
         country,
         overview,
         coordinates,
-        username
+        username,
+        rating
     });
 
-    if(!country){
-        return res.send({
-            success: false,
-            message: 'Country is not provided'
-        });
-    }
 
     newObject.save()
         .then(() => res.json('Object Added!'))

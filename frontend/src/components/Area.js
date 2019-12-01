@@ -42,7 +42,7 @@ const Area = (props) => {
 
     let photoStyle = {
         backgroundImage: "url(" + photoUrl + ")",
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
     };

@@ -329,14 +329,6 @@ div.active-review {
     background-color: gold;
 }
 
-.review-form-item > .star:hover{
-    color: gold;
-}
-
-.review-form-item > .star{
-    color: grey;
-}
-
 /* ---------------- Submit Review End ---------------- */
 
 /* ------------------ Object Reviews Start-------------------- */

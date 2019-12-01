@@ -9,8 +9,10 @@ import Review from "../Submission/Review";
 const AddReviewForm = (props) => {
 
     const {user} = useContext(UserContext);
+    const [stars, setStars] = useState(0);
     const [visibility, setVisible] = useState(true);
     const {inputs, setInputs, handleInputChange} = useForm(); //retreives functions and state variables from form hook
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (user){
@@ -37,10 +39,25 @@ const AddReviewForm = (props) => {
     };
     useEffect(() => {
         let username = user.username ? user.username : false;
-        setInputs({...inputs, username: username, stars:5, object_name: props.objectname});
+        setInputs({...inputs, username: username, object_name: props.objectname});
     },[user]);
 
     console.log(inputs);
+
+    const handleClick = (event) => {
+        console.log(event.target.id);
+        setInputs({...inputs, stars: event.target.name});
+    };
+
+    let starRating = [];
+    for(let i = 5; i > 0 ; i--) {
+        starRating.push(<i
+            onClick={(event) => {setStars(i); setInputs({...inputs, stars: i})}}
+            onMouseEnter={() => setStars(i)}
+            onMouseLeave={() => setStars(inputs.stars)}
+            style={{color: i < stars + 1 ? "gold" : "grey"}}
+            className="fas fa-star star"/>)
+    }
 
     let reviewForm = (
         <div className="submit-review-border">
@@ -48,7 +65,7 @@ const AddReviewForm = (props) => {
             <form onSubmit={handleSubmit} className="review-form" action="">
                 <div className="review-form-item">
                     <label>Rating</label>
-                    <Star value={5}/>
+                    {starRating}
                 </div>
                 <div className="review-form-item">
                     <label htmlFor="review-title">Title</label>

@@ -7,6 +7,7 @@ import React from 'react';
  * @returns A star rating component (repeated icon elements)
  */
 const Star = (props) => {
+
     //Builds an array of icons of size props.value, each element is a star icon
     let a = [];
     for (let i = 0; i < props.value; i++) {

@@ -1,9 +1,12 @@
-//A model for each document in the reviews collection
+/**
+ * A model for each document in the reviews collection
+ */
 
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+//Sets the possible fields for a review
 const reviewsSchema = new Schema({
     username: { type: String, required: true}, //TODO make unique
     title: {type:String, required: true},

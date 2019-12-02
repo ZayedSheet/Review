@@ -1,7 +1,12 @@
-const mongoose = require('mongoose');
+/**
+ * A model for each document in the objects collection
+ */
+
+mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+//Sets the possible fields for a object
 const objectsSchema = new Schema({
     name: {type: String, required: true, unique: true},
     city: {type: String, required: true},

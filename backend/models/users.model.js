@@ -27,11 +27,18 @@ const userSchema = new Schema({
     timestamps: true,
 });
 
+/**
+ * method that takes in a password and returns a hash for that password
+ * @param password password to encrypt
+ */
 userSchema.methods.generateHash = (password) => {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-//TODO - Use Arrow Functions?
+/**
+ * function to check if password is valid for a user
+ * @param password password passed in to test
+ */
 userSchema.methods.validPassword = function(password){
     return bcrypt.compareSync(password, this.password);
 };

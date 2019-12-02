@@ -1,3 +1,4 @@
+//A model for each document in the reviews collection
 
 const mongoose = require('mongoose');
 

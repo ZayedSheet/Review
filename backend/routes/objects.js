@@ -3,7 +3,7 @@ let Object = require('../models/objects.model');
 
 router.route('/').post((req,res) => {
     console.log(req.body);
-    Object.find(req.body)
+    Object.find(req.body).sort({"rating.average" : -1})
         .then(reviews => res.json(reviews))
         .catch(err => res.status(400).json('Error: ' + err));
     }

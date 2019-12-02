@@ -46,7 +46,7 @@ const Submission = () => {
                 .then(() => {
                     upload();
                     alert("Object Added!")
-                })
+                }).catch(() => alert("Object Added! Error Uploading Photo"))
                 .catch(res => console.log(res.message)); //if an issue with posting occurs, log the message
         }
         else {

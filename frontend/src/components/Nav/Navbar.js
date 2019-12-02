@@ -4,6 +4,7 @@ import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
 import UserContext from '../../UserContext';
 import { NavLink, useLocation } from 'react-router-dom'; //Component to switch between pages via ReactRouter
+import axios from "axios";
 
 import "./Navbar.css"; //Styling specific to the NavBar
 
@@ -18,16 +19,17 @@ const Navbar = (props) => {
     const {user, setUser} = useContext(UserContext);
 
     let navButtons;
-    if(user){navButtons =
+    if(user){navButtons = //if the user is logged in, navbar will contain a logout button and "Hey, username"
         <div className="buttons-nav">
             <div>Hey, {user.name}</div>
             <button className={`button-style`} onClick={()=>{
-                localStorage.removeItem('review_app_key');
-                setUser(false);
+                axios.post('http://localhost:5000/signin/logout', localStorage.getItem('review_app_key')) //sents a logout request to server
+                    .then(res => console.log(res.data.message)); //console logs message from promise
+                setUser(false); //if logout button is clicked, user is set to false
             }}>Logout</button>
         </div>
     }
-    else{navButtons =
+    else{navButtons = //if user is not logged in, navbar will contain login and signup button
         <div className="buttons-nav">
             <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}> Login </SigninLoginButton>
             <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}> Sign Up </SigninLoginButton>

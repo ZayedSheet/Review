@@ -100,15 +100,12 @@ router.route('/getuserid/:id').get((req, res) => {
 /**
  * logs user out by setting session to deleted
  */
-router.route('/logout').get((req,res) => {
+router.route('/logout').post((req,res) => {
     // Get the token
-
-    const { query } = req;
-    const { token } = query;
 
     // Verify the token is unique and it's not deleted.
     UserSession.findOneAndUpdate({
-        _id: token,
+        _id: req.token,
         isDeleted: false
     }, {
         $set: {

@@ -23,7 +23,7 @@ const Navbar = (props) => {
         <div className="buttons-nav">
             <div>Hey, {user.name}</div>
             <button className={`button-style`} onClick={()=>{
-                axios.get('http://localhost:5000/signin/logout', localStorage.getItem('review_app_key')) //sents a logout request to server
+                axios.post('http://localhost:5000/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
                     .then(res => console.log(res.data.message)); //console logs message from promise
                 setUser(false); //if logout button is clicked, user is set to false
             }}>Logout</button>

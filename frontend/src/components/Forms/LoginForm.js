@@ -15,7 +15,7 @@ const LoginForm = (props) => {
 
 
     const handleSubmit = (event) => {
-        event.preventDefault();
+        event.preventDefault(); //prevents default behavior
         if(checkSubmit()){//uses formhook to check for errors in form
             axios.post('http://localhost:5000/signin/signin', inputs)//sends the form inputs to backend
                 .then(res => {
@@ -36,7 +36,7 @@ const LoginForm = (props) => {
                 })
         }
         else{
-            alert("invalid inputs");
+            alert("invalid inputs"); //if formhook check submit fails, inputs were invalid
         }
     };
 

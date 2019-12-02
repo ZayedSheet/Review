@@ -1,3 +1,8 @@
+/**
+ * Route to render index on backend web page
+ * @type {createApplication}
+ */
+
 //backend/routes/routes.js
 var express = require('express');
 var router = express.Router();

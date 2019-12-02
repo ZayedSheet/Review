@@ -1,5 +1,5 @@
 /**
- * Endpoints for review collection
+ * Endpoints for working with object reviews
  * @type {Router}
  */
 

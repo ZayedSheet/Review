@@ -1,5 +1,5 @@
 /**
- * Endpoints for object collection
+ * Endpoints for working with
  * @type {Router}
  */
 

@@ -7,7 +7,7 @@ const router = require('express').Router();
 let Object = require('../models/objects.model');
 
 /**
- * Find documents in objects collection based on given JSON (req.body)
+ * Find documents in objects collection based on given request body
  */
 router.route('/').post((req,res) => {
     console.log(req.body);
@@ -18,7 +18,7 @@ router.route('/').post((req,res) => {
 );
 
 /**
- * Adds to objects collection based on given JSON (req.body)
+ * Adds to objects collection based on given request body
  */
 router.route('/add').post((req,res) =>{
     console.log(req.body);
@@ -75,7 +75,7 @@ router.route('/add').post((req,res) =>{
         });
     }
 
-    // ******** Saving object (if validates) to db ********
+    // ******** Saving document (if validates) to db ********
 
     //Creates a new object document based on Object Schema
     const newObject = new Object({

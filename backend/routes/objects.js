@@ -1,3 +1,8 @@
+/**
+ * Routes
+ * @type {Router}
+ */
+
 const router = require('express').Router();
 let Object = require('../models/objects.model');
 

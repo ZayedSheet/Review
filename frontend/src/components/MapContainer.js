@@ -17,7 +17,6 @@ const mapStyles = {
 export const MapContainer = (props) => {
     console.log("center", props.center);
 
-
     /**
      * Highlights a list-item on the search results page when a Marker is clicked
      * @param item the id of the list-item to be highlighted

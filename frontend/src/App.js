@@ -56,7 +56,6 @@ const App = () => {
     },[location.pathname, user]); //effect runs when user logs in or logs out or changes pages
 
     return (
-      // BrowseRouter Enables switching between components via NavLink Components
         <div>
             <UserContext.Provider value={{user, setUser}}>
                 <NavBar setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}

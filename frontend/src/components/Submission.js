@@ -46,8 +46,8 @@ const Submission = () => {
                 .then(() => {
                     upload();
                     alert("Object Added!")
-                }).catch(() => alert("Object Added! Error Uploading Photo"))
-                .catch(res => console.log(res.message)); //if an issue with posting occurs, log the message
+                }).catch(() => alert("Duplicate Object, Invalid Inputs, or Error Uploading Image"))
+                .catch(res => {alert("Duplicate Object or Invalid Inputs"); console.log(res.message)}); //if an issue with posting occurs, log the message
         }
         else {
             alert("no user");

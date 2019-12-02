@@ -78,14 +78,7 @@ router.route('/add').post((req,res) =>{
     // ******** Saving document (if validates) to db ********
 
     //Creates a new object document based on Object Schema
-    const newObject = new Object({
-        name,
-        city,
-        country,
-        overview,
-        coordinates,
-        username,
-    });
+    const newObject = new Object({name, city, country, overview, coordinates, username,});
 
     //Saves newObject document to Object database
     newObject.save()

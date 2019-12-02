@@ -79,13 +79,7 @@ router.route('/add').post((req, res) => {
     // ******** Saving document (if validates) to db ********
 
     //Creates a new review document based on Review Schema
-    const newReviews = new Reviews({
-        username,
-        title,
-        description,
-        stars,
-        object_name
-    });
+    const newReviews = new Reviews({username, title, description, stars, object_name});
 
     //Saves newReviews document to Object database
     newReviews.save()

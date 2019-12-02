@@ -105,7 +105,7 @@ router.route('/logout').post((req,res) => {
 
     // Verify the token is unique and it's not deleted.
     UserSession.findOneAndUpdate({
-        _id: req.token,
+        _id: req.body.token,
         isDeleted: false
     }, {
         $set: {

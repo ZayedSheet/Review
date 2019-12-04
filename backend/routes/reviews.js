@@ -47,35 +47,6 @@ router.route('/add').post((req, res) => {
     const object_name = req.body.object_name;
 
 
-    // ******** Updating object review fields ********
-
-    //Updates the average and number of ratings in the object collection
-    console.log("reviews: updating object");
-    Object.findOne({name: object_name}) //finds the object
-        .then(object => {
-            let numRatings = object.rating.one + object.rating.two + object.rating.three + object.rating.four + object.rating.five; //gets total number of ratings
-            let curAverage = object.rating.average; //gets the average rating
-            let newAverage = (curAverage * numRatings + stars)/(numRatings + 1);
-            let newRating = "rating.zero";
-
-            //Determines which rating field to increment based on the request stars
-            switch(stars){
-                case 1: newRating = "rating.one"; break;
-                case 2: newRating = "rating.two"; break;
-                case 3: newRating = "rating.three"; break;
-                case 4: newRating = "rating.four"; break;
-                case 5: newRating = "rating.five"; break;
-            }
-
-            //Updates the average and the number of ratings
-            Object.findOneAndUpdate({name: object_name},
-                {$inc: {[newRating]: 1}, $set: {"rating.average": newAverage}},
-                (error,doc) => {if(error) console.log("ERROR"); console.log(doc)}
-                );
-        })
-        .catch(err => res.status(400).json('Error: ' + err));
-
-
     // ******** Saving document (if validates) to db ********
 
     //Creates a new review document based on Review Schema
@@ -83,7 +54,38 @@ router.route('/add').post((req, res) => {
 
     //Saves newReviews document to Object database
     newReviews.save()
-        .then(() => res.json('Review added!'))
+        .then(() => {
+            res.json('Review added!');
+
+            // ******** Updating object review fields ********
+
+            //Updates the average and number of ratings in the object collection
+            console.log("reviews: updating object");
+            Object.findOne({name: object_name}) //finds the object
+                .then(object => {
+                    let numRatings = object.rating.one + object.rating.two + object.rating.three + object.rating.four + object.rating.five; //gets total number of ratings
+                    let curAverage = object.rating.average; //gets the average rating
+                    let newAverage = (curAverage * numRatings + stars)/(numRatings + 1);
+                    let newRating = "rating.zero";
+
+                    //Determines which rating field to increment based on the request stars
+                    switch(stars){
+                        case 1: newRating = "rating.one"; break;
+                        case 2: newRating = "rating.two"; break;
+                        case 3: newRating = "rating.three"; break;
+                        case 4: newRating = "rating.four"; break;
+                        case 5: newRating = "rating.five"; break;
+                    }
+
+                    //Updates the average and the number of ratings
+                    Object.findOneAndUpdate({name: object_name},
+                        {$inc: {[newRating]: 1}, $set: {"rating.average": newAverage}},
+                        (error,doc) => {if(error) console.log("ERROR"); console.log(doc)}
+                    );
+                })
+                .catch(err => res.status(400).json('Error: ' + err));
+
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 
 });

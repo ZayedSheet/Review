@@ -74,7 +74,7 @@ const Submission = () => {
     /**
      * Initializes the coordinates of the user, and displays them to the user
      * @param position The longitude and latitude of the user,
-     * obtained from the geoLoaction api.
+     * obtained from the geoLoaction api.l
      */
     function getPosition(position) {
         coords = {longitude: position.coords.longitude, latitude: position.coords.latitude};

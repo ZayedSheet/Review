@@ -4,6 +4,7 @@ import './Form.css'
 import axios from "axios";
 import UserContext from "../../UserContext";
 import {checkLogin} from "../../checkLogin";
+import config from '../../config'
 
 /**
  * Login Form Component
@@ -17,7 +18,7 @@ const LoginForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault(); //prevents default behavior
         if(checkSubmit()){//uses formhook to check for errors in form
-            axios.post('http://localhost:5000/signin/signin', inputs)//sends the form inputs to backend
+            axios.post(config.IP + '/signin/signin', inputs)//sends the form inputs to backend
                 .then(res => {
                     console.log('res', res.data);
                     if (res.data.success) { //if successful (username and password match)

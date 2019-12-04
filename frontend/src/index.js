@@ -7,6 +7,7 @@ import config from "./config";
 import App from './App'; //The whole react application
 import * as serviceWorker from './serviceWorker';
 
+
 //Render the react app into the index.html
 //BrowserRouter Enables switching between components via NavLink Components
 ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));

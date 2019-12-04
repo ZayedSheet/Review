@@ -17,6 +17,7 @@ import Footer from './components/Footer/Footer';
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
 import {checkLogin} from "./checkLogin";
+import config from "./config";
 
 
 /**
@@ -25,6 +26,14 @@ import {checkLogin} from "./checkLogin";
  * @returns A Page on the website
  */
 const App = () => {
+
+    useEffect(() => {
+        const script = document.createElement('script');
+        script.src = "https://maps.googleapis.com/maps/api/js?key=" + config.GOOGLE.API_KEY + "&libraries=places";
+        script.async = true;
+
+        document.body.append(script);
+    }, []);
 
     const[user,setUser] = useState(false); //state to set the user if user is logged in
     const [signup, setSignup] = useState(false); //state for signup form visiblity

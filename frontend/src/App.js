@@ -27,14 +27,6 @@ import config from "./config";
  */
 const App = () => {
 
-    useEffect(() => {
-        const script = document.createElement('script');
-        script.src = "https://maps.googleapis.com/maps/api/js?key=" + config.GOOGLE.API_KEY + "&libraries=places";
-        script.async = true;
-
-        document.body.append(script);
-    }, []);
-
     const[user,setUser] = useState(false); //state to set the user if user is logged in
     const [signup, setSignup] = useState(false); //state for signup form visiblity
     const [login, setLogin] = useState(false);//state for login form visibility

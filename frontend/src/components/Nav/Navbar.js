@@ -5,6 +5,7 @@ import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for th
 import UserContext from '../../UserContext';
 import { NavLink, useLocation } from 'react-router-dom'; //Component to switch between pages via ReactRouter
 import axios from "axios";
+import config from "../../config";
 
 import "./Navbar.css"; //Styling specific to the NavBar
 
@@ -23,7 +24,7 @@ const Navbar = (props) => {
         <div className="buttons-nav">
             <div>Hey, {user.name}</div>
             <button className={`button-style`} onClick={()=>{
-                axios.post('http://localhost:5000/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
+                axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
                     .then(res => console.log(res.data.message)); //console logs message from promise
                 setUser(false); //if logout button is clicked, user is set to false
             }}>Logout</button>

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import "./SearchBar.css";
 import axios from 'axios';
+import config from "../../config";
 
 /*
 Nav Link Component allows links to be added to change the current page.
@@ -58,7 +59,7 @@ const SearchBar = () => {
         setVisible(true); //search results become visible
         if(event.target.value !== ""){ //if search field is not empty (regex matches empty string to everything)
             try{//sends request to server to retrieve objects that match the search
-                res = await axios.post('http://localhost:5000/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$', $options: "i"}});
+                res = await axios.post(config.IP + '/objects', {name: {$regex: '^(.* +)?' + event.target.value + '.*$', $options: "i"}});
                 setResults(res.data);
             }
             catch{

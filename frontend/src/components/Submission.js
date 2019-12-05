@@ -5,6 +5,7 @@ import UserContext from '../UserContext';
 import LocationSearch from './Search/LocationSearch'
 import {uploadFile} from 'react-s3'
 import aws from '../config'
+import conf from "../config";
 
 
 const config = {
@@ -42,7 +43,7 @@ const Submission = () => {
     const handleSubmit = (event) => {
         event.preventDefault(); //prevents default form submit action
         if (user) { //if user is logged in, sends post request to server with inputs from form hook as input, and coordinates object appended to it
-            axios.post('http://localhost:5000/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
+            axios.post(conf.IP + '/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
                 .then(() => {
                     upload();
                     alert("Object Added!")

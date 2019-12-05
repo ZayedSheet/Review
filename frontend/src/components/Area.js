@@ -5,6 +5,7 @@ import Review from "./Submission/Review"
 import MapContainer from "./MapContainer";
 import axios from 'axios';
 import AddReviewForm from "./Forms/AddReviewForm";
+import config from "../config";
 
 const Area = (props) => {
 
@@ -15,7 +16,7 @@ const Area = (props) => {
     const [reviews, setReviews] = useState(false);
 
     const getReviews = () => {
-        axios.get("http://localhost:5000/reviews/find/byObjectName/" + props.match.params.name)
+        axios.get(config.IP + "/reviews/find/byObjectName/" + props.match.params.name)
             .then(res =>
                 setReviews(res.data.map(review => <Review username={review.username} stars={review.stars}>
                     {review.description}
@@ -23,7 +24,7 @@ const Area = (props) => {
     };
 
     const getObject = () => {
-        axios.post("http://localhost:5000/objects", {name: props.match.params.name})
+        axios.post(config.IP + "/objects", {name: props.match.params.name})
             .then(res => {
                 setArea(res.data[0]);
             }).catch(() => {

@@ -26,3 +26,4 @@ yarn-error.log*
 
 # API
 src/config.js
+Areago.pem

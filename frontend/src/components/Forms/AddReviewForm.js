@@ -3,6 +3,7 @@ import axios from 'axios';
 import useForm from './FormHook';
 import UserContext from "../../UserContext";
 import Review from "../Submission/Review";
+import config from "../../config";
 
 
 const AddReviewForm = (props) => {
@@ -16,7 +17,7 @@ const AddReviewForm = (props) => {
         event.preventDefault(); //prevents default form behavior
         if (user){ //if user is logged in
             try{
-                await axios.post("http://localhost:5000/reviews/add", inputs); //sends request to server to add the review with inputs (From form hook) as input
+                await axios.post(config.IP + ":5000/reviews/add", inputs); //sends request to server to add the review with inputs (From form hook) as input
                 setVisible(false); //review form is no longer visible as it has just been submitted
                 props.setReviews([...props.reviews, //adds the review the user just submitted to the page to the reviews state for area page
                     <Review username={inputs.username} stars={inputs.stars}>

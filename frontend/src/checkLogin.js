@@ -1,4 +1,5 @@
 import axios from "axios";
+import config from './config'
 
 /**
  * Function for checking if user is logged in by checking for and verifying user token
@@ -10,7 +11,7 @@ export const checkLogin = async (setUser) => {
 
     //checks if the key is a valid key (unique and not deleted)
     try {
-        res = await axios.get('http://localhost:5000/signin/verify?token=' + key)
+        res = await axios.get(config.IP +'/signin/verify?token=' + key)
     } catch{
         setUser(false);
     }
@@ -19,7 +20,7 @@ export const checkLogin = async (setUser) => {
     if (res.data.success){
         //gets the userid using the key
         try {
-            res = await axios.get('http://localhost:5000/signin/getuserid/' + key)
+            res = await axios.get(config.IP + '/signin/getuserid/' + key)
         } catch{
             setUser(false);
         }
@@ -27,7 +28,7 @@ export const checkLogin = async (setUser) => {
 
     //gets the user document and sets it as the user state
     try {
-        res = await axios.get('http://localhost:5000/users/' + res.data);
+        res = await axios.get(config.IP + '/users/' + res.data);
         setUser(res.data)
     } catch{
         setUser(false);

@@ -30,9 +30,12 @@ const Submission = () => {
 
     const upload = () => {
         let upFile = new File(file, "cover.png");
-        uploadFile(upFile, {...config, dirName: inputs.name}).then(data => console.log(data)).catch(err => console.error(err));
+        uploadFile(upFile, {...config, dirName: inputs.name})
+            .then(data => console.log(data))
+            .catch(err => {alert("Error Uploading Image"); console.error(err)});
     };
     const getFile = (event) => {
+        console.log("getting file");
         file = event.target.files;
     };
 
@@ -44,8 +47,8 @@ const Submission = () => {
         event.preventDefault(); //prevents default form submit action
         if (user) { //if user is logged in, sends post request to server with inputs from form hook as input, and coordinates object appended to it
             axios.post(conf.IP + '/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
-                .then(() => {
-                    upload();
+                .then(async () => {
+                    await upload();
                     alert("Object Added!")
                 }).catch(() => alert("Duplicate Object, Invalid Inputs, or Error Uploading Image"))
                 .catch(res => {alert("Duplicate Object or Invalid Inputs"); console.log(res.message)}); //if an issue with posting occurs, log the message

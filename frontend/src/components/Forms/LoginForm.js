@@ -44,7 +44,7 @@ const LoginForm = (props) => {
     return (
         <div className={"blur-background"}>
             <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>{/*Runs the handleSubmit function from form hook when submit button is clicked*/}
-                <a onClick={()=> props.setLogin(false)} className="close"/>{/*Runs the toggleForm function on click to close the form*/}
+                <span onClick={()=> props.setLogin(false)} className="close"/>{/*Runs the toggleForm function on click to close the form*/}
                 <h1>Login</h1>
                 <div>
                     <label>Username</label>

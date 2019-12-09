@@ -37,6 +37,7 @@ const AddReviewForm = (props) => {
     let starRating = []; //array for stars for review form
     for(let i = 5; i > 0 ; i--) { //creates 5 stars
         starRating.push(<i
+            key={i}
             onClick={() => {setStars(i); setInputs({...inputs, stars: i})}} //if clicked sets star into input as the star # that was clicked
             onMouseEnter={() => setStars(i)} //makes stars gold on hover
             onMouseLeave={() => setStars(inputs.stars)} //sets stars back to what it previous was before mouse hover

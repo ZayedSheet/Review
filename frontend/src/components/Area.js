@@ -18,7 +18,7 @@ const Area = (props) => {
     const getReviews = () => {
         axios.get(config.IP + "/reviews/find/byObjectName/" + props.match.params.name)
             .then(res =>
-                setReviews(res.data.map(review => <Review username={review.username} stars={review.stars}>
+                setReviews(res.data.map(review => <Review key={review._id} username={review.username} stars={review.stars}>
                     {review.description}
                 </Review>)))
     };
@@ -66,7 +66,7 @@ const Area = (props) => {
                     <li className="known-for">
                         <span>Tourist Region</span>
                         <span>Waterfall</span>
-                        <span>Nature</span>
+                        <span>Nature</span >
                     </li>
                     <p>{area.overview}</p>
                 </div>
@@ -86,7 +86,7 @@ const Area = (props) => {
             <span>Rating
             <Star value={Math.round(area.rating.average)}/>
             </span>
-                            <a className="obj-overview-rating-allreviews">{totalReviews}</a>
+                            <span className="obj-overview-rating-allreviews">{totalReviews}</span>
                         </div>
                         <div className="obj-overview-list">
                             <li>

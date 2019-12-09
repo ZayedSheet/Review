@@ -25,7 +25,7 @@ const SignupForm = (props) => {
     return (
         <div className={"blur-background"}>
             <form onSubmit={handleSubmit} id="pop-up-form" className={"form-style"}>{/*Runs the handleSubmit function from form hookwhen the submit button is clicked*/}
-                    <a onClick={() => props.setSignup(false)} className="close" />{/*closes the form on click by running toggleForm function*/}
+                    <span onClick={() => {props.setSignup(false)}} className="close" />{/*closes the form on click by running toggleForm function*/}
                     <h1>Create an Account</h1>
                     <div>
                         <label>Name</label>

@@ -19,12 +19,12 @@ const Footer = () => {
             </div>
             {/*Contents on the right side of the footer (social media links)*/}
             <div className="right-side">
-                <a><i className="fab fa-twitter"></i></a>
-                <a><i className="fab fa-facebook-f"></i></a>
+                <a href={"https://twitter.com"}><i className="fab fa-twitter"/></a>
+                <a href={"https://facebook.com"}><i className="fab fa-facebook-f"/></a>
             </div>
         </footer>
 
     );
-}
+};
 
 export default Footer;

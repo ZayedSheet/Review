@@ -11,7 +11,7 @@ const Star = (props) => {
     //Builds an array of icons of size props.value, each element is a star icon
     let a = [];
     for (let i = 0; i < props.value; i++) {
-        a.push(<i className="fas fa-star star"/>);
+        a.push(<i key={i} className="fas fa-star star"/>);
     }
     return (
         <>{a}</>

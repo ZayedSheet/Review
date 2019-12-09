@@ -97,7 +97,7 @@ const SearchBar = () => {
             <div className={"results"}>
                 {/*if resultVisible is true and results is not empty, then map each object in results to be a div*/}
                 {resultVisible && results && results.map(object => {
-                    return <div onClick={() => setVisible(false)}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>})}
+                    return <div key={object.name} onClick={() => setVisible(false)}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>})}
             </div>
         </form>
     );

@@ -12,13 +12,6 @@ require('dotenv').config();
 const fs = require('fs');
 const https = require('https');
 
-const key = fs.readFileSync(__dirname + '\\selfsigned.key');
-const cert = fs.readFileSync(__dirname + '\\selfsigned.crt');
-const options = {
-    key: key,
-    cert: cert
-};
-
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -50,9 +43,6 @@ app.use(express.static("../frontend/build"));
 app.get("*", (req,res) => {
    res.sendFile(path.resolve(__dirname, "../frontend", "build", "index.html"))
 });
-
-const server = https.createServer(options, app);
-server.listen(8443);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

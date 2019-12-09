@@ -17,7 +17,6 @@ import Footer from './components/Footer/Footer';
 import SignupForm from "./components/Forms/SignupForm";
 import LoginForm from "./components/Forms/LoginForm";
 import {checkLogin} from "./checkLogin";
-import config from "./config";
 
 
 /**
@@ -64,7 +63,8 @@ const App = () => {
                 {/*Switch Component contains all possible components that
                 may be rendered between the NavBar and the Footer*/}
                 <Switch>
-                      <Route path="/Review" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>
+                    <Route exact path="/"><Home setLogin={setLogin} setSignup={setSignup}/></Route>
+                      {/*<Route path="/" render={(props) => <Home {...props} setLogin={setLogin} setSignup={setSignup} />} exact/>*/}
                       <Route path="/Submission" component={Submission}/>
                       <Route path="/Results" component={Results}/>
                       <Route path="/Area/:name" component={Area}/>

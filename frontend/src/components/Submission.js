@@ -25,7 +25,7 @@ const Submission = () => {
     let file;
 
     useEffect(() => {
-        setInputs({country: "CA"})
+        setInputs({country: "CA"});
     }, []);
 
     const upload = () => {

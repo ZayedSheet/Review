@@ -16,6 +16,8 @@ export const checkLogin = async (setUser) => {
         setUser(false);
     }
 
+    if(!res.data.success) return;
+
     //if the session exists and is unique and not deleted
     if (res.data.success){
         //gets the userid using the key

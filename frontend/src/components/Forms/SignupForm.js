@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import config from "../../config";
 
 import useForm from './FormHook';
 
@@ -14,7 +15,7 @@ const SignupForm = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault(); //prevents default form behavior
         if(checkSubmit()){ //if formhook checksubmit passes
-            axios.post('http://localhost:5000/users/add', inputs) //sents a post request to the server with inputs as the input
+            axios.post(config.IP + '/users/add', inputs) //sents a post request to the server with inputs as the input
                 .then(res => console.log(res.data));
             props.setSignup(false); //closes signup form
             props.setLogin(true); //opens login form

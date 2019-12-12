@@ -51,7 +51,7 @@ const Submission = (props) => {
                     await upload();
                     alert("Area Added!");
                     setTimeout(() => props.history.push('/area/' + inputs.name),500);
-                }).catch(() => alert("Duplicate Object, Invalid Inputs, or Error Uploading Image"))
+                }).catch((e) => {alert("Duplicate Object, Invalid Inputs, or Error Uploading Image");console.log(e)})
                 .catch(res => {alert("Duplicate Object or Invalid Inputs"); console.log(res.message)}); //if an issue with posting occurs, log the message
         }
         else {

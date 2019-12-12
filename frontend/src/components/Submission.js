@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
@@ -22,21 +22,21 @@ const config = {
 const Submission = (props) => {
     const {inputs, handleInputChange, setInputs} = useForm(); //retrieves the following functions and state variables from the form hook
     const {user} = useContext(UserContext);
-    let file;
+    const [file, setFile] = useState({});
 
     useEffect(() => {
         setInputs({country: "CA"});
     }, []);
 
     const upload = () => {
-        let upFile = new File(file, "cover.png");
-        uploadFile(upFile, {...config, dirName: inputs.name})
+        uploadFile(new File(file, "cover.png"), {...config, dirName: inputs.name})
             .then(data => console.log(data))
-            .catch(err => {alert("Error Uploading Image"); console.error(err)});
+            .catch(err => {console.error(err); alert("Error Uploading Image");});
     };
     const getFile = (event) => {
         console.log("getting file");
-        file = event.target.files;
+        setFile(event.target.files);
+        console.log(event.target.files);
     };
 
     /**

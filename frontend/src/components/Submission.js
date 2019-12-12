@@ -19,7 +19,7 @@ const config = {
  * Submission page where users can add an area (a object) to the website
  * @returns A Submission Page Component
  */
-const Submission = () => {
+const Submission = (props) => {
     const {inputs, handleInputChange, setInputs} = useForm(); //retrieves the following functions and state variables from the form hook
     const {user} = useContext(UserContext);
     let file;
@@ -49,7 +49,8 @@ const Submission = () => {
             axios.post(conf.IP + '/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
                 .then(async () => {
                     await upload();
-                    alert("Object Added!")
+                    alert("Area Added!");
+                    setTimeout(() => props.history.push('/area/' + inputs.name),500);
                 }).catch(() => alert("Duplicate Object, Invalid Inputs, or Error Uploading Image"))
                 .catch(res => {alert("Duplicate Object or Invalid Inputs"); console.log(res.message)}); //if an issue with posting occurs, log the message
         }

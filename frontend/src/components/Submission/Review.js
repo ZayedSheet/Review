@@ -5,7 +5,7 @@ const Review = (props) => {
     return(
         <li>
             <span>{props.username}</span>
-            <Star value={props.stars}/>
+            {props.stars && <Star value={props.stars}/>}
             <p>{props.children}</p>
         </li>
     )

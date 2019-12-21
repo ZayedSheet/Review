@@ -13,14 +13,28 @@ const Area = (props) => {
 
     const [area, setArea] = useState({});
     const [reviews, setReviews] = useState(false);
+    const [ratings, setRatings] = useState({1: [], 2:[], 3:[], 4:[], 5:[]});
+    const [visibleRating, setVisibleRating]= useState([]);
 
     const getReviews = () => {
-        axios.get(config.IP + "/reviews/find/byObjectName/" + props.match.params.name)
-            .then(res =>
-                setReviews(res.data.map(review => <Review key={review._id} username={review.username} stars={review.stars}>
-                    {review.description}
-                </Review>)))
+       axios.get(config.IP + "/reviews/find/byObjectName/" + props.match.params.name)
+            .then(res => {
+                setReviews(res.data);
+            })
+           .catch();
     };
+
+
+    const sortReviews = () => {
+        for(let i = 0; i < reviews.length; i++){
+            let tempRating = {...ratings}; //copy the rating object to tempRating
+            tempRating[reviews[i].stars].push(<li><Review key={reviews[i]._id} username={reviews[i].username}>{reviews[i].description}</Review></li>); //access the ratings index required and push this review into the array for that ratings index
+            setRatings(tempRating); //set the new rating
+        }
+        setVisibleRating(ratings[5]);
+    };
+
+
 
     const getObject = () => {
         axios.post(config.IP + "/objects", {name: props.match.params.name})
@@ -36,13 +50,21 @@ const Area = (props) => {
             await getObject();
             getReviews();
         };
-        getValues().then();
+        getValues().then(() => sortReviews());
         }, [props.match.params.name]
     );
 
-    //TODO - Page when area not found
+    useEffect(()=> {
+        sortReviews()
+    }
+    ,[reviews]);
+
 
     let page;
+
+    const toggleVisibleRating = (rating) => {
+        setVisibleRating(ratings[rating]);
+    };
 
     let photoStyle = {
         backgroundImage: "url(" + photoUrl + ")",
@@ -116,16 +138,7 @@ const Area = (props) => {
                         </div>
                         <div className="obj-overview-reviews">
                             <div className="overview-review-list">
-                                <li><h3>Username1</h3><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex,
-                                    soluta!</p></li>
-                                <li><h3>Username2</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
-                                    consectetur voluptatum beatae sint voluptate illo, ipsa quis labore assumenda excepturi
-                                    dignissimos adipisci. Dolorum esse ab ipsam molestiae sequi vero voluptas.</p></li>
-                                <li><h3>Username3</h3><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam,
-                                    eligendi dolore dicta at quasi nisi.</p></li>
-                                <li><h3>Username4</h3><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
-                                    odio eligendi consequatur perspiciatis earum officia modi dolorum illum voluptatem
-                                    sit!</p></li>
+                                {visibleRating}
                             </div>
                         </div>
                     </div>
@@ -160,7 +173,10 @@ const Area = (props) => {
 
                     <div id="reviews" className="obj-review">
                         <div className="obj-review-list">
-                            {reviews}
+                            {reviews &&
+                            reviews.map(review =>
+                                <Review key={review._id} username={review.username} stars={review.stars}>{review.description}</Review>)
+                            }
                         </div>
                     </div>
                 </div>

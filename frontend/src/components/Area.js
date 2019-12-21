@@ -15,6 +15,7 @@ const Area = (props) => {
     const [reviews, setReviews] = useState(false);
     const [ratings, setRatings] = useState({1: [], 2:[], 3:[], 4:[], 5:[]});
     const [visibleRating, setVisibleRating]= useState([]);
+    const [ratingStyle, setRatingStyle] = useState(5);
 
     const getReviews = () => {
        axios.get(config.IP + "/reviews/find/byObjectName/" + props.match.params.name)
@@ -64,6 +65,7 @@ const Area = (props) => {
 
     const toggleVisibleRating = (rating) => {
         setVisibleRating(ratings[rating]);
+        setRatingStyle(rating);
     };
 
     let photoStyle = {
@@ -111,27 +113,27 @@ const Area = (props) => {
                         </div>
                         <div className="obj-overview-list">
                             <li>
-                                <div className="active-review left-style five-overview ">5 Star Reviews</div>
+                                <div style={ratingStyle===5 ? {color: "#0F52BA"} : {color: "black"}} onClick={() => toggleVisibleRating(5)} className="left-style five-overview ">5 Star Reviews</div>
                                 <div style={{backgroundSize: fiveStarPercent + "% 100%"}}
                                     className="right-style overview-bar">{fiveStarPercent}%</div>
                             </li>
                             <li>
-                                <div className="left-style four-overview">4 Star Reviews</div>
+                                <div style={ratingStyle===4 ? {color: "#0F52BA"} : {color: "black"}} onClick={() => toggleVisibleRating(4)} className="left-style four-overview">4 Star Reviews</div>
                                 <div style={{backgroundSize: fourStarPercent + "% 100%"}}
                                     className="right-style overview-bar">{fourStarPercent}%</div>
                             </li>
                             <li>
-                                <div className="left-style three-overview">3 Star Reviews</div>
+                                <div style={ratingStyle===3 ? {color: "#0F52BA"} : {color: "black"}} onClick={() => toggleVisibleRating(3)} className="left-style three-overview">3 Star Reviews</div>
                                 <div style={{backgroundSize: threeStarPercent + "% 100%"}}
                                     className="right-style overview-bar">{threeStarPercent}%</div>
                             </li>
                             <li>
-                                <div className="left-style two-overview">2 Star Reviews</div>
+                                <div style={ratingStyle===2 ? {color: "#0F52BA"} : {color: "black"}} onClick={() => toggleVisibleRating(2)} className="left-style two-overview">2 Star Reviews</div>
                                 <div style={{backgroundSize: twoStarPercent + "% 100%"}}
                                      className="right-style overview-bar">{twoStarPercent}%</div>
                             </li>
                             <li>
-                                <div className="left-style one-overview">1 Star Reviews</div>
+                                <div style={ratingStyle===1 ? {color: "#0F52BA"} : {color: "black"}} onClick={() => toggleVisibleRating(1)} className="left-style one-overview">1 Star Reviews</div>
                                 <div style={{backgroundSize: oneStarPercent + "% 100%"}}
                                      className="right-style overview-bar">{oneStarPercent}%</div>
                             </li>

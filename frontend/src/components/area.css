@@ -135,13 +135,6 @@
     height: auto;
 }
 
-/* The below property changes the color of one of the overview reviews so the user
-knows what star of review they're looking at. Javascript will be used later to change
-what review is being looked at */
-div.active-review {
-    color: darkcyan;
-}
-
 .right-style {
     width:auto;
     height:100%;

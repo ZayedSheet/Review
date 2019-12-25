@@ -47,11 +47,13 @@ const Area = (props) => {
     };
 
     useEffect(  () => {
+        setRatings({1: [], 2:[], 3:[], 4:[], 5:[]});
+        console.log("running useEffect, Ratings = ",ratings, "Reviews =", reviews);
         const getValues = async () => {
             await getObject();
             getReviews();
         };
-        getValues().then(() => sortReviews());
+        getValues().then();
         }, [props.match.params.name]
     );
 

@@ -28,10 +28,29 @@ const Submission = (props) => {
         setInputs({country: "CA"});
     }, []);
 
-    const upload = () => {
-        uploadFile(new File(file, "cover.png"), {...config, dirName: inputs.name})
-            .then(data => console.log(data))
-            .catch(err => {console.error(err); alert("Error Uploading Image");});
+    const upload = (url) => {
+        console.log("URL: ", url);
+        const options = {
+            params: {
+                Key: file.name,
+                ContentType: 'image/png'
+            }
+        };
+        axios.put(url,new File(file, "test/cover.png"), options)
+            .then(res => {
+                this.setState({message:'Upload Successful'})
+                setTimeout(()=>{
+                    this.setState({message:''});
+                    document.querySelector('#upload-image').value='';
+                }, 2000)
+            })
+                .catch(err => {
+                    this.setState({message:'Sorry, something went wrong'})
+                    console.log('err', err);
+                });
+        // uploadFile(new File(file, "cover.png"), {...config, dirName: inputs.name})
+        //     .then(data => console.log(data))
+        //     .catch(err => {console.error(err); alert("Error Uploading Image");});
     };
     const getFile = (event) => {
         console.log("getting file");
@@ -47,8 +66,8 @@ const Submission = (props) => {
         event.preventDefault(); //prevents default form submit action
         if (user) { //if user is logged in, sends post request to server with inputs from form hook as input, and coordinates object appended to it
             axios.post(conf.IP + '/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
-                .then(async () => {
-                    await upload();
+                .then(async (res) => {
+                    await upload(res.data);
                     alert("Area Added!");
                     setTimeout(() => props.history.push('/area/' + inputs.name),500);
                 }).catch((e) => {alert("Duplicate Object, Invalid Inputs, or Error Uploading Image");console.log(e)})

@@ -5,6 +5,18 @@
 
 const router = require('express').Router();
 let Object = require('../models/objects.model');
+const AWS = require('aws-sdk'); // Requiring AWS SDK.
+
+AWS.config = new AWS.Config({
+    sslEnabled: false,
+    signatureVersion: 'v4',
+    accessKeyId: process.env.ACCESS_KEY_ID,
+    secretAccessKey: 'process.env.SECRET_ACCESS_KEY',
+    region: 'us-east-2' // This refers to your bucket configuration.
+});
+
+const s3 = new AWS.S3();
+const Bucket =  'review-bucket-react';
 
 /**
  * Find documents in objects collection based on given request body
@@ -82,7 +94,17 @@ router.route('/add').post((req,res) =>{
 
     //Saves newObject document to Object database
     newObject.save()
-        .then(() => res.json('Object Added!'))
+        .then(() => {
+            const params = { Bucket, Key: name + '/cover.png', ContentType: 'image/png'};
+            s3.getSignedUrl(
+                'putObject',
+                params,
+                (error, url) => {
+                    if(error) res.status(400).json('Error: ' + error);
+                    else res.send(url);
+                }
+                )
+        })
         .catch(err => res.status(400).json('Error: ' + err));
     }
 );

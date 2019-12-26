@@ -23,5 +23,8 @@
     "nodemon": "^2.0.1",
     "python": "0.0.4",
     "python3": "0.0.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.595.0"
   }
 }

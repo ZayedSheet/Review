@@ -45,20 +45,46 @@ nav.transparent{
 }
 
 
-.nav-links >*:hover{
-    /*color: black;*/
-}
-
 #nav-brand{
     display: grid;
     grid-column: 2 / span 2;
-    /* background-color: black; */
     width: 100%;
     height: 3vw;
     background-image: url("../../img/Logo_aligned.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+.nav-links > *:hover{
+    color: #d3d3d3;
+}
+/***************************************** nav underline *******************************/
+/*.nav-links > * {*/
+/*    position: relative;*/
+/*    text-decoration: none;*/
+/*}*/
+
+/*.nav-links > *before {*/
+/*    content: "";*/
+/*    position: absolute;*/
+/*    width: 50%;*/
+/*    height: 2px;*/
+/*    bottom: -10px;*/
+/*    left: 25%;*/
+/*    background-color: white;*/
+/*    visibility: hidden;*/
+/*    -webkit-transform: scaleX(0);*/
+/*    transform: scaleX(0);*/
+/*    -webkit-transition: all 0.3s ease-in-out 0s;*/
+/*    transition: all 0.3s ease-in-out 0s;*/
+/*}*/
+
+/*.nav-links > *:hover:before {*/
+/*    visibility: visible;*/
+/*    -webkit-transform: scaleX(1);*/
+/*    transform: scaleX(1);*/
+/*}*/
+/************************************** navlink underline **************************/
 
 @media screen and (max-width: 768px){
     .nav-links > *{

@@ -9,11 +9,15 @@
     grid-column: 2 /span 14;
     grid-row: 5/ span 1;
     display: none;
+    height: 50px;
+    min-height: 0;
     z-index: -1 ;
 }
 
 form.search input[type=text] {
+    min-height: 0;
     top: 20px;
+    overflow: visible;
     padding: 10px;
     font-size: 17px;
     border: 1px solid #0277d7;
@@ -54,6 +58,29 @@ form.search input[type=text] {
 
 .search .fa-search{
     color: #0b7dda;
+}
+
+div.results{
+    position: relative;
+    background-color: #eeeeee;
+    width:100%;
+    padding-top: 22px;
+    left:50%;
+    transform: translate(-50%, 21px);
+    z-index: -1;
+}
+
+div.results-item {
+    padding: 5px 10px;
+    z-index: 99999;
+}
+div.results-item:hover{
+    background-color: lightgrey;
+}
+
+a.results-item {
+    text-decoration: none;
+    color: black;
 }
 
 

@@ -13,10 +13,7 @@ nav {
     position: fixed;
     align-items: center;
 }
-.results{
-    position: absolute;
-    transform: translateY(50px);
-}
+
 nav.transparent{
     background: rgba(21, 161, 220, 0);
 }

@@ -24,6 +24,11 @@ const SearchBar = () => {
     const [results, setResults] = useState([]); //variable for storing search results
     const [resultVisible, setVisible] = useState(false); //variable for if search results are visible or not
 
+    //Search Results styling
+    const resultsStyle = {
+        backgroundColor: "black",
+    };
+
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -75,31 +80,35 @@ const SearchBar = () => {
     };
 
     return(
-        //Container for the entire search bar
-        <form className={"search"}>
-            {/*Input text field*/}
-            <input onKeyDown={pressedEnter} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
-            {/*Container for the search by location button,
+        <div style={{height: "50px"}}>
+            <form className={"search"}>
+                {/*Input text field*/}
+                <input onKeyDown={pressedEnter} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
+                {/*Container for the search by location button,
             when clicked it toggles search by location and sets the coords*/}
-            <div onClick={isToggled} title="Click me to toggle search by location!" className={"search-location-button"}>
-                <i style={style} className="fas fa-location-arrow"/>
-            </div>
-            {/*Search button*/}
-            <NavLink onClick={()=> setVisible(false)} className="search-button" to={{
-                pathname: '/Results',
-                state: { //props for the results page. This tells the page where to initially center the map
-                    centerCoords: centerCoords,
-                    searchResults: results
-                }
-            }} type="button">
-                <i className="fa fa-search"/>
-            </NavLink>
+                <div onClick={isToggled} title="Click me to toggle search by location!" className={"search-location-button"}>
+                    <i style={style} className="fas fa-location-arrow"/>
+                </div>
+                {/*Search button*/}
+                <NavLink onClick={()=> setVisible(false)} className="search-button" to={{
+                    pathname: '/Results',
+                    state: { //props for the results page. This tells the page where to initially center the map
+                        centerCoords: centerCoords,
+                        searchResults: results
+                    }
+                }} type="button">
+                    <i className="fa fa-search"/>
+                </NavLink>
+            </form>
             <div className={"results"}>
                 {/*if resultVisible is true and results is not empty, then map each object in results to be a div*/}
                 {resultVisible && results && results.map(object => {
-                    return <div key={object.name} onClick={() => setVisible(false)}><NavLink to={"/Area/"+object.name}>{object.name}</NavLink></div>})}
+                    return <div className={"results-item"} key={object.name} onClick={() => setVisible(false)}>
+                        <NavLink className={"results-item"} to={"/Area/"+object.name}>{object.name}</NavLink>
+                    </div>})}
             </div>
-        </form>
+        </div>
+        //Container for the entire search bar
     );
 };
 

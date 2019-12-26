@@ -22,7 +22,9 @@ const Navbar = (props) => {
     let navButtons;
     if(user){navButtons = //if the user is logged in, navbar will contain a logout button and "Hey, username"
         <div style={{gridTemplateColumns: "auto max-content 40px"}} className="buttons-nav">
-            <SearchBar/>
+            <div className={"search-nav"}>
+                <SearchBar/>
+            </div>
             <div>Hey, {user.name}</div>
             <button className={`user-button`} onClick={()=>{
                 axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
@@ -33,7 +35,9 @@ const Navbar = (props) => {
     }
     else{navButtons = //if user is not logged in, navbar will contain login and signup button
         <div style={{gridTemplateColumns: "4fr 1fr 1fr"}} className="buttons-nav">
-            <SearchBar/>
+            <div className={"search-nav"}>
+                <SearchBar/>
+            </div>
             <SigninLoginButton setLoginSignup={props.setLogin} formName={"login"}> Login </SigninLoginButton>
             <SigninLoginButton setLoginSignup={props.setSignup} formName={"signup"}> Sign Up </SigninLoginButton>
         </div>

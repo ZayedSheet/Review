@@ -64,7 +64,7 @@ div.results{
     position: relative;
     background-color: #eeeeee;
     width:100%;
-    padding-top: 22px;
+    /*padding-top: 22px;*/
     left:50%;
     transform: translate(-50%, 21px);
     z-index: -1;

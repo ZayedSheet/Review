@@ -80,7 +80,7 @@ const SearchBar = () => {
     };
 
     return(
-        <div style={{height: "50px"}}>
+        <div style={{maxHeight: "40px"}}>
             <form className={"search"}>
                 {/*Input text field*/}
                 <input onKeyDown={pressedEnter} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />

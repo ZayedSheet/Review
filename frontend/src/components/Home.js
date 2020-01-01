@@ -14,6 +14,7 @@ const Home = (props) => {
          * displays the background of the home page between the navbar and header
          */
         <div className={"container"}>
+            <div id={"background-mobile-top"}/>
             {/*Mobile login and signup buttons*/}
             <div className={"buttons-main"}>
                 {/*Login/Signup buttons are done through a component
@@ -26,6 +27,7 @@ const Home = (props) => {
             <div className={"search-main"}>
                 <SearchBar/> {/* Search Bar (aka Search Form) component*/}
             </div>
+            <div id={"background-mobile-bottom"}/>
         </div>
     );
 };

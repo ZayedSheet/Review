@@ -94,6 +94,7 @@ const SearchBar = (props) => {
         //Prevents page change when enter key is pressed
         if(event.keyCode === 13){
             event.preventDefault();
+            setVisible(false);
             props.history.push({
                 pathname: '/Results',
                 state: { //props for the results page. This tells the page where to initially center the map

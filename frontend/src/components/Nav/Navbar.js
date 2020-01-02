@@ -60,6 +60,7 @@ const Navbar = (props) => {
                             axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
                                 .then(res => console.log(res.data.message)); //console logs message from promise
                             setUser(false); //if logout button is clicked, user is set to false
+                            toggleUserButton(false);
                         }}>Logout</div>
                     </div>
                 }

@@ -9,9 +9,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config();
 
-const fs = require('fs');
-const https = require('https');
-
 const app = express();
 const port = process.env.PORT || 5000;
 

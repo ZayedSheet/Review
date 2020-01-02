@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import "./SearchBar.css";
 import axios from 'axios';
 import config from "../../config";
@@ -15,6 +15,8 @@ import {NavLink, withRouter} from "react-router-dom";
  */
 const SearchBar = (props) => {
 
+    const wrapperRef = useRef(null);
+
     /*
     Variables for geolocation functionality,
     coordinates set to false until user searches by location
@@ -23,6 +25,27 @@ const SearchBar = (props) => {
     const [style, locationEnabled] = useState({color: "#cccccc"});
     const [results, setResults] = useState([]); //variable for storing search results
     const [resultVisible, setVisible] = useState(false); //variable for if search results are visible or not
+
+
+    const handleClickOutside = event => {
+        if (wrapperRef.current && !(wrapperRef.current.contains(event.target))) {
+            setVisible(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside);
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
+
+    //Search Results styling
+    const resultsStyle = {
+        backgroundColor: "black",
+    };
+
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -83,7 +106,7 @@ const SearchBar = (props) => {
 
     return(
         <div style={{maxHeight: "40px"}}>
-            <form className={"search"}>
+            <form ref={wrapperRef} className={"search"}>
                 {/*Input text field*/}
                 <input onKeyDown={handleKeyDown} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
                 {/*Container for the search by location button,

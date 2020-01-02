@@ -65,8 +65,8 @@ div.results{
     background-color: #eeeeee;
     width:100%;
     /*padding-top: 22px;*/
-    left:50%;
-    transform: translate(-50%, 21px);
+    /*left:50%;*/
+    transform: translateY(20px);
     z-index: -1;
 }
 

@@ -17,6 +17,8 @@ const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [openHamburger, setHamburger] = useState(false);
     const [openSearch, setSearch] = useState(false);
+    const [isOpen, toggleLinks] = useState(false);
+    const [userButtonToggle, toggleUserButton] = useState(false);
     const location = useLocation();
     const {user, setUser} = useContext(UserContext);
 
@@ -26,16 +28,21 @@ const Navbar = (props) => {
 
     let navButtons;
     if(user){navButtons = //if the user is logged in, navbar will contain a logout button and "Hey, username"
-        <div style={{gridTemplateColumns: "auto max-content 40px"}} className="buttons-nav">
+        <div style={{gridTemplateColumns: "auto max-content 40px",gridTemplateRows:"minmax(0,100%)"}} className="buttons-nav">
             <div className={"search-nav"}>
                 <SearchBar/>
             </div>
             <div>Hey, {user.name}</div>
-            <button className={`user-button`} onClick={()=>{
-                axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
-                    .then(res => console.log(res.data.message)); //console logs message from promise
-                setUser(false); //if logout button is clicked, user is set to false
-            }}/>
+            <div>
+                <button className={`user-button`} onClick={()=>{
+                    // axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
+                    //     .then(res => console.log(res.data.message)); //console logs message from promise
+                    // setUser(false); //if logout button is clicked, user is set to false
+                    if (!userButtonToggle) toggleUserButton(true);
+                    else toggleUserButton(false);
+                }}/>
+                {userButtonToggle && <div className={`user-options`}/>}
+            </div>
         </div>
     }
     else{navButtons = //if user is not logged in, navbar will contain login and signup button

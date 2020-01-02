@@ -81,7 +81,7 @@ nav.transparent{
 /*    -webkit-transform: scaleX(1);*/
 /*    transform: scaleX(1);*/
 /*}*/
-/************************************** navlink underline **************************/
+/************************************** /navlink underline **************************/
 
 .buttons-nav{
     /*width: 100%;*/
@@ -92,7 +92,7 @@ nav.transparent{
     grid-column-gap: 12px;
     align-items: center;
 }
-
+/*************************** user Options ****************************/
 .user-button{
     background-color: rgba(var(--button-colour),0.5);
     border:1px solid white;
@@ -102,6 +102,17 @@ nav.transparent{
     width: 40px;
     height: 40px;
 }
+
+.user-options{
+    position:absolute;
+    top:75px;
+    right:6.25%;
+    height: 100px;
+    width: 200px;
+    background-color: white;
+    border: 1px solid #0d7eda;
+}
+/*************************** /user Options ****************************/
 
 .search-button-mobile{
     visibility: hidden;

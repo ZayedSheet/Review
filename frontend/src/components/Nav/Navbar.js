@@ -15,7 +15,8 @@ import "./Navbar.css"; //Styling specific to the NavBar
  */
 const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
-    const [isOpen, toggleLinks] = useState(false);
+    const [openHamburger, toggleHamburger] = useState(false);
+    const [openSearch, toggleSearch] = useState(false);
     const location = useLocation();
     const {user, setUser} = useContext(UserContext);
 
@@ -46,19 +47,26 @@ const Navbar = (props) => {
     return(
         //Container with NavBar contents
         <nav id="navbar" className={location.pathname === "/" ? "transparent" : ""}>
+            <div style={{visibility: location.pathname !== "/" ? "visible": "hidden"}}
+                 className="search search-button-mobile"
+                 onClick={() => toggleSearch(!openSearch)}>
+                <i style={{fontSize: "29px"}} className="fa fa-search"/>
+            </div>
+
+            <div
+                style={{visibility: location.pathname !== "/" && openSearch ? "visible": "hidden"}}
+                className={"search-main"}>
+                <SearchBar/> {/* Search Bar (aka Search Form) component*/}
+            </div>
+
             {/*Routes to the home page when the logo is pressed */}
             <NavLink to="/" id="nav-brand"/>
-
-            {/*Container with the nav search bar*/}
-            {/*<div className="search-nav">*/}
-            {/*    <SearchBar/>*/}
-            {/*</div>*/}
 
             {navButtons}
 
             {/* Hamburger button in the mobile version of the NavBar,
              when clicked isOpen = !isOpen*/}
-            <div className="hamburger" onClick={() => toggleLinks(!isOpen)}>
+            <div className="hamburger" onClick={() => toggleHamburger(!openHamburger)}>
                 <div className="line"/>
                 <div className="line"/>
                 <div className="line"/>
@@ -67,10 +75,10 @@ const Navbar = (props) => {
             {/*List of links to other areas of the site.
             isOpen controls a conditional render for the mobile version of the navbar,
             if true the open class is enabled therfore the links are visible*/}
-            <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
-                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>Add Area</NavLink>
-                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>My List</NavLink>
-                <NavLink to={"/Submission"} onClick={() => toggleLinks(!isOpen)}>Contact</NavLink>
+            <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
+                <NavLink to={"/Submission"} onClick={() => toggleHamburger(!openHamburger)}>Add Area</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleHamburger(!openHamburger)}>My List</NavLink>
+                <NavLink to={"/Submission"} onClick={() => toggleHamburger(!openHamburger)}>Contact</NavLink>
             </ul>
         </nav>
     );

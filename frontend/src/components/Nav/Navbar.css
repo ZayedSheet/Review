@@ -103,6 +103,10 @@ nav.transparent{
     height: 40px;
 }
 
+.search-button-mobile{
+    visibility: hidden;
+}
+
 @media screen and (max-width: 768px){
     .nav-links > *{
         border-bottom: solid;
@@ -142,6 +146,16 @@ nav.transparent{
         position: absolute;
         cursor: pointer;
         right: 5%;
+        top: 50%;
+        transform: translate(-5%, -50%);
+        z-index: 5;
+    }
+
+    .search-button-mobile{
+        visibility: visible;
+        position: absolute;
+        cursor: pointer;
+        left: 5%;
         top: 50%;
         transform: translate(-5%, -50%);
         z-index: 5;

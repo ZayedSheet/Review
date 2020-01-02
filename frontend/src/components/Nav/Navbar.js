@@ -80,17 +80,20 @@ const Navbar = (props) => {
     return(
         //Container with NavBar contents
         <nav id="navbar" className={location.pathname === "/" ? "transparent" : ""}>
-            <div style={{visibility: location.pathname !== "/" ? "visible": "hidden"}}
+            {location.pathname !== "/" &&
+            <div
                  className="search search-button-mobile"
                  onClick={() => setSearch(!openSearch)}>
                 <i style={{fontSize: "29px"}} className="fa fa-search"/>
             </div>
+            }
 
+            {location.pathname !== "/" && openSearch &&
             <div
-                style={{visibility: location.pathname !== "/" && openSearch ? "visible": "hidden"}}
                 className={"search-main"}>
                 <SearchBar/> {/* Search Bar (aka Search Form) component*/}
             </div>
+            }
 
             {/*Routes to the home page when the logo is pressed */}
             <NavLink to="/" id="nav-brand"/>

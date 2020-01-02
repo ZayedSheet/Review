@@ -7,13 +7,13 @@ import config from "../../config";
 Nav Link Component allows links to be added to change the current page.
 In other words, change the component in the App.js switch statement
  */
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 
 /**
  * General search bar to search the website for objects
  * @returns SearchBar component
  */
-const SearchBar = () => {
+const SearchBar = (props) => {
 
     /*
     Variables for geolocation functionality,
@@ -23,12 +23,6 @@ const SearchBar = () => {
     const [style, locationEnabled] = useState({color: "#cccccc"});
     const [results, setResults] = useState([]); //variable for storing search results
     const [resultVisible, setVisible] = useState(false); //variable for if search results are visible or not
-
-    //Search Results styling
-    const resultsStyle = {
-        backgroundColor: "black",
-    };
-
 
     /**
      * Toggles to colour on the location search option in the search bar depending on if it is selected
@@ -73,9 +67,17 @@ const SearchBar = () => {
         }else{setResults()} //if search field is empty set results to nothing
     };
 
-    const pressedEnter = (event) => {
+    const handleKeyDown = (event) => {
+        //Prevents page change when enter key is pressed
         if(event.keyCode === 13){
             event.preventDefault();
+            props.history.push({
+                pathname: '/Results',
+                state: { //props for the results page. This tells the page where to initially center the map
+                    centerCoords: centerCoords,
+                    searchResults: results
+                }
+            })
         }
     };
 
@@ -83,7 +85,7 @@ const SearchBar = () => {
         <div style={{maxHeight: "40px"}}>
             <form className={"search"}>
                 {/*Input text field*/}
-                <input onKeyDown={pressedEnter} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
+                <input onKeyDown={handleKeyDown} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
                 {/*Container for the search by location button,
             when clicked it toggles search by location and sets the coords*/}
                 <div onClick={isToggled} title="Click me to toggle search by location!" className={"search-location-button"}>
@@ -112,4 +114,4 @@ const SearchBar = () => {
     );
 };
 
-export default SearchBar;
+export default withRouter(SearchBar);

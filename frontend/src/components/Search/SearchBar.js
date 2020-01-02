@@ -102,6 +102,7 @@ const SearchBar = (props) => {
                 }
             })
         }
+        if(event.keyCode === 27){setVisible(false)}
     };
 
     return(

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'; //React hooks, allows state to be used in functional components
+import React, {useState, useContext, useEffect} from 'react'; //React hooks, allows state to be used in functional components
 
 import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
@@ -15,10 +15,14 @@ import "./Navbar.css"; //Styling specific to the NavBar
  */
 const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
-    const [openHamburger, toggleHamburger] = useState(false);
-    const [openSearch, toggleSearch] = useState(false);
+    const [openHamburger, setHamburger] = useState(false);
+    const [openSearch, setSearch] = useState(false);
     const location = useLocation();
     const {user, setUser} = useContext(UserContext);
+
+    useEffect(() => {
+        if(location.pathname === "/Results") setSearch(false);
+    }, [location.pathname]);
 
     let navButtons;
     if(user){navButtons = //if the user is logged in, navbar will contain a logout button and "Hey, username"
@@ -49,7 +53,7 @@ const Navbar = (props) => {
         <nav id="navbar" className={location.pathname === "/" ? "transparent" : ""}>
             <div style={{visibility: location.pathname !== "/" ? "visible": "hidden"}}
                  className="search search-button-mobile"
-                 onClick={() => toggleSearch(!openSearch)}>
+                 onClick={() => setSearch(!openSearch)}>
                 <i style={{fontSize: "29px"}} className="fa fa-search"/>
             </div>
 
@@ -66,7 +70,7 @@ const Navbar = (props) => {
 
             {/* Hamburger button in the mobile version of the NavBar,
              when clicked isOpen = !isOpen*/}
-            <div className="hamburger" onClick={() => toggleHamburger(!openHamburger)}>
+            <div className="hamburger" onClick={() => setHamburger(!openHamburger)}>
                 <div className="line"/>
                 <div className="line"/>
                 <div className="line"/>
@@ -76,9 +80,9 @@ const Navbar = (props) => {
             isOpen controls a conditional render for the mobile version of the navbar,
             if true the open class is enabled therfore the links are visible*/}
             <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
-                <NavLink to={"/Submission"} onClick={() => toggleHamburger(!openHamburger)}>Add Area</NavLink>
-                <NavLink to={"/Submission"} onClick={() => toggleHamburger(!openHamburger)}>My List</NavLink>
-                <NavLink to={"/Submission"} onClick={() => toggleHamburger(!openHamburger)}>Contact</NavLink>
+                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>Add Area</NavLink>
+                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>My List</NavLink>
+                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>Contact</NavLink>
             </ul>
         </nav>
     );

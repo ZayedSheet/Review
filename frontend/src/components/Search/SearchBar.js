@@ -107,8 +107,8 @@ const SearchBar = (props) => {
     };
 
     return(
-        <div style={{maxHeight: "40px"}}>
-            <form ref={wrapperRef} className={"search"}>
+        <div ref={wrapperRef} style={{maxHeight: "40px"}}>
+            <form className={"search"}>
                 {/*Input text field*/}
                 <input onKeyDown={handleKeyDown} autoComplete={"off"} onChange={searchResults} type="text" placeholder="Search.." name="search" />
                 {/*Container for the search by location button,

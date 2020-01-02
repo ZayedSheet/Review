@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react'; //React hooks, allows state to be used in functional components
+import React, {useState, useContext, useEffect, useRef} from 'react'; //React hooks, allows state to be used in functional components
 
 import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
@@ -14,6 +14,7 @@ import "./Navbar.css"; //Styling specific to the NavBar
  * @returns A NavBar Component
  */
 const Navbar = (props) => {
+    const wrapperRef = useRef(null);
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [openHamburger, setHamburger] = useState(false);
     const [openSearch, setSearch] = useState(false);
@@ -22,9 +23,22 @@ const Navbar = (props) => {
     const location = useLocation();
     const {user, setUser} = useContext(UserContext);
 
+    const handleClickOutside = event => {
+        if (wrapperRef.current && !(wrapperRef.current.contains(event.target))) {
+            toggleUserButton(false);
+        }
+    };
+
     useEffect(() => {
         if(location.pathname === "/Results") setSearch(false);
     }, [location.pathname]);
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     let navButtons;
     if(user){navButtons = //if the user is logged in, navbar will contain a logout button and "Hey, username"
@@ -33,11 +47,8 @@ const Navbar = (props) => {
                 <SearchBar/>
             </div>
             <div>Hey, {user.name}</div>
-            <div>
+            <div ref={wrapperRef}>
                 <button className={`user-button`} onClick={()=>{
-                    // axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
-                    //     .then(res => console.log(res.data.message)); //console logs message from promise
-                    // setUser(false); //if logout button is clicked, user is set to false
                     if (!userButtonToggle) toggleUserButton(true);
                     else toggleUserButton(false);
                 }}/>

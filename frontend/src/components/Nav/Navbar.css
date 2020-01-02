@@ -111,6 +111,19 @@ nav.transparent{
     width: 200px;
     background-color: white;
     border: 1px solid #0d7eda;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.user-options > div{
+    padding: 5px;
+    margin: 1px;
+    color: #0277d7;
+}
+
+.user-options > div:hover{
+    background-color: lightgrey;
+    cursor: pointer;
 }
 /*************************** /user Options ****************************/
 

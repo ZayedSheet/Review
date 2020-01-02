@@ -41,7 +41,17 @@ const Navbar = (props) => {
                     if (!userButtonToggle) toggleUserButton(true);
                     else toggleUserButton(false);
                 }}/>
-                {userButtonToggle && <div className={`user-options`}/>}
+                {userButtonToggle &&
+                    <div className={`user-options`}>
+                        <div>My Account</div>
+                        <div>My Messages</div>
+                        <div onClick={()=>{
+                            axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
+                                .then(res => console.log(res.data.message)); //console logs message from promise
+                            setUser(false); //if logout button is clicked, user is set to false
+                        }}>Logout</div>
+                    </div>
+                }
             </div>
         </div>
     }

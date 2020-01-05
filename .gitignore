@@ -26,4 +26,5 @@ yarn-error.log*
 
 # API
 src/config.js
+/backend/.env
 Areago.pem

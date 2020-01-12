@@ -15,15 +15,14 @@ const s3 = new AWS.S3();
 const Bucket = process.env.BUCKET_NAME;
 
 // PUT URL Generator
-const generatePutUrl = (Key, ContentType) => {
+const generatePutUrl = (Key) => {
     return new Promise((resolve, reject) => {
         // Note Bucket is retrieved from the env variable above.
-        const params = { Bucket, Key, ContentType };
+
+        const params = { Bucket, Key, Expires: 100 };
         // Note operation in this case is putObject
         s3.getSignedUrl('putObject', params, function(err, url) {
-            if (err) {
-                reject(err);
-            }
+            if (err) {reject(err);}
             // If there is no errors we can send back the pre-signed PUT URL
             resolve(url);
         });
@@ -31,4 +30,4 @@ const generatePutUrl = (Key, ContentType) => {
 };
 
 // Finally, we export the methods so we can use it in our main application.
-module.exports = {generatePutUrl };
+module.exports = {generatePutUrl};

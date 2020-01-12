@@ -6,6 +6,8 @@
 const router = require('express').Router();
 let Object = require('../models/objects.model');
 
+// Importing AWSPresigner
+const {generatePutUrl} = require('../AWSPresigner');
 /**
  * Find documents in objects collection based on given request body
  */
@@ -83,15 +85,9 @@ router.route('/add').post((req,res) =>{
     //Saves newObject document to Object database
     newObject.save()
         .then(() => {
-            const params = { Bucket, Key: name + '/cover.png', ContentType: 'image/png'};
-            s3.getSignedUrl(
-                'putObject',
-                params,
-                (error, url) => {
-                    if(error) res.status(400).json('Error: ' + error);
-                    else res.send(url);
-                }
-                )
+            generatePutUrl('test/cover.png')
+                .then(putURL => {res.send({putURL});})
+                .catch(err => {res.send(err);});
         })
         .catch(err => res.status(400).json('Error: ' + err));
     }

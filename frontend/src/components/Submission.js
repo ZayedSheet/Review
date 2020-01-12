@@ -30,23 +30,12 @@ const Submission = (props) => {
 
     const upload = (url) => {
         console.log("URL: ", url);
-        const options = {
-            params: {
-                Key: file.name,
-                ContentType: 'image/png'
-            }
-        };
-        axios.put(url,new File(file, "test/cover.png"), options)
-            .then(res => {
-                console.log("Done: ", res);
-            })
-                .catch(err => {
-                    console.log('err', err);
-                });
-        // uploadFile(new File(file, "cover.png"), {...config, dirName: inputs.name})
-        //     .then(data => console.log(data))
-        //     .catch(err => {console.error(err); alert("Error Uploading Image");});
+
+        axios.put(url,new File(file, "cover.png"))
+            .then(res => {console.log("Done: ", res);})
+            .catch(err => {console.log('err', err);});
     };
+
     const getFile = (event) => {
         console.log("getting file");
         setFile(event.target.files);
@@ -62,7 +51,7 @@ const Submission = (props) => {
         if (user) { //if user is logged in, sends post request to server with inputs from form hook as input, and coordinates object appended to it
             axios.post(conf.IP + '/objects/add', {...inputs, coordinates:{latitude: inputs.latitude, longitude: inputs.longitude}, username: user})
                 .then(async (res) => {
-                    await upload(res.data);
+                    await upload(res.data.putURL);
                     alert("Area Added!");
                     setTimeout(() => props.history.push('/area/' + inputs.name),500);
                 }).catch((e) => {alert("Duplicate Object, Invalid Inputs, or Error Uploading Image");console.log(e)})

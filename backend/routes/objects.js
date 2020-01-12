@@ -85,7 +85,7 @@ router.route('/add').post((req,res) =>{
     //Saves newObject document to Object database
     newObject.save()
         .then(() => {
-            generatePutUrl('test/cover.png')
+            generatePutUrl(name + '/cover.png')
                 .then(putURL => {res.send({putURL});})
                 .catch(err => {res.send(err);});
         })

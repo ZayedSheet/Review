@@ -5,18 +5,6 @@
 
 const router = require('express').Router();
 let Object = require('../models/objects.model');
-const AWS = require('aws-sdk'); // Requiring AWS SDK.
-
-AWS.config = new AWS.Config({
-    sslEnabled: false,
-    signatureVersion: 'v4',
-    accessKeyId: process.env.ACCESS_KEY_ID,
-    secretAccessKey: 'process.env.SECRET_ACCESS_KEY',
-    region: 'us-east-2' // This refers to your bucket configuration.
-});
-
-const s3 = new AWS.S3();
-const Bucket =  'review-bucket-react';
 
 /**
  * Find documents in objects collection based on given request body

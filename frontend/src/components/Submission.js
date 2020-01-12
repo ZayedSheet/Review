@@ -38,14 +38,9 @@ const Submission = (props) => {
         };
         axios.put(url,new File(file, "test/cover.png"), options)
             .then(res => {
-                this.setState({message:'Upload Successful'})
-                setTimeout(()=>{
-                    this.setState({message:''});
-                    document.querySelector('#upload-image').value='';
-                }, 2000)
+                console.log("Done: ", res);
             })
                 .catch(err => {
-                    this.setState({message:'Sorry, something went wrong'})
                     console.log('err', err);
                 });
         // uploadFile(new File(file, "cover.png"), {...config, dirName: inputs.name})

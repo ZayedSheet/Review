@@ -16,15 +16,16 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongodb": "^3.3.5",
-    "mongoose": "^5.7.13",
+    "googleapis": "^39.2.0",
+    "mongodb": "^3.4.1",
+    "mongoose": "^5.8.7",
     "nan": "^2.14.0",
     "node-pre-gyp": "^0.14.0",
-    "nodemon": "^2.0.1",
+    "nodemon": "^2.0.2",
     "python": "0.0.4",
     "python3": "0.0.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.595.0"
+    "aws-sdk": "^2.602.0"
   }
 }

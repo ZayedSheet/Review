@@ -2,7 +2,6 @@ import React, {useState, useContext, useEffect} from 'react'
 import axios from 'axios';
 import useForm from './FormHook';
 import UserContext from "../../UserContext";
-import Review from "../Submission/Review";
 import config from "../../config";
 
 
@@ -17,13 +16,17 @@ const AddReviewForm = (props) => {
         event.preventDefault(); //prevents default form behavior
         if (user){ //if user is logged in
             try{
+                console.log("start");
                 await axios.post(config.IP + "/reviews/add", inputs); //sends request to server to add the review with inputs (From form hook) as input
+                console.log("Post");
                 setVisible(false); //review form is no longer visible as it has just been submitted
+                console.log("visibility");
                 props.setReviews([...props.reviews, //adds the review the user just submitted to the page to the reviews state for area page
-                    <Review username={inputs.username} stars={inputs.stars}>
-                        {inputs.description}
-                    </Review>]);
+                    {_id:"newReview", username: inputs.username, stars: inputs.stars, description: inputs.description}
+                    ]);
+                console.log("reviewSet");
                 props.updateObject();
+                console.log("object update");
             }catch {
                 alert("Duplicate Review or Improper Format") //if request to server fails
             }

@@ -7,6 +7,10 @@ const router = require('express').Router();
 let User = require('../models/users.model');
 // const UserSession = require('../models/userSession.model');
 
+//Email Verification
+var clientId = '177121524554-9s9c1aqsa8oah279sj2aftg113016ceh.apps.googleusercontent.com';
+var apiKey = 'AIzaSyCw1ioW71q3_Zff5NEV4bQwujkqX3Q81_E';
+
 /**
  * Retrieves all users
  */

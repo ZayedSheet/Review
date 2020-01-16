@@ -328,7 +328,7 @@
     padding-top:5vh;
 }
 
-.obj-review-list > li {
+.obj-review-list > ul >li {
     list-style: none;
     margin: 2vh 2vw 2vh 2vw;
     border-bottom: 1px solid lightblue; /* to separate list items, adds line at bottom */

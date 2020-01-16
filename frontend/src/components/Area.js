@@ -177,10 +177,12 @@ const Area = (props) => {
 
                     <div id="reviews" className="obj-review">
                         <div className="obj-review-list">
-                            {reviews &&
-                            reviews.map(review =>
-                                <Review key={review._id} username={review.username} stars={review.stars}>{review.description}</Review>)
-                            }
+                            <ul>
+                                {reviews &&
+                                reviews.map(review =>
+                                    <Review key={review._id} username={review.username} stars={review.stars}>{review.description}</Review>)
+                                }
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ import './area.css'
 import Star from "./Submission/Star";
 import Review from "./Submission/Review"
 import MapContainer from "./MapContainer";
+import Image from './Image';
 import axios from 'axios';
 import AddReviewForm from "./Forms/AddReviewForm";
 import config from "../config";
@@ -98,9 +99,9 @@ const Area = (props) => {
 
                 <div className="obj-overview-content">
                     <div id="remove-style" className="obj-pictures">
-                        <div style={photoStyle} className="overview-main-image">
+                        <Image style={photoStyle} className="overview-main-image">
                             <h1>Photo (1)</h1>
-                        </div>
+                        </Image>
                         <div className="side-image overview-side-image1"/>
                         <div className="side-image overview-side-image2"/>
                         <div className="side-image overview-side-image3"/>

@@ -3,10 +3,11 @@ import './area.css'
 import Star from "./Submission/Star";
 import Review from "./Submission/Review"
 import MapContainer from "./MapContainer";
-import Image from './Image';
+import Image from './Gallery/Image';
 import axios from 'axios';
 import AddReviewForm from "./Forms/AddReviewForm";
 import config from "../config";
+import Gallery from "./Gallery/Gallery";
 
 const Area = (props) => {
 
@@ -78,6 +79,13 @@ const Area = (props) => {
         backgroundPosition: "center",
     };
 
+    let nextImage = (
+        <Image style={{...photoStyle,
+            backgroundImage: "url(https://www.pennington.com/-/media/images/pennington2-na/us/blog/seed/all-you-need-to-know-about-bermudagrass/bermuda-header.jpg)"}}
+               className="side-image overview-size-image1"
+        />
+    );
+
     if(area && area.coordinates){
         const totalReviews = area.rating.one + area.rating.two + area.rating.three + area.rating.four + area.rating.five;
         const oneStarPercent = Math.round(area.rating.one/totalReviews * 100) || 0;
@@ -99,12 +107,14 @@ const Area = (props) => {
 
                 <div className="obj-overview-content">
                     <div id="remove-style" className="obj-pictures">
-                        <Image style={photoStyle} className="overview-main-image">
-                            <h1>Photo (1)</h1>
-                        </Image>
-                        <div className="side-image overview-side-image1"/>
-                        <div className="side-image overview-side-image2"/>
-                        <div className="side-image overview-side-image3"/>
+                        <Gallery>
+                            <Image style={photoStyle} className="overview-main-image">
+                                <h1>Photo (1)</h1>
+                            </Image>
+                            {nextImage}
+                            <Image className="side-image overview-size-image2"/>
+                            <Image className="side-image overview-size-image3"/>
+                        </Gallery>
                     </div>
                     <div className="obj-review-overview">
                         <h1>Review Overview</h1>

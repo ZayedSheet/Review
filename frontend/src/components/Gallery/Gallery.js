@@ -6,20 +6,20 @@ const Gallery = (props) => {
     const [images, setImages] = useState(
         props.children.map((img) => {return {...img, props: {...img.props, setOpen: setOpen, open: isOpen, key: i++}}})
     );
-    useEffect(() => {i = 0;
-    setImages(
-        props.children.map((img) => {return {...img, props: {...img.props, setOpen: setOpen, open: isOpen, key: i++}}})
+    useEffect(() => {
+        i = 0;
+        setImages(props.children.map((img) => {return {...img, props: {...img.props, setOpen: setOpen, open: isOpen, key: i++}}})
     )}, [isOpen]);
 
-    const changeImage = (imgKey) => {
-        setOpen(imgKey);
-    };
+    const changeImage = (imgKey) => {setOpen(imgKey);};
+
+    let arrowStyle = {position: "fixed", fontSize: "30px", zIndex: "101", top: "50%",  opacity: "0.5"};
 
     let nextImageBtn =
-        (<span style={{position: "fixed", zIndex: "101", right:"15px", top:"50%"}} onClick={() => changeImage(isOpen+1)} className="close"/>)
+        (<i style={{...arrowStyle, right: "15px"}} onClick={() => changeImage(isOpen+1)} className="fas fa-arrow-right"/>)
         ;
     let prevImageBtn =
-        (<span style={{position: "fixed", zIndex: "101", left:"15px", top:"50%"}} onClick={() => changeImage(isOpen-1)} className="close"/>)
+        (<span style={{...arrowStyle, left: "15px"}} onClick={() => changeImage(isOpen-1)} className="fas fa-arrow-left"/>)
         ;
 
     return(

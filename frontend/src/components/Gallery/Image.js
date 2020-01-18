@@ -14,12 +14,10 @@ const Image = (props) => {
 
     useEffect(() => {if(props.setOpen) props.open === props.key ? handleOpen(): handleClose()}, [props.open]);
 
-    let largeStyle = isEnlarge ?
-        {position: "fixed" ,
-            top: "0px", left: "0px", width: "100vw", height: "100vh",
-            zIndex: "100",
-            ...props.style,
-        } : props.style;
+    let largeStyle = isEnlarge ? {
+            position: "fixed", cursor: "default", display: "block",
+            top: "0px", left: "0px", width: "100vw", height: "100vh", zIndex: "100", ...props.style}
+        : props.style;
 
 
     return(

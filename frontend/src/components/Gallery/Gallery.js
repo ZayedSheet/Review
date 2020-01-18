@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import Radium from 'radium'
 
 const Gallery = (props) => {
     const [isOpen, setOpen] = useState(-1);
@@ -9,18 +10,24 @@ const Gallery = (props) => {
     useEffect(() => {
         i = 0;
         setImages(props.children.map((img) => {return {...img, props: {...img.props, setOpen: setOpen, open: isOpen, key: i++}}})
-    )}, [isOpen]);
+    )}, [isOpen, props.children]);
 
     const changeImage = (imgKey) => {setOpen(imgKey);};
 
-    let arrowStyle = {position: "fixed", fontSize: "30px", zIndex: "101", top: "50%",  opacity: "0.5"};
+    let arrowStyle = {
+        position: "fixed",
+        fontSize: "30px",
+        zIndex: "101",
+        top: "50%",
+        opacity: "0.4",
+        cursor: "pointer",
+        ":hover": {opacity: "0.8"}
+    };
 
     let nextImageBtn =
-        (<i style={{...arrowStyle, right: "15px"}} onClick={() => changeImage(isOpen+1)} className="fas fa-arrow-right"/>)
-        ;
+        (<i key="next" style={{...arrowStyle, right: "15px"}} onClick={() => changeImage(isOpen+1)} className="fas fa-arrow-right"/>);
     let prevImageBtn =
-        (<span style={{...arrowStyle, left: "15px"}} onClick={() => changeImage(isOpen-1)} className="fas fa-arrow-left"/>)
-        ;
+        (<span key="prev" style={{...arrowStyle, left: "15px"}} onClick={() => changeImage(isOpen-1)} className="fas fa-arrow-left"/>);
 
     return(
         <>
@@ -31,4 +38,4 @@ const Gallery = (props) => {
     );
 };
 
-export default Gallery;
+export default Radium(Gallery);

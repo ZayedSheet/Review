@@ -3,17 +3,7 @@ import axios from 'axios';
 import useForm from './Forms/FormHook';
 import UserContext from '../UserContext';
 import LocationSearch from './Search/LocationSearch'
-import {uploadFile} from 'react-s3'
-import aws from '../config'
 import conf from "../config";
-
-
-const config = {
-    bucketName: 'review-bucket-react',
-    region: 'us-east-2',
-    accessKeyId: aws.AWS_S3.ACCESS_KEY_ID,
-    secretAccessKey: aws.AWS_S3.SECRET_ACCESS_KEY,
-};
 
 /**
  * Submission page where users can add an area (a object) to the website

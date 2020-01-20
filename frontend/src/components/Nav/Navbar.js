@@ -54,7 +54,7 @@ const Navbar = (props) => {
                 }}/>
                 {userButtonToggle &&
                     <div className={`user-options`}>
-                        <div>My Account</div>
+                        <NavLink to={"Settings"}>My Account</NavLink>
                         <div>My Messages</div>
                         <div onClick={()=>{
                             axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server

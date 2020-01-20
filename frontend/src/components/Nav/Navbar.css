@@ -115,13 +115,14 @@ nav.transparent{
     grid-template-rows: 1fr 1fr 1fr;
 }
 
-.user-options > div{
+.user-options > div, .user-options > a {
+    text-decoration: none;
     padding: 5px;
     margin: 1px;
     color: #0277d7;
 }
 
-.user-options > div:hover{
+.user-options > div:hover, .user-options > a:hover{
     background-color: lightgrey;
     cursor: pointer;
 }

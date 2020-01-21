@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect, useRef} from 'react'; //React ho
 
 import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
+import UserButton from '../Buttons/UserButton';
 import UserContext from '../../UserContext';
 import { NavLink, useLocation } from 'react-router-dom'; //Component to switch between pages via ReactRouter
 import axios from "axios";
@@ -18,8 +19,7 @@ const Navbar = (props) => {
     //isOpen is a state variable, when true the mobile version of the NavBar is open, toggleLinks controls isOpen
     const [openHamburger, setHamburger] = useState(false);
     const [openSearch, setSearch] = useState(false);
-    const [isOpen, toggleLinks] = useState(false);
-    const [userButtonToggle, toggleUserButton] = useState(false);
+    const [userButton, toggleUserButton] = useState(false);
     const location = useLocation();
     const {user, setUser} = useContext(UserContext);
 
@@ -48,22 +48,7 @@ const Navbar = (props) => {
             </div>
             <div>Hey, {user.name}</div>
             <div ref={wrapperRef}>
-                <button className={`user-button`} onClick={()=>{
-                    if (!userButtonToggle) toggleUserButton(true);
-                    else toggleUserButton(false);
-                }}/>
-                {userButtonToggle &&
-                    <div className={`user-options`}>
-                        <NavLink to={"Settings"}>My Account</NavLink>
-                        <div>My Messages</div>
-                        <div onClick={()=>{
-                            axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sents a logout request to server
-                                .then(res => console.log(res.data.message)); //console logs message from promise
-                            setUser(false); //if logout button is clicked, user is set to false
-                            toggleUserButton(false);
-                        }}>Logout</div>
-                    </div>
-                }
+                <UserButton userButton={userButton} toggleUserButton={toggleUserButton}/>
             </div>
         </div>
     }

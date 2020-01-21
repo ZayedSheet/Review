@@ -69,7 +69,7 @@ const App = () => {
                       <Route path="/Submission" component={Submission}/>
                       <Route path="/Results" component={Results}/>
                       <Route path="/Area/:name" component={Area}/>
-                      <Route path="/Settings" component={UserSettings}/>
+                    <Route path="/Settings"><UserSettings setLogin={setLogin}/></Route>
                 </Switch>
 
                 {/*Content on all pages below*/}

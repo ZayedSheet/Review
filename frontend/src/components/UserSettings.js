@@ -13,6 +13,9 @@ const SettingsItem = (props) => {
 
     /****  Functions  ****/
     const handleClick = (event) => {
+        if (!isEdit){
+
+        }
         if(event.target.name !== "verified") setEdit(!isEdit);
     };
 
@@ -35,9 +38,11 @@ const SettingsItem = (props) => {
     )
 };
 
-const UserSettings = () => {
+const UserSettings = (props) => {
 
     const {user} = useContext(UserContext); //User data (if logged in)
+    console.log(user);
+    if (!user) props.setLogin(true);
 
     const textStyle = {padding: "20px 0"};
 

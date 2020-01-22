@@ -12,8 +12,8 @@ const UserSessionSchema = new Schema({
     isDeleted: {type: Boolean, default: false}
 });
 
-UserSessionSchema.statics.verifySession = (sesisonId, username, callback) => {
-    return UserSession.findOne({_id: sesisonId}, (err,session)=>{
+UserSessionSchema.statics.verifySession = (sessionID, username, callback) => {
+    return UserSession.findOne({_id: sessionID}, (err,session)=>{
         if(err) callback('Session does not exist');
         else if(session.isDeleted) callback('Session is no longer valid');
         else mongoose.model('User').findOne({_id: session.userid}, (err, user)=>{
@@ -21,7 +21,7 @@ UserSessionSchema.statics.verifySession = (sesisonId, username, callback) => {
             else callback(null, user);
         })
     })
-}
+};
 
 const UserSession = mongoose.model('UserSession', UserSessionSchema);
 module.exports = UserSession;

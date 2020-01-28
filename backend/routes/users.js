@@ -32,20 +32,26 @@ router.route('/:id').get((req, res) => {
  */
 router.route('/update').post((req,res)=>{
     const {sessionId, username, password, update} = req.body;
-    UserSession.verifySession(sessionId,username, (err,user) => {
-        if(err) res.status(404).json({updated: false, message: err});
-        else {
-            if(!user.validPassword(password)) res.status(403).json({updated: false, message: 'Invalid Password'})
-            else{
-                let updateField = update;
-                if (update.password) updateField = {password: user.generateHash(update.password)};
-                User.findOneAndUpdate({username: username}, updateField, (err) =>{
-                    if(err) res.status(400).send({updated: false, message: 'Password correct, but could not update'});
-                    else res.send({updated: true, message: 'user updated'});
-                })
+    if (update.hasOwnProperty('username')) res.stats(401).json({success: false, message: 'Username cannot be updated'});
+    else {
+        UserSession.verifySession(sessionId, username, (err, user) => {
+            if (err) res.status(404).json({success: false, message: err});
+            else {
+                if (!user.validPassword(password)) res.status(403).json({success: false, message: 'Invalid Password'})
+                else {
+                    let updateField = update;
+                    if (update.hasOwnProperty('password')) updateField = {password: user.generateHash(update.password)};
+                    User.findOneAndUpdate({username: username}, updateField, (err) => {
+                        if (err) res.status(400).send({
+                            success: false,
+                            message: 'Password correct, but could not update'
+                        });
+                        else res.send({success: true, message: 'user updated'});
+                    })
+                }
             }
-        }
-    })
+        })
+    }
 });
 
 /**

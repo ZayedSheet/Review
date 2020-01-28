@@ -35,6 +35,7 @@ const LoginForm = (props) => {
                         alert(res.data.message);
                     }
                 })
+                .catch(() => alert("Invalid Credentials!"))
         }
         else{
             alert("invalid inputs"); //if formhook check submit fails, inputs were invalid

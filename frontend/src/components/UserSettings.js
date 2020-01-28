@@ -1,6 +1,8 @@
 import React, {useContext, useState} from 'react'
 import UserContext from "../UserContext";
 import classes from './UserSettings.module.css';
+import axios from "axios";
+import config from "../config";
 
 const PasswordVerifyForm = (props) => {
 
@@ -9,7 +11,7 @@ const PasswordVerifyForm = (props) => {
 
     const [formValues, setValues] = useState({
         sessionId: sessionId, update:{[props.field]:props.value}, username: user.username
-        });
+    });
 
     const handleInputChange = (e) => {
         setValues({...formValues, password: e.target.value});
@@ -17,6 +19,9 @@ const PasswordVerifyForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formValues);
+        axios.post(config.IP + '/users/update', formValues)
+            .then(() => props.setPass(false))
+            .catch(() => alert("Could not update!"))
     };
 
     return (
@@ -90,6 +95,7 @@ const UserSettings = (props) => {
                     <SettingsItem name={"username"} btnText={"Change Username"} value={user.username} noBtn>Username: </SettingsItem>
                     <SettingsItem name={"email"} btnText={"Change Email"} value={user.email}>Email: </SettingsItem>
                     <SettingsItem name={"name"} btnText={"Change Name"} value={user.name}>Name: </SettingsItem>
+                    <SettingsItem name={"password"} btnText={"Change Password"} value={"••••••••"}>Password: </SettingsItem>
                     <SettingsItem name={"verified"} btnText={"Verify Email"} value={user.verified ? 'Yes' : 'No'}
                                   noBtn={user.verified}>
                         Email Verified:

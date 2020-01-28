@@ -4,18 +4,29 @@ import classes from './UserSettings.module.css';
 
 const PasswordVerifyForm = (props) => {
 
-    //
-    // const [values, setValues] = setState({update: {[props.field]: 'fieldName'}})
+    const {user} = useContext(UserContext); //User data (if logged in)
+    const sessionId = JSON.parse(localStorage.getItem('review_app_key'));
 
+    const [formValues, setValues] = useState({
+        sessionId: sessionId, update:{[props.field]:props.value}, username: user.username
+        });
+
+    const handleInputChange = (e) => {
+        setValues({...formValues, password: e.target.value});
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formValues);
+    };
 
     return (
         <div className={"blur-background"}>
-            <form id={"pop-up-form"} className={"form-style"}>
-                <span className="close"/>
+            <form onSubmit={handleSubmit} id={"pop-up-form"} className={"form-style"}>
+                <span onClick={() => props.setPass(false)} className="close"/>
                 <h1>Verify Password</h1>
                 <div>
                     <label>Password</label>
-                    <input autoComplete={"password"} name="password" type="password" required/><br/>
+                    <input onChange={handleInputChange} autoComplete={"password"} name="password" type="password" required/><br/>
                 </div>
                 <input type="submit" value="Continue"/>
             </form>
@@ -30,6 +41,7 @@ const SettingsItem = (props) => {
     /****  States  ****/
     const [isEdit, setEdit] = useState(false); //If the user is editing the field
     const [isVerifyPass, setVerifyPass] = useState(false);
+    const [value, setValue] = useState(null); //value of field currently being edited
 
     /****  Functions  ****/
     const handleClick = (event) => {
@@ -38,10 +50,11 @@ const SettingsItem = (props) => {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
+        setEdit(false);
         setVerifyPass(true);
     };
 
-    if(isVerifyPass) verifyPass = <PasswordVerifyForm field={props.name}/>;
+    if(isVerifyPass) verifyPass = <PasswordVerifyForm setPass={setVerifyPass} field={props.name} value={value}/>;
 
     /**** Buttons and Button Logic ****/
     let button = (<button type={"button"} name={props.name} onClick={handleClick} className={classes.ButtonStyle}>{props.btnText}</button>);
@@ -49,7 +62,7 @@ const SettingsItem = (props) => {
     if(props.noBtn) button = null;
 
     /****  Edit Input Field  ****/
-    let input = (<input placeholder={props.value}/>);
+    let input = (<input type={props.name} name={props.name} onChange={e => setValue(e.target.value)} placeholder={props.value}/>);
 
 
     return(
@@ -66,7 +79,6 @@ const SettingsItem = (props) => {
 
 const UserSettings = (props) => {
     const {user} = useContext(UserContext); //User data (if logged in)
-    console.log(user);
     if (!user) props.setLogin(true);
 
     const textStyle = {padding: "20px 0"};

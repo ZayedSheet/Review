@@ -20,7 +20,7 @@ router.route('/signin').post((req,res) => {
     if (!email) {
         return res.stats(400).json({
             success: false,
-            message: 'Error: username cannot be blank.'
+            message: 'Error: email cannot be blank.'
         });
     }
 

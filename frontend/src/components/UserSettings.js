@@ -39,7 +39,6 @@ const SettingsItem = (props) => {
 };
 
 const UserSettings = (props) => {
-
     const {user} = useContext(UserContext); //User data (if logged in)
     console.log(user);
     if (!user) props.setLogin(true);

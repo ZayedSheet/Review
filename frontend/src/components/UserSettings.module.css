@@ -1,6 +1,24 @@
-button.UserSettings {
+.ButtonStyle {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+}
+
+.DivStyle {
+    position: relative;
+    margin: 12px 0;
+}
+
+div.UserSettings {
+    margin: 100px 0;
+}
+
+.UserSettings > h1 {
+    text-align: center;
+}
+
+.UserSettings > div {
+    width: 50%;
+    margin: auto;
 }

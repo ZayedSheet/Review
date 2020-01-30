@@ -3,11 +3,11 @@ import './area.css'
 import Star from "./Submission/Star";
 import Review from "./Submission/Review"
 import MapContainer from "./MapContainer";
-import Image from './Gallery/Image';
+// import Image from './Gallery/Image';
 import axios from 'axios';
 import AddReviewForm from "./Forms/AddReviewForm";
 import config from "../config";
-import Gallery from "./Gallery/Gallery";
+import {Gallery, Image} from "./Gallery/Gallery";
 
 const Area = (props) => {
 

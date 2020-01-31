@@ -5,7 +5,7 @@
 
 const router = require('express').Router();
 let User = require('../models/users.model');
-let UserSession = require('../models/userSession.model')
+let UserSession = require('../models/userSession.model');
 
 // const UserSession = require('../models/userSession.model');
 

@@ -17,7 +17,8 @@ const AddReviewForm = (props) => {
         if (user){ //if user is logged in
             try{
                 console.log("start");
-                await axios.post(config.IP + "/reviews/add", inputs); //sends request to server to add the review with inputs (From form hook) as input
+                let key = JSON.parse(localStorage.getItem('review_app_key')); //sets key to the user session token
+                await axios.post(config.IP + "/reviews/add", {...inputs, token: key}); //sends request to server to add the review with inputs (From form hook) as input
                 console.log("Post");
                 setVisible(false); //review form is no longer visible as it has just been submitted
                 console.log("visibility");

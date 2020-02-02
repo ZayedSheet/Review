@@ -105,18 +105,32 @@ nav.transparent{
 
 .user-options{
     position:absolute;
-    top:75px;
+    top:85px;
     right:6.25%;
     height: 100px;
-    width: 200px;
+    width: 180px;
     background-color: white;
     border: 1px solid #0d7eda;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
 }
 
+.user-options:after {
+    content: '';
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    background-color: white;
+    top: -9px;
+    right: 12px;
+    border-top: 1px solid #0d7eda;
+    border-left: 1px solid #0d7eda;
+    transform: rotate(45deg);
+}
+
 .user-options > div, .user-options > a {
     text-decoration: none;
+    z-index: 100;
     padding: 5px;
     margin: 1px;
     color: #0277d7;

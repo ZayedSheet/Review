@@ -21,7 +21,7 @@ const PasswordVerifyForm = (props) => {
         e.preventDefault();
         console.log(formValues);
         axios.post(config.IP + '/users/update', formValues)
-            .then(() => props.setPass(false))
+            .then(() => {alert("Update Successful!"); props.setPass(false)})
             .catch(() => alert("Could not update!"))
     };
 

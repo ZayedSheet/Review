@@ -117,15 +117,21 @@ nav.transparent{
 
 .user-options:after {
     content: '';
-    height: 16px;
-    width: 16px;
+    height: 14px;
+    width: 14px;
     position: absolute;
     background-color: white;
-    top: -9px;
-    right: 12px;
+    top: -8px;
+    right: 13px;
     border-top: 1px solid #0d7eda;
     border-left: 1px solid #0d7eda;
     transform: rotate(45deg);
+}
+
+.fa-user, .fa-envelope, .fa-sign-out-alt{
+    font-size: 16px;
+    color: #72acec;
+    margin-right: 5px;
 }
 
 .user-options > div, .user-options > a {

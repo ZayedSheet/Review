@@ -25,14 +25,14 @@ const UserButton = (props) => {
             }}/>
             {props.userButton &&
             <div className={`user-options`}>
-                <NavLink to={"Settings"}>My Account</NavLink>
-                <div>My Messages</div>
+                <NavLink to={"Settings"}><i className="fas fa-user"/>My Account</NavLink>
+                <div><i className="fas fa-envelope"/>My Messages</div>
                 <div onClick={()=>{
                     axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sends a logout request to server
                         .then(res => console.log(res.data.message)); //console logs message from promise
                     setUser(false); //if logout button is clicked, user is set to false
                     props.toggleUserButton(false);
-                }}>Logout</div>
+                }}><i className="fas fa-sign-out-alt"/>Logout</div>
             </div>
             }
         </>

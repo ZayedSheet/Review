@@ -4,6 +4,7 @@ import classes from './UserSettings.module.css';
 import axios from "axios";
 import config from "../config";
 
+//TODO when user logs out go to another page
 const PasswordVerifyForm = (props) => {
 
     const {user} = useContext(UserContext); //User data (if logged in)

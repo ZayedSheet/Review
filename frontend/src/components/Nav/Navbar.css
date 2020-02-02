@@ -131,7 +131,8 @@ nav.transparent{
 .fa-user, .fa-envelope, .fa-sign-out-alt{
     font-size: 16px;
     color: #72acec;
-    margin-right: 5px;
+    /*margin-right: 5px;*/
+    width: 25px;
 }
 
 .user-options > div, .user-options > a {

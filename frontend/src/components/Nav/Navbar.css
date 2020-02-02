@@ -110,7 +110,7 @@ nav.transparent{
     height: 100px;
     width: 180px;
     background-color: white;
-    border: 1px solid #0d7eda;
+    border: 1px solid #0277d7;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
 }
@@ -123,14 +123,14 @@ nav.transparent{
     background-color: white;
     top: -8px;
     right: 13px;
-    border-top: 1px solid #0d7eda;
-    border-left: 1px solid #0d7eda;
+    border-top: 1px solid #0277d7;
+    border-left: 1px solid #0277d7;
     transform: rotate(45deg);
 }
 
 .fa-user, .fa-envelope, .fa-sign-out-alt{
     font-size: 16px;
-    color: #72acec;
+    color: #0d7eda;
     /*margin-right: 5px;*/
     width: 25px;
 }

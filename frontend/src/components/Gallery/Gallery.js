@@ -1,7 +1,39 @@
 import React, {useState, useEffect} from 'react'
 import Radium from 'radium'
 
-const Gallery = (props) => {
+const Image = (props) => {
+    const [isEnlarge, setEnlarge] = useState(false);
+
+    const handleOpen = () => {
+        console.log("open");
+        setEnlarge(true);
+        if(props.setOpen) props.setOpen(props.key);
+    };
+    const handleClose = () => {
+        setEnlarge(false);
+    };
+
+    useEffect(() => {if(props.setOpen) props.open === props.key ? handleOpen(): handleClose()}, [props.open]);
+
+    let largeStyle = isEnlarge ? {
+            position: "fixed", cursor: "default", display: "block", border:"1px solid black",
+            top: "0px",marginLeft:"20%", marginTop:"20vh", left: "0px", width: "60vw", height: "60vh", zIndex: "100", ...props.style}
+        : props.style;
+
+    return(
+        <div onClick={isEnlarge ? null : handleOpen}
+             className={props.className} style={largeStyle}>
+            {isEnlarge ?
+                <>
+                    <span style={{position: "fixed",right:"21%", top:"22vh", zIndex: "101"}} onClick={() => {handleClose(); if(props.setOpen) props.setOpen(-1);}} className="close"/>
+                </>
+                : props.children
+            }
+        </div>
+    )
+};
+
+let Gallery = (props) => {
     const [isOpen, setOpen] = useState(-1);
     let i = 0;
     const [images, setImages] = useState(
@@ -16,18 +48,18 @@ const Gallery = (props) => {
 
     let arrowStyle = {
         position: "fixed",
-        fontSize: "30px",
+        fontSize: "40px",
         zIndex: "101",
         top: "50%",
-        opacity: "0.4",
+        opacity: "0.7",
         cursor: "pointer",
-        ":hover": {opacity: "0.8"}
+        ":hover": {opacity: "1"}
     };
 
     let nextImageBtn =
-        (<i key="next" style={{...arrowStyle, right: "15px"}} onClick={() => changeImage(isOpen+1)} className="fas fa-arrow-right"/>);
+        (<i key="next" style={{...arrowStyle, right: "21%"}} onClick={() => changeImage(isOpen+1)} className="fas fa-arrow-right"/>);
     let prevImageBtn =
-        (<span key="prev" style={{...arrowStyle, left: "15px"}} onClick={() => changeImage(isOpen-1)} className="fas fa-arrow-left"/>);
+        (<span key="prev" style={{...arrowStyle, left: "21%"}} onClick={() => changeImage(isOpen-1)} className="fas fa-arrow-left"/>);
 
     return(
         <>
@@ -38,4 +70,6 @@ const Gallery = (props) => {
     );
 };
 
-export default Radium(Gallery);
+Gallery = Radium(Gallery);
+
+export {Gallery, Image};

@@ -35,6 +35,7 @@ const LoginForm = (props) => {
                         alert(res.data.message);
                     }
                 })
+                .catch(() => alert("Invalid Credentials!"))
         }
         else{
             alert("invalid inputs"); //if formhook check submit fails, inputs were invalid
@@ -47,8 +48,8 @@ const LoginForm = (props) => {
                 <span onClick={()=> props.setLogin(false)} className="close"/>{/*Runs the toggleForm function on click to close the form*/}
                 <h1>Login</h1>
                 <div>
-                    <label>Username</label>
-                    <input autoComplete={"username"} type="text" name={fieldNames.username} onChange={handleInputChange} value={inputs.username} required/><br/>{/*Runs the handleInputChange function in form hook on input change*/}
+                    <label>Email</label>
+                    <input autoComplete={"email"} type="email" name={fieldNames.email} onChange={handleInputChange} value={inputs.email} required/><br/>{/*Runs the handleInputChange function in form hook on input change*/}
                 </div>
                 <div>
                     <label>Password</label>

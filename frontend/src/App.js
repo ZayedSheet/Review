@@ -9,6 +9,7 @@ import Home from './components/Home';
 import Submission from './components/Submission';
 import Results from './components/Results';
 import Area from './components/Area';
+import UserSettings from "./components/UserSettings";
 
 //Components for NavBar/Footer (Components that appear on all pages)
 import NavBar from './components/Nav/Navbar';
@@ -68,6 +69,7 @@ const App = () => {
                       <Route path="/Submission" component={Submission}/>
                       <Route path="/Results" component={Results}/>
                       <Route path="/Area/:name" component={Area}/>
+                    <Route path="/Settings"><UserSettings setLogin={setLogin}/></Route>
                 </Switch>
 
                 {/*Content on all pages below*/}

@@ -31,7 +31,9 @@ export const checkLogin = async (setUser) => {
     //gets the user document and sets it as the user state
     try {
         res = await axios.get(config.IP + '/users/' + res.data);
-        setUser(res.data)
+        // let user = {...res.data, token: key};
+        //TODO check security concerns with adding token into user variable
+        setUser(res.data);
     } catch{
         setUser(false);
     }

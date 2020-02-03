@@ -105,23 +105,45 @@ nav.transparent{
 
 .user-options{
     position:absolute;
-    top:75px;
+    top:85px;
     right:6.25%;
     height: 100px;
-    width: 200px;
+    width: 180px;
     background-color: white;
-    border: 1px solid #0d7eda;
+    border: 1px solid #0277d7;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
 }
 
-.user-options > div{
+.user-options:after {
+    content: '';
+    height: 14px;
+    width: 14px;
+    position: absolute;
+    background-color: white;
+    top: -8px;
+    right: 13px;
+    border-top: 1px solid #0277d7;
+    border-left: 1px solid #0277d7;
+    transform: rotate(45deg);
+}
+
+.fa-user, .fa-envelope, .fa-sign-out-alt{
+    font-size: 16px;
+    color: #0d7eda;
+    /*margin-right: 5px;*/
+    width: 25px;
+}
+
+.user-options > div, .user-options > a {
+    text-decoration: none;
+    z-index: 100;
     padding: 5px;
     margin: 1px;
     color: #0277d7;
 }
 
-.user-options > div:hover{
+.user-options > div:hover, .user-options > a:hover{
     background-color: lightgrey;
     cursor: pointer;
 }
@@ -139,14 +161,14 @@ nav.transparent{
         height: 100%;
         width: 100%;
         font-size: 4vw;
-        color: #0277d7;
+        color: white;
     }
 
 
     .line{
         width: 30px;
         height: 3px;
-        background: #0277d7;
+        background: white;
         margin: 5px;
     }
 
@@ -189,7 +211,7 @@ nav.transparent{
         grid-auto-flow: row;
         grid-template-columns: 1fr;
         position: fixed;
-        background: rgba(209, 255, 255, 0.91);
+        background: rgba(54, 181, 255);
         height: 100vh;
         width: 100%;
         flex-direction: column;
@@ -200,8 +222,9 @@ nav.transparent{
     }
 
     .nav-links >*:hover{
-        background-color: rgba(166, 202, 209, 0.91);
+        background-color: rgb(177, 240, 250);
         transition: .20s;
+        color: #72acec;
     }
 
     .nav-links.open{

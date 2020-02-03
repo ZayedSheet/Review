@@ -12,23 +12,21 @@ const UserSession = require('../models/userSession.model');
  */
 router.route('/signin').post((req,res) => {
     // Username and password from request
-    const password = req.body.password;
-    let username = req.body.username; //Not const because will be encrypted
-
+    const {email, password} = req.body;
 
     // ******** Backend Validation for signing in ********
 
     //Username can't be empty
-    if (!username) {
-        return res.send({
+    if (!email) {
+        return res.stats(400).json({
             success: false,
-            message: 'Error: username cannot be blank.'
+            message: 'Error: email cannot be blank.'
         });
     }
 
     //Password can't be empty
     if (!password) {
-        return res.send({
+        return res.status(400).json({
             success: false,
             message: 'Error: Password cannot be blank.'
         });
@@ -38,30 +36,27 @@ router.route('/signin').post((req,res) => {
     // ******** User Sign in ********
 
     User.find({ //find field username from username field in user collection
-        username: username
+        email: email
     }, (err, users) => {
         if (err) {
             console.log('err 2:', err);
-            return res.send({
+            return res.status(400).json({
                 success: false,
-                message: 'Error: Server Error, User May Not Exist'
+                message: 'User not found'
             });
         }
+
+        if (users.length === 0) {return res.status(400).json({success: false, message: 'User not found'})}
         //if there is more than one person with that username
-        if (users.length !== 1) {
-            return res.send({
-                success: false,
-                message: 'Error: Server Error'
-            });
-        }
+        if (users.length !== 1) {return res.status(400).json({success: false, message: 'Username not unique'})}
 
         const user = users[0]; //User.find returns array, user will be the first element in array
 
         //Checks if entered password matches via bcrypt
         if (!user.validPassword(password)) {
-            return res.send({
+            return res.status(400).json({
                 success: false,
-                message: 'Error: Invalid Password'
+                message: 'Incorrect Password'
             });
         }
 
@@ -73,9 +68,9 @@ router.route('/signin').post((req,res) => {
         userSession.save((err, doc) => {
             if (err) {
                 console.log(err);
-                return res.send({
+                return res.status(500).json({
                     success: false,
-                    message: 'Error: server error'
+                    message: 'Could not create user session'
                 });
             }
             // Server response contain user session token (id of userSession)

@@ -5,6 +5,8 @@
 
 const router = require('express').Router();
 let User = require('../models/users.model');
+let UserSession = require('../models/userSession.model');
+
 // const UserSession = require('../models/userSession.model');
 
 /**
@@ -23,6 +25,33 @@ router.route('/:id').get((req, res) => {
     User.findById(req.params.id, {password: 0})
         .then(user => res.json(user))
         .catch(err => res.status(400).json('Error: ' + err));
+});
+
+/**
+ * Updates information of a user (after verifying userSession and password)
+ */
+router.route('/update').post((req,res)=>{
+    const {sessionId, username, password, update} = req.body;
+    if (update.hasOwnProperty('username')) res.stats(401).json({success: false, message: 'Username cannot be updated'});
+    else {
+        UserSession.verifySession(sessionId, username, (err, user) => {
+            if (err) res.status(404).json({success: false, message: err});
+            else {
+                if (!user.validPassword(password)) res.status(403).json({success: false, message: 'Invalid Password'})
+                else {
+                    let updateField = update;
+                    if (update.hasOwnProperty('password')) updateField = {password: user.generateHash(update.password)};
+                    User.findOneAndUpdate({username: username}, updateField, (err) => {
+                        if (err) res.status(400).send({
+                            success: false,
+                            message: 'Password correct, but could not update'
+                        });
+                        else res.send({success: true, message: 'user updated'});
+                    })
+                }
+            }
+        })
+    }
 });
 
 /**

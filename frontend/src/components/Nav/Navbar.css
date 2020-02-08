@@ -52,35 +52,35 @@ nav.transparent{
     background-repeat: no-repeat;
 }
 
-.nav-links > *:hover{
-    color: #d3d3d3;
-}
+/*.nav-links > *:hover{*/
+/*    color: #d3d3d3;*/
+/*}*/
 /***************************************** nav underline *******************************/
-/*.nav-links > * {*/
-/*    position: relative;*/
-/*    text-decoration: none;*/
-/*}*/
+.nav-links > * {
+    position: relative;
+    text-decoration: none;
+}
 
-/*.nav-links > *before {*/
-/*    content: "";*/
-/*    position: absolute;*/
-/*    width: 50%;*/
-/*    height: 2px;*/
-/*    bottom: -10px;*/
-/*    left: 25%;*/
-/*    background-color: white;*/
-/*    visibility: hidden;*/
-/*    -webkit-transform: scaleX(0);*/
-/*    transform: scaleX(0);*/
-/*    -webkit-transition: all 0.3s ease-in-out 0s;*/
-/*    transition: all 0.3s ease-in-out 0s;*/
-/*}*/
+.nav-links > *:before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    bottom: -10px;
+    left: 25%;
+    background-color: #ffd702;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.2s ease-in-out 0s;
+    transition: all 0.2s ease-in-out 0s;
+}
 
-/*.nav-links > *:hover:before {*/
-/*    visibility: visible;*/
-/*    -webkit-transform: scaleX(1);*/
-/*    transform: scaleX(1);*/
-/*}*/
+.nav-links > *:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
 /************************************** /navlink underline **************************/
 
 .buttons-nav{
@@ -234,5 +234,10 @@ nav.transparent{
 
     .buttons-nav{
         display: none;
+    }
+
+    /*hides underline animation in mobile*/
+    .nav-links > *:hover:before {
+        visibility: hidden;
     }
 }

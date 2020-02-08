@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './style.css';
 import UserContext from "./UserContext";
+import WindowDimensionsProvider from './components/DimensionsProvider';
 import {Route, Switch, useLocation } from 'react-router-dom';
 
 
@@ -58,6 +59,7 @@ const App = () => {
 
     return (
         <div>
+            <WindowDimensionsProvider>
             <UserContext.Provider value={{user, setUser}}>
                 <NavBar setLogin={setLogin} setSignup={setSignup}/> {/*  Navigation Bar (will be on all pages)*/}
 
@@ -79,6 +81,7 @@ const App = () => {
 
                 <Footer/>
             </UserContext.Provider>
+            </WindowDimensionsProvider>
         </div>
   )
 };

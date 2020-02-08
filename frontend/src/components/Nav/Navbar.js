@@ -2,6 +2,8 @@ import React, {useState, useContext, useEffect, useRef} from 'react'; //React ho
 
 import SearchBar from '../Search/SearchBar'; //Component for the nav searchbar
 import SigninLoginButton from '../Buttons/SigninLoginButton'; //Component for the nav sign in and login buttons
+import { useWindowDimensions } from '../DimensionsProvider';
+import { mobileSize } from '../DimensionsProvider';
 import UserButton from '../Buttons/UserButton';
 import UserContext from '../../UserContext';
 import { NavLink, useLocation } from 'react-router-dom'; //Component to switch between pages via ReactRouter
@@ -22,6 +24,9 @@ const Navbar = (props) => {
     const [userButton, toggleUserButton] = useState(false);
     const location = useLocation();
     const {user, setUser} = useContext(UserContext);
+
+    const { width } = useWindowDimensions();
+    console.log(width > mobileSize);
 
     const handleClickOutside = event => {
         if (wrapperRef.current && !(wrapperRef.current.contains(event.target))) {

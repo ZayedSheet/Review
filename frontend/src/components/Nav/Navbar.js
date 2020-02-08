@@ -108,9 +108,9 @@ const Navbar = (props) => {
             isOpen controls a conditional render for the mobile version of the navbar,
             if true the open class is enabled therfore the links are visible*/}
             <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
-                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>Add Area</NavLink>
-                <NavLink to={"/Settings"} onClick={() => setHamburger(!openHamburger)}>My Account</NavLink>
-                <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger)}}>Logout</div>
+                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger && width < mobileSize)}>Add Area</NavLink>
+                <NavLink to={"/Settings"} onClick={() => setHamburger(!openHamburger && width < mobileSize)}>My Account</NavLink>
+                <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger&& width < mobileSize)}}>Logout</div>
             </ul>
         </nav>
     );

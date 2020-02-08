@@ -40,6 +40,12 @@ const Navbar = (props) => {
         };
     }, []);
 
+    const signOut = () => {
+        axios.post(config.IP + '/signin/logout', {token: JSON.parse(localStorage.getItem('review_app_key'))}) //sends a logout request to server
+        .then(res => console.log(res.data.message)); //console logs message from promise
+        setUser(false); //if logout button is clicked, user is set to false
+    };
+
     let navButtons;
     if(user){navButtons = //if the user is logged in, navbar will contain a logout button and "Hey, username"
         <div style={{gridTemplateColumns: "auto max-content 40px",gridTemplateRows:"minmax(0,100%)"}} className="buttons-nav">
@@ -98,8 +104,8 @@ const Navbar = (props) => {
             if true the open class is enabled therfore the links are visible*/}
             <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
                 <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>Add Area</NavLink>
-                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>My List</NavLink>
-                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>Contact</NavLink>
+                <NavLink to={"/Settings"} onClick={() => setHamburger(!openHamburger)}>My Account</NavLink>
+                <div onClick={() => {signOut(); setHamburger(!openHamburger)}}>Logout</div>
             </ul>
         </nav>
     );

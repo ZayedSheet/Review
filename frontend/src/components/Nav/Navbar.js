@@ -105,7 +105,7 @@ const Navbar = (props) => {
             <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
                 <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger)}>Add Area</NavLink>
                 <NavLink to={"/Settings"} onClick={() => setHamburger(!openHamburger)}>My Account</NavLink>
-                <div onClick={() => {signOut(); setHamburger(!openHamburger)}}>Logout</div>
+                <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger)}}>Logout</div>
             </ul>
         </nav>
     );

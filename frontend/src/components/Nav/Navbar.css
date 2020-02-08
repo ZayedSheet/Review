@@ -1,3 +1,7 @@
+.link{
+    cursor:pointer;
+}
+
 nav {
     height: 80px;
     max-height:80px;

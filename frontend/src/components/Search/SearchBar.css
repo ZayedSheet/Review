@@ -70,15 +70,15 @@ div.results{
     z-index: -1;
 }
 
-div.results-item {
-    padding: 5px 10px;
-    z-index: 99999;
+.results-item {
+    padding: 6px 10px;
+    z-index: 999;
 }
-div.results-item:hover{
+.results-item:hover{
     background-color: lightgrey;
 }
 
-a.results-item {
+.results-item {
     text-decoration: none;
     color: black;
     height: 100%;

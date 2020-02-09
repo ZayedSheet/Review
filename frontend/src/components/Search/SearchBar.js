@@ -130,9 +130,8 @@ const SearchBar = (props) => {
             <div className={"results"}>
                 {/*if resultVisible is true and results is not empty, then map each object in results to be a div*/}
                 {resultVisible && results && results.map(object => {
-                    return <div className={"results-item"} key={object.name} onClick={() => setVisible(false)}>
-                        <NavLink className={"results-item"} to={"/Area/"+object.name}>{object.name}</NavLink>
-                    </div>})}
+                    return <NavLink key={object.name} className={"results-item"} onClick={() => setVisible(false)} to={"/Area/"+object.name}>{object.name}</NavLink>
+                    })}
             </div>
         </div>
         //Container for the entire search bar

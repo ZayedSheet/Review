@@ -22,6 +22,7 @@ const Navbar = (props) => {
     const [openHamburger, setHamburger] = useState(false);
     const [openSearch, setSearch] = useState(false);
     const [userButton, toggleUserButton] = useState(false);
+
     const location = useLocation();
     const {user, setUser} = useContext(UserContext);
 
@@ -106,10 +107,10 @@ const Navbar = (props) => {
 
             {/*List of links to other areas of the site.
             isOpen controls a conditional render for the mobile version of the navbar,
-            if true the open class is enabled therfore the links are visible*/}
+            if true the open class is enabled therefore the links are visible*/}
             <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
-                <NavLink to={"/Submission"} onClick={() => setHamburger(!openHamburger && width < mobileSize)}>Add Area</NavLink>
-                <NavLink to={"/Settings"} onClick={() => setHamburger(!openHamburger && width < mobileSize)}>My Account</NavLink>
+                <NavLink className={location.pathname === "/Submission" ? "nav-line" : ""} to={"/Submission"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>Add Area</NavLink>
+                <NavLink className={location.pathname === "/Settings" ? "nav-line" : ""} to={"/Settings"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Account</NavLink>
                 <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger&& width < mobileSize)}}>Logout</div>
             </ul>
         </nav>

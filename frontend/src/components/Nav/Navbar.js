@@ -82,13 +82,14 @@ const Navbar = (props) => {
         <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
             <NavLink className={location.pathname === "/Submission" ? "nav-line" : ""} to={"/Submission"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>Add Area</NavLink>
             <NavLink className={location.pathname === "/Settings" ? "nav-line" : ""} to={"/Settings"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Account</NavLink>
-            <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger&& width < mobileSize)}}>Logout</div>
+            <NavLink className={location.pathname === "/Messages" ? "nav-line" : ""} to={"/Messages"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Messages</NavLink>
         </ul>
     }
     else{ navList =
         <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
             <NavLink className={location.pathname === "/Submission" ? "nav-line" : ""} to={"/Submission"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>Add Area</NavLink>
             <NavLink className={location.pathname === "/Settings" ? "nav-line" : ""} to={"/Settings"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Account</NavLink>
+            <NavLink className={location.pathname === "/Messages" ? "nav-line" : ""} to={"/Messages"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Messages</NavLink>
             <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger&& width < mobileSize)}}>Logout</div>
         </ul>
     }

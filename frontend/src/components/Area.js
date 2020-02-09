@@ -31,13 +31,13 @@ const Area = (props) => {
     const sortReviews = () => {
         for(let i = 0; i < reviews.length; i++){
             let tempRating = {...ratings}; //copy the rating object to tempRating
-            tempRating[reviews[i].stars].push(<li><Review key={reviews[i]._id} username={reviews[i].username}>{reviews[i].description}</Review></li>); //access the ratings index required and push this review into the array for that ratings index
+            tempRating[reviews[i].stars].push(<Review title={reviews[i].title} date={reviews[i].createdAt} key={reviews[i]._id} username={reviews[i].username}>{reviews[i].description}</Review>); //access the ratings index required and push this review into the array for that ratings index
             setRatings(tempRating); //set the new rating
         }
         setVisibleRating(ratings[5]);
     };
 
-
+    console.log(reviews);
 
     const getObject = () => {
         axios.post(config.IP + "/objects", {name: props.match.params.name})
@@ -191,7 +191,7 @@ const Area = (props) => {
                             <ul>
                                 {reviews &&
                                 reviews.map(review =>
-                                    <Review key={review._id} username={review.username} stars={review.stars}>{review.description}</Review>)
+                                    <Review date={review.createdAt} key={review._id} username={review.username} title={review.title} stars={review.stars}>{review.description}</Review>)
                                 }
                             </ul>
                         </div>

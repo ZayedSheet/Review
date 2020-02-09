@@ -69,6 +69,7 @@ div.results{
     transform: translateY(20px);
     z-index: -1;
     border: 1px solid #0277d7;
+    border-radius: 0 0 10px 10px;
 }
 
 .results-item {

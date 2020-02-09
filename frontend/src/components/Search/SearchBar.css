@@ -62,12 +62,13 @@ form.search input[type=text] {
 
 div.results{
     position: relative;
-    background-color: #eeeeee;
+    background-color: #fafafa;
     width:100%;
     /*padding-top: 22px;*/
     /*left:50%;*/
     transform: translateY(20px);
     z-index: -1;
+    border: 1px solid #0277d7;
 }
 
 .results-item {

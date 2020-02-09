@@ -74,6 +74,25 @@ const Navbar = (props) => {
         </div>
     }
 
+    /*List of links to other areas of the site.
+     isOpen controls a conditional render for the mobile version of the navbar,
+     if true the open class is enabled therefore the links are visible*/
+    let navList;
+    if(width > mobileSize){ navList =
+        <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
+            <NavLink className={location.pathname === "/Submission" ? "nav-line" : ""} to={"/Submission"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>Add Area</NavLink>
+            <NavLink className={location.pathname === "/Settings" ? "nav-line" : ""} to={"/Settings"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Account</NavLink>
+            <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger&& width < mobileSize)}}>Logout</div>
+        </ul>
+    }
+    else{ navList =
+        <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
+            <NavLink className={location.pathname === "/Submission" ? "nav-line" : ""} to={"/Submission"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>Add Area</NavLink>
+            <NavLink className={location.pathname === "/Settings" ? "nav-line" : ""} to={"/Settings"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Account</NavLink>
+            <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger&& width < mobileSize)}}>Logout</div>
+        </ul>
+    }
+
     return(
         //Container with NavBar contents
         <nav id="navbar" className={location.pathname === "/" ? "transparent" : ""}>
@@ -105,14 +124,7 @@ const Navbar = (props) => {
                 <div className="line"/>
             </div>
 
-            {/*List of links to other areas of the site.
-            isOpen controls a conditional render for the mobile version of the navbar,
-            if true the open class is enabled therefore the links are visible*/}
-            <ul className={`nav-links ${openHamburger ? 'open' : ''}`}>
-                <NavLink className={location.pathname === "/Submission" ? "nav-line" : ""} to={"/Submission"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>Add Area</NavLink>
-                <NavLink className={location.pathname === "/Settings" ? "nav-line" : ""} to={"/Settings"} onClick={() => {setHamburger(!openHamburger && width < mobileSize)}}>My Account</NavLink>
-                <div className={"link"} onClick={() => {signOut(); setHamburger(!openHamburger&& width < mobileSize)}}>Logout</div>
-            </ul>
+            {navList}
         </nav>
     );
 };

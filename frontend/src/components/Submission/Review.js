@@ -2,10 +2,6 @@ import React from 'react';
 import Star from "./Star";
 
 const Review = (props) => {
-
-    console.log("date props", props.date);
-    console.log(new Date(props.date));
-
     let picStyle = {
         height: "50px",
         width: "50px",

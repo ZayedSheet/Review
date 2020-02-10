@@ -27,7 +27,6 @@ const Navbar = (props) => {
     const {user, setUser} = useContext(UserContext);
 
     const { width } = useWindowDimensions();
-    console.log(width > mobileSize);
 
     const handleClickOutside = event => {
         if (wrapperRef.current && !(wrapperRef.current.contains(event.target))) {

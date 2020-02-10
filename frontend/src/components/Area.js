@@ -36,9 +36,6 @@ const Area = (props) => {
         }
         setVisibleRating(ratings[5]);
     };
-
-    console.log(reviews);
-
     const getObject = () => {
         axios.post(config.IP + "/objects", {name: props.match.params.name})
             .then(res => {
@@ -50,7 +47,6 @@ const Area = (props) => {
 
     useEffect(  () => {
         setRatings({1: [], 2:[], 3:[], 4:[], 5:[]});
-        console.log("running useEffect, Ratings = ",ratings, "Reviews =", reviews);
         const getValues = async () => {
             await getObject();
             getReviews();

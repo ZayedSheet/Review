@@ -16,21 +16,15 @@ const AddReviewForm = (props) => {
         event.preventDefault(); //prevents default form behavior
         if (user){ //if user is logged in
             try{
-                console.log("start");
                 let key = JSON.parse(localStorage.getItem('review_app_key')); //sets key to the user session token
                 await axios.post(config.IP + "/reviews/add", {...inputs, token: key}); //sends request to server to add the review with inputs (From form hook) as input
-                console.log("Post");
                 setVisible(false); //review form is no longer visible as it has just been submitted
-                console.log("visibility");
                 let date = new Date();
                 date = date.toISOString();
-                console.log("passing the date", date);
                 props.setReviews([...props.reviews, //adds the review the user just submitted to the page to the reviews state for area page
                     {_id:"newReview", title:inputs.title, createdAt: date, username: inputs.username, stars: inputs.stars, description: inputs.description}
                     ]);
-                console.log("reviewSet");
                 props.updateObject();
-                console.log("object update");
             }catch {
                 alert("Duplicate Review or Improper Format") //if request to server fails
             }

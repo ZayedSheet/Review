@@ -22,8 +22,11 @@ const AddReviewForm = (props) => {
                 console.log("Post");
                 setVisible(false); //review form is no longer visible as it has just been submitted
                 console.log("visibility");
+                let date = new Date();
+                date = date.toISOString();
+                console.log("passing the date", date);
                 props.setReviews([...props.reviews, //adds the review the user just submitted to the page to the reviews state for area page
-                    {_id:"newReview", username: inputs.username, stars: inputs.stars, description: inputs.description}
+                    {_id:"newReview", title:inputs.title, createdAt: date, username: inputs.username, stars: inputs.stars, description: inputs.description}
                     ]);
                 console.log("reviewSet");
                 props.updateObject();

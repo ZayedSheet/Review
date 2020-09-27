@@ -60,9 +60,6 @@ const Area = (props) => {
     }
     ,[reviews]);
 
-
-    let page;
-
     const toggleVisibleRating = (rating) => {
         setVisibleRating(ratings[rating]);
         setRatingStyle(rating);
@@ -77,7 +74,7 @@ const Area = (props) => {
 
     const ratingMap = {};
     let totalReviews = 0;
-    if (area && area.coordinates) {
+    if (area?.coordinates) {
         totalReviews = area.rating.one + area.rating.two + area.rating.three + area.rating.four + area.rating.five;
         ratingMap[1] = {percentage: Math.round(area.rating.one/totalReviews * 100) || 0, count: area.rating.one};
         ratingMap[2] = {percentage: Math.round(area.rating.two/totalReviews * 100) || 0, count: area.rating.two};
@@ -104,9 +101,9 @@ const Area = (props) => {
                         <div id="remove-style" className="obj-pictures">
                             <Gallery>
                                 <Image style={photoStyle} className="overview-main-image">
-                                    <h1>Photo (1)</h1>
+                                    <h1>Photo (4)</h1>
                                 </Image>
-                                <Image style={{...photoStyle,backgroundImage: "url(https://www.pennington.com/-/media/images/pennington2-na/us/blog/seed/all-you-need-to-know-about-bermudagrass/bermuda-header.jpg)"}}
+                                <Image style={{...photoStyle, backgroundImage: "url(https://www.pennington.com/-/media/images/pennington2-na/us/blog/seed/all-you-need-to-know-about-bermudagrass/bermuda-header.jpg)"}}
                                        className="side-image overview-size-image1"/>
                                 <Image className="side-image overview-size-image2"/>
                                 <Image className="side-image overview-size-image3"/>
@@ -124,15 +121,10 @@ const Area = (props) => {
                                 {
                                     Object.entries(ratingMap).map(([stars, rating]) => (
                                         <li>
-                                            <div style={{color: ratingStyle===stars ? "#0F52BA" : "black"}} 
-                                                 onClick={() => toggleVisibleRating(stars)} 
-                                                 className="left-style five-overview "
-                                            >
+                                            <div style={{color: ratingStyle===stars ? "#0F52BA" : "black"}} onClick={() => toggleVisibleRating(stars)} className="left-style five-overview">
                                                 {stars} Star Reviews
                                             </div>
-                                            <div style={{backgroundSize: `${rating.percentage}% 100%`}}
-                                                 className="right-style overview-bar"
-                                            >
+                                            <div style={{backgroundSize: `${rating.percentage}% 100%`}} className="right-style overview-bar">
                                                 {rating.percentage}%
                                             </div>
                                         </li>
@@ -178,8 +170,8 @@ const Area = (props) => {
                             <div className="obj-review-list">
                                 <ul>
                                     {reviews &&
-                                    reviews.map(review =>
-                                        <Review date={review.createdAt} key={review._id} username={review.username} title={review.title} stars={review.stars}>{review.description}</Review>)
+                                        reviews.map(review =>
+                                            <Review date={review.createdAt} key={review._id} username={review.username} title={review.title} stars={review.stars}>{review.description}</Review>)
                                     }
                                 </ul>
                             </div>

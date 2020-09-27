@@ -1,5 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
 import classes from './Gallery.module.css'
+import disableScroll from 'disable-scroll';
 
 const Image = (props) => {
     const handleOpen = () => {
@@ -15,6 +16,10 @@ const Image = (props) => {
 
 let Gallery = (props) => {
     const [openImageKey, setOpenImageKey] = useState(null);
+
+    useEffect(() => {
+        openImageKey === null ? disableScroll.off() : disableScroll.on();
+     }, [openImageKey])
 
     const backgroundImage = props.children[openImageKey]?.props?.style?.backgroundImage ?? '';
     const imageCount = props.children.length;

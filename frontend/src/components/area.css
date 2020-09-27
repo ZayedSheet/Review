@@ -80,10 +80,6 @@
     border-style: none;
 }
 
-.obj-pictures > div{
-    background: white;
-}
-
 .overview-main-image{
     grid-row: 1/4;
 }
